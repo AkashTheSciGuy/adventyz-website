@@ -24,6 +24,9 @@
 }
 
 .section-heading__title {
+  font-family: var(--font-family-brand);
+  font-weight: 800;
+
   font-size: clamp(
     var(--font-size-2xl),
     5vw,
@@ -71,7 +74,7 @@
 
 .button--primary {
   background: var(--color-brand);
-  color: #111;
+  color: var(--color-black);
 }
 
 .button--primary:hover {
