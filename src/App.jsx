@@ -1,5 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -10,16 +13,21 @@ import NotFound from "./pages/NotFound";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/services" element={<Services />} />
-      <Route path="/work" element={<Work />} />
-      <Route path="/process" element={<Process />} />
-      <Route path="/contact" element={<Contact />} />
+    <div className="app">
+      <Header />
 
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/work" element={<Work />} />
+        <Route path="/process" element={<Process />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+
+      <Footer />
+    </div>
   );
 }
 
