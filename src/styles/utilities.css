@@ -1,0 +1,29 @@
+.container {
+  width: min(
+    calc(100% - 2rem),
+    var(--container-width)
+  );
+
+  margin-inline: auto;
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: var(--space-lg) var(--space-sm);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

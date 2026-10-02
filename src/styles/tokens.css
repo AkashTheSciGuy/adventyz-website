@@ -1,0 +1,31 @@
+:root {
+  /* Colors */
+  --color-background: #0d0d0d;
+  --color-surface: #171717;
+  --color-text: #f5f5f5;
+  --color-text-muted: #a3a3a3;
+  --color-border: #2a2a2a;
+
+  /* Temporary Adventyz accent until official brand color is supplied */
+  --color-brand: #f5a623;
+
+  /* Layout */
+  --container-width: 1200px;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+
+  /* Border radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+}
