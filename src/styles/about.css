@@ -1,0 +1,461 @@
+/* ========================================
+   About page
+   ======================================== */
+
+.about-page {
+  overflow: hidden;
+}
+
+/* ========================================
+   Hero
+   ======================================== */
+
+.about-hero {
+  min-height: 78vh;
+
+  display: flex;
+  align-items: center;
+
+  padding-block: var(--space-10);
+
+  background:
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(233, 149, 26, 0.14),
+      transparent 32%
+    ),
+    var(--color-black);
+}
+
+.about-hero__content {
+  max-width: 980px;
+}
+
+.about-hero__eyebrow,
+.about-why__eyebrow,
+.about-beliefs__eyebrow {
+  margin-bottom: var(--space-5);
+
+  color: var(--color-brand);
+
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.about-hero__title {
+  font-family: var(--font-family-brand);
+
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  font-weight: 800;
+
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+}
+
+.about-hero__title span {
+  color: var(--color-brand);
+}
+
+.about-hero__description {
+  max-width: 700px;
+
+  margin-top: var(--space-6);
+
+  color: var(--color-text-muted);
+
+  font-size: var(--font-size-lg);
+  line-height: 1.7;
+}
+
+.about-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: var(--space-4);
+
+  margin-top: var(--space-6);
+}
+
+/* ========================================
+   Shared split layout
+   ======================================== */
+
+.about-split {
+  display: grid;
+
+  grid-template-columns:
+    minmax(180px, 0.45fr)
+    minmax(0, 1.55fr);
+
+  gap: var(--space-8);
+}
+
+.about-split__label {
+  display: flex;
+  align-items: flex-start;
+
+  gap: var(--space-4);
+
+  color: var(--color-text-muted);
+}
+
+.about-split__label span {
+  color: var(--color-brand);
+
+  font-family: var(--font-family-brand);
+}
+
+.about-split__label p {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.about-split__content {
+  max-width: 900px;
+}
+
+.about-split__content h2 {
+  margin-bottom: var(--space-6);
+
+  font-family: var(--font-family-brand);
+
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  font-weight: 800;
+
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.about-split__content h2 span {
+  color: var(--color-brand);
+}
+
+.about-split__content p {
+  max-width: 720px;
+
+  color: var(--color-text-muted);
+
+  font-size: var(--font-size-lg);
+  line-height: 1.8;
+}
+
+.about-split__content p + p {
+  margin-top: var(--space-5);
+}
+
+/* ========================================
+   Who we are
+   ======================================== */
+
+.about-who {
+  background: var(--color-surface);
+}
+
+/* ========================================
+   Approach
+   ======================================== */
+
+.about-approach {
+  background: var(--color-black);
+}
+
+.about-approach__grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  border-top: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+}
+
+.about-approach__card {
+  min-height: 300px;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: var(--space-6);
+
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+
+  transition: background-color var(--transition-base);
+}
+
+.about-approach__card:hover {
+  background: var(--color-surface);
+}
+
+.about-approach__card > span {
+  margin-bottom: auto;
+
+  color: var(--color-brand);
+
+  font-family: var(--font-family-brand);
+}
+
+.about-approach__card h3 {
+  margin-bottom: var(--space-3);
+
+  font-family: var(--font-family-brand);
+  font-size: var(--font-size-xl);
+}
+
+.about-approach__card p {
+  color: var(--color-text-muted);
+}
+
+/* ========================================
+   Beliefs
+   ======================================== */
+
+.about-beliefs {
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+.about-beliefs__header {
+  max-width: 850px;
+
+  margin-bottom: var(--space-8);
+}
+
+.about-beliefs__header h2 {
+  font-family: var(--font-family-brand);
+
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  font-weight: 800;
+
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.about-beliefs__header h2 span {
+  color: var(--color-brand);
+}
+
+.about-beliefs__list {
+  border-top: 1px solid #d8d8d8;
+}
+
+.about-beliefs__item {
+  display: grid;
+
+  grid-template-columns: 120px 1fr;
+
+  gap: var(--space-6);
+
+  padding-block: var(--space-6);
+
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.about-beliefs__number {
+  color: var(--color-brand);
+
+  font-family: var(--font-family-brand);
+}
+
+.about-beliefs__item h3 {
+  margin-bottom: var(--space-2);
+
+  font-family: var(--font-family-brand);
+  font-size: var(--font-size-xl);
+}
+
+.about-beliefs__item p {
+  max-width: 650px;
+
+  color: #555;
+
+  line-height: 1.7;
+}
+
+/* ========================================
+   Why Adventyz
+   ======================================== */
+
+.about-why {
+  background: var(--color-black);
+}
+
+.about-why__grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: var(--space-9);
+}
+
+.about-why__content h2 {
+  font-family: var(--font-family-brand);
+
+  font-size: clamp(2.8rem, 5vw, 4.8rem);
+  font-weight: 800;
+
+  line-height: 1;
+}
+
+.about-why__content h2 span {
+  color: var(--color-brand);
+}
+
+.about-why__content > p:last-child {
+  max-width: 600px;
+
+  margin-top: var(--space-5);
+
+  color: var(--color-text-muted);
+
+  line-height: 1.7;
+}
+
+.about-why__reasons {
+  border-top: 1px solid var(--color-border);
+}
+
+.about-why__reason {
+  display: grid;
+
+  grid-template-columns: 60px 1fr;
+
+  gap: var(--space-4);
+
+  padding-block: var(--space-5);
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about-why__reason span {
+  color: var(--color-brand);
+
+  font-family: var(--font-family-brand);
+}
+
+.about-why__reason p {
+  color: var(--color-text);
+}
+
+/* ========================================
+   CTA
+   ======================================== */
+
+.about-cta {
+  margin-top: var(--space-10);
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: var(--space-6);
+
+  padding: var(--space-7);
+
+  background: var(--color-brand);
+  color: var(--color-black);
+
+  border-radius: var(--radius-lg);
+}
+
+.about-cta__eyebrow {
+  margin-bottom: var(--space-3);
+
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.about-cta h2 {
+  max-width: 650px;
+
+  font-family: var(--font-family-brand);
+
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 800;
+
+  line-height: 1;
+}
+
+.about-cta .button {
+  flex-shrink: 0;
+
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .about-approach__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-why__grid {
+    grid-template-columns: 1fr;
+
+    gap: var(--space-7);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    min-height: auto;
+
+    padding-block: var(--space-8);
+  }
+
+  .about-split {
+    grid-template-columns: 1fr;
+
+    gap: var(--space-5);
+  }
+
+  .about-approach__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-approach__card {
+    min-height: 240px;
+  }
+
+  .about-beliefs__item {
+    grid-template-columns: 50px 1fr;
+  }
+
+  .about-cta {
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: var(--space-6);
+  }
+}
+
+@media (max-width: 480px) {
+  .about-hero__actions {
+    flex-direction: column;
+  }
+
+  .about-hero__actions .button {
+    width: 100%;
+  }
+
+  .about-beliefs__item {
+    grid-template-columns: 1fr;
+
+    gap: var(--space-3);
+  }
+
+  .about-cta .button {
+    width: 100%;
+  }
+}
