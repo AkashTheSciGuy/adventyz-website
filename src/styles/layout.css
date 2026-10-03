@@ -1,3 +1,46 @@
+@media (max-width: 768px) {
+  .site-logo__image {
+    height: 44px;
+  }
+
+  .site-logo__image--footer {
+    height: 60px;
+  }
+}
+
+/* =========================
+   Accessibility
+   ========================= */
+
+.skip-link {
+  position: fixed;
+  top: var(--space-4);
+  left: var(--space-4);
+
+  z-index: calc(var(--z-overlay) + 1);
+
+  padding: 0.75rem 1rem;
+
+  background: var(--color-brand);
+  color: var(--color-black);
+
+  border-radius: var(--radius-sm);
+
+  font-weight: 700;
+
+  transform: translateY(-200%);
+
+  transition: transform var(--transition-fast);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.route-content:focus {
+  outline: none;
+}
+
 /* =========================
    Header
    ========================= */
@@ -34,18 +77,20 @@
   display: inline-flex;
   align-items: center;
 
-  color: var(--color-white);
-
-  font-family: var(--font-family-brand);
-  font-size: 1.55rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-
-  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.site-logo__accent {
-  color: var(--color-brand);
+.site-logo__image {
+  display: block;
+
+  width: auto;
+  height: 52px;
+
+  object-fit: contain;
+}
+
+.site-logo__image--footer {
+  height: 72px;
 }
 
 /* =========================
@@ -342,5 +387,84 @@
   .desktop-nav__link::after,
   .menu-toggle span {
     transition: none;
+  }
+}
+
+/* =========================
+   404
+   ========================= */
+
+.not-found {
+  min-height: 70vh;
+
+  display: flex;
+  align-items: center;
+
+  padding-block: var(--space-9);
+
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(233, 149, 26, 0.12),
+      transparent 35%
+    ),
+    var(--color-black);
+}
+
+.not-found__container {
+  text-align: center;
+}
+
+.not-found__code {
+  margin-bottom: var(--space-4);
+
+  color: var(--color-brand);
+
+  font-family: var(--font-family-brand);
+  font-size: clamp(5rem, 18vw, 11rem);
+  font-weight: 800;
+
+  line-height: 0.8;
+}
+
+.not-found h1 {
+  font-family: var(--font-family-brand);
+
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 800;
+
+  line-height: 1;
+}
+
+.not-found__description {
+  max-width: 520px;
+
+  margin:
+    var(--space-5)
+    auto
+    0;
+
+  color: var(--color-text-muted);
+
+  font-size: var(--font-size-lg);
+}
+
+.not-found__actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: var(--space-4);
+
+  margin-top: var(--space-6);
+}
+
+@media (max-width: 480px) {
+  .not-found__actions {
+    flex-direction: column;
+  }
+
+  .not-found__actions .button {
+    width: 100%;
   }
 }

@@ -8,6 +8,7 @@ import "./styles/globals.css";
 import "./styles/utilities.css";
 import "./styles/components.css";
 import "./styles/layout.css";
+import "./styles/motion.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

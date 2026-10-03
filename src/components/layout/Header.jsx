@@ -5,6 +5,7 @@ import Button from "../ui/Button";
 import Container from "../ui/Container";
 import MobileMenu from "./MobileMenu";
 import { navigationLinks } from "../../data/navigation";
+import logo from "../../assets/images/adventyz-logo.png";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -31,8 +32,11 @@ function Header() {
             aria-label="Adventyz home"
             onClick={closeMenu}
           >
-            <span className="site-logo__accent">A</span>
-            <span>DVENTYZ</span>
+            <img
+              src={logo}
+              alt="Adventyz"
+              className="site-logo__image"
+            />
           </Link>
 
           <nav className="desktop-nav" aria-label="Primary navigation">
@@ -42,8 +46,7 @@ function Header() {
                 to={item.path}
                 end={item.path === "/"}
                 className={({ isActive }) =>
-                  `desktop-nav__link ${
-                    isActive ? "desktop-nav__link--active" : ""
+                  `desktop-nav__link ${isActive ? "desktop-nav__link--active" : ""
                   }`
                 }
               >
@@ -59,9 +62,8 @@ function Header() {
 
             <button
               type="button"
-              className={`menu-toggle ${
-                menuOpen ? "menu-toggle--open" : ""
-              }`}
+              className={`menu-toggle ${menuOpen ? "menu-toggle--open" : ""
+                }`}
               aria-label={
                 menuOpen
                   ? "Close navigation menu"

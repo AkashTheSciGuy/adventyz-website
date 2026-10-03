@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "../ui/Button";
 import Container from "../ui/Container";
 import { navigationLinks } from "../../data/navigation";
+import logo from "../../assets/images/adventyz-logo.png";
 
 function Footer() {
   const currentYear = new Date().getFullYear();
@@ -17,8 +18,11 @@ function Footer() {
               className="site-logo site-logo--footer"
               aria-label="Adventyz home"
             >
-              <span className="site-logo__accent">A</span>
-              <span>DVENTYZ</span>
+              <img
+                src={logo}
+                alt="Adventyz"
+                className="site-logo__image site-logo__image--footer"
+              />
             </Link>
 
             <p className="site-footer__description">
