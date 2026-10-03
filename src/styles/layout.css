@@ -468,3 +468,39 @@
     width: 100%;
   }
 }
+/* =========================
+   Route loading
+   ========================= */
+
+.page-loader {
+  min-height: 60vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-loader__indicator {
+  width: 32px;
+  height: 32px;
+
+  border: 2px solid var(--color-border);
+  border-top-color: var(--color-brand);
+
+  border-radius: 50%;
+
+  animation: page-loader-spin 700ms linear infinite;
+}
+
+@keyframes page-loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-loader__indicator {
+    animation: none;
+    border-color: var(--color-brand);
+  }
+}
