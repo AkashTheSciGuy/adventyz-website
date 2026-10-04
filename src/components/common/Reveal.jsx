@@ -1,5 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 
+function getInitialVisibility() {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  return window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+}
+
 function Reveal({
   children,
   className = "",
@@ -7,21 +17,15 @@ function Reveal({
   threshold = 0.15,
 }) {
   const elementRef = useRef(null);
-  const [visible, setVisible] = useState(false);
+
+  const [visible, setVisible] = useState(
+    getInitialVisibility,
+  );
 
   useEffect(() => {
     const element = elementRef.current;
 
-    if (!element) {
-      return;
-    }
-
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
-    if (prefersReducedMotion) {
-      setVisible(true);
+    if (!element || visible) {
       return;
     }
 
@@ -42,7 +46,7 @@ function Reveal({
     return () => {
       observer.disconnect();
     };
-  }, [threshold]);
+  }, [threshold, visible]);
 
   return (
     <div

@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import RouteChangeHandler from "./components/common/RouteChangeHandler";
+import RouteMetadata from "./components/common/RouteMetadata";
 
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -26,6 +27,7 @@ function App() {
   return (
     <div className="app">
       <RouteChangeHandler />
+      <RouteMetadata />
 
       <a className="skip-link" href="#main-content">
         Skip to main content
