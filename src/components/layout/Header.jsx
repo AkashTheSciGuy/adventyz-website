@@ -5,7 +5,7 @@ import Button from "../ui/Button";
 import Container from "../ui/Container";
 import MobileMenu from "./MobileMenu";
 import { navigationLinks } from "../../data/navigation";
-import logo from "../../assets/images/adventyz-logo.png";
+import logo from "../../assets/images/adventyz-symbol-optimized.webp";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);

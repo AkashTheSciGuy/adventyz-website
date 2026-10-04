@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "../ui/Button";
 import Container from "../ui/Container";
 import { navigationLinks } from "../../data/navigation";
-import logo from "../../assets/images/adventyz-logo.png";
+import logo from "../../assets/images/adventyz-symbol-optimized.webp";
 
 const currentYear = new Date().getFullYear();
 
