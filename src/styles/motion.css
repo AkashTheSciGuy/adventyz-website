@@ -1,0 +1,49 @@
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+
+  transition:
+    opacity 600ms ease,
+    transform 600ms ease;
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hover-lift {
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+.media-reveal {
+  overflow: hidden;
+}
+
+.media-reveal img,
+.media-reveal video {
+  transition: transform 700ms ease;
+}
+
+.media-reveal:hover img,
+.media-reveal:hover video {
+  transform: scale(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal--visible,
+  .hover-lift,
+  .media-reveal img,
+  .media-reveal video {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
