@@ -272,6 +272,276 @@
   font-size: var(--font-size-lg);
 }
 
+
+/* ========================================
+   Services Preview
+   ======================================== */
+
+.services-preview {
+  background: var(--color-surface);
+}
+
+.services-preview__header,
+.selected-work__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: var(--space-6);
+  margin-bottom: var(--space-7);
+}
+
+.services-preview__header .section-heading,
+.selected-work__header .section-heading {
+  margin-bottom: 0;
+}
+
+.services-preview__header > .button,
+.selected-work__header > .button {
+  margin-bottom: var(--space-1);
+}
+
+.services-preview__grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  border-top: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+}
+
+.services-preview__card {
+  min-height: 240px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: var(--space-5);
+
+  background: var(--color-black);
+
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.services-preview__card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: var(--space-4);
+}
+
+.services-preview__number {
+  color: var(--color-brand);
+
+  font-family: var(--font-family-brand);
+  font-size: var(--font-size-sm);
+}
+
+.services-preview__category {
+  color: var(--color-text-subtle);
+
+  font-size: var(--font-size-xs);
+
+  text-align: right;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.services-preview__card h3 {
+  max-width: 260px;
+
+  font-family: var(--font-family-brand);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+
+  line-height: 1.05;
+}
+
+.services-preview__mobile-action,
+.selected-work__mobile-action {
+  display: none;
+
+  margin-top: var(--space-6);
+}
+
+/* ========================================
+   Selected Work
+   ======================================== */
+
+.selected-work {
+  background: var(--color-black);
+}
+
+.selected-work__grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: var(--space-5);
+}
+
+.selected-work__card {
+  min-width: 0;
+}
+
+.selected-work__media {
+  aspect-ratio: 4 / 5;
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  overflow: hidden;
+}
+
+.selected-work__media img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.selected-work__placeholder {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: var(--space-3);
+
+  padding: var(--space-5);
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(233, 149, 26, 0.12),
+      transparent 38%
+    ),
+    var(--color-surface);
+}
+
+.selected-work__placeholder span {
+  color: var(--color-text-subtle);
+
+  font-size: var(--font-size-xs);
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.selected-work__placeholder strong {
+  color: var(--color-text);
+
+  font-family: var(--font-family-brand);
+  font-size: var(--font-size-xl);
+}
+
+.selected-work__content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: var(--space-4);
+
+  padding-top: var(--space-4);
+}
+
+.selected-work__category {
+  margin-bottom: var(--space-2);
+
+  color: var(--color-brand);
+
+  font-size: var(--font-size-xs);
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.selected-work__content h3 {
+  font-family: var(--font-family-brand);
+  font-size: var(--font-size-xl);
+  font-weight: 800;
+}
+
+.selected-work__status {
+  flex-shrink: 0;
+
+  padding: 0.4rem 0.65rem;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+
+  color: var(--color-text-subtle);
+
+  font-size: var(--font-size-xs);
+}
+
+/* ========================================
+   Integration Responsive
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .services-preview__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .selected-work__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .selected-work__card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .selected-work__card:last-child .selected-work__media {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-preview__header > .button,
+  .selected-work__header > .button {
+    display: none;
+  }
+
+  .services-preview__mobile-action,
+  .selected-work__mobile-action {
+    display: block;
+  }
+
+  .services-preview__grid,
+  .selected-work__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services-preview__card {
+    min-height: 200px;
+  }
+
+  .selected-work__card:last-child {
+    grid-column: auto;
+  }
+
+  .selected-work__card:last-child .selected-work__media,
+  .selected-work__media {
+    aspect-ratio: 4 / 5;
+  }
+
+  .services-preview__mobile-action .button,
+  .selected-work__mobile-action .button {
+    width: 100%;
+  }
+}
+
 /* ========================================
    Why Adventyz
    ======================================== */
