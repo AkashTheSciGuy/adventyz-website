@@ -5,8 +5,9 @@ import Container from "../ui/Container";
 import { navigationLinks } from "../../data/navigation";
 import logo from "../../assets/images/adventyz-logo.png";
 
+const currentYear = new Date().getFullYear();
+
 function Footer() {
-  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="site-footer">

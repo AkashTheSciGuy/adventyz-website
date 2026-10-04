@@ -29,6 +29,8 @@ function Home() {
       <Reveal>
         <WhyAdventyzSection />
       </Reveal>
+
+      <FinalCtaSection />
     </main>
   );
 }
