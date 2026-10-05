@@ -595,3 +595,217 @@
     border-color: var(--color-brand);
   }
 }
+
+/* =========================
+   Animated Header Logo
+   ========================= */
+
+.site-logo--animated {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 0.75rem;
+
+  color: #ffffff;
+
+  overflow: visible;
+}
+
+/* Logo icon wrapper */
+
+.site-logo__mark {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  transform-origin: center;
+
+  animation:
+    logo-mark-cycle
+    7s
+    ease-in-out
+    infinite;
+}
+
+.site-logo__wordmark {
+  display: inline-block;
+
+  color: #ffffff;
+
+  font-family: var(--font-family-brand);
+  font-size: 1.15rem;
+  font-weight: 800;
+
+  letter-spacing: 0.09em;
+
+  white-space: nowrap;
+
+  transform-origin: left center;
+
+  animation:
+    logo-wordmark-cycle
+    7s
+    ease-in-out
+    infinite;
+
+  transition:
+    color var(--transition-fast);
+}
+
+/* Hover */
+
+.site-logo--animated:hover
+.site-logo__mark {
+  transform:
+    rotate(-7deg)
+    scale(1.06);
+}
+
+.site-logo--animated:hover
+.site-logo__wordmark {
+  color: var(--color-brand);
+
+  transform: translateX(3px);
+}
+
+/* Logo entrance */
+
+@keyframes logo-mark-cycle {
+  0% {
+    opacity: 1;
+
+    transform:
+      scale(1)
+      rotate(0deg);
+  }
+
+  8% {
+    transform:
+      scale(1.08)
+      rotate(-6deg);
+  }
+
+  14% {
+    transform:
+      scale(0.97)
+      rotate(2deg);
+  }
+
+  20% {
+    transform:
+      scale(1)
+      rotate(0deg);
+  }
+
+  82% {
+    opacity: 1;
+
+    transform:
+      scale(1)
+      rotate(0deg);
+  }
+
+  88% {
+    transform:
+      scale(1.06)
+      rotate(5deg);
+  }
+
+  94% {
+    transform:
+      scale(0.96)
+      rotate(-3deg);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      scale(1)
+      rotate(0deg);
+  }
+}
+
+/* Wordmark entrance */
+
+@keyframes logo-wordmark-cycle {
+  0% {
+    opacity: 0;
+
+    transform:
+      translateX(-20px)
+      scaleX(0.9);
+  }
+
+  8% {
+    opacity: 0;
+
+    transform:
+      translateX(-20px)
+      scaleX(0.9);
+  }
+
+  16% {
+    opacity: 1;
+
+    transform:
+      translateX(0)
+      scaleX(1);
+  }
+
+  76% {
+    opacity: 1;
+
+    transform:
+      translateX(0)
+      scaleX(1);
+  }
+
+  86% {
+    opacity: 0;
+
+    transform:
+      translateX(-16px)
+      scaleX(0.92);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translateX(-20px)
+      scaleX(0.9);
+  }
+}
+/* Mobile */
+
+@media (max-width: 768px) {
+  .site-logo--animated {
+    gap: 0.55rem;
+  }
+
+  .site-logo__wordmark {
+    font-size: 0.95rem;
+
+    letter-spacing: 0.07em;
+  }
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .site-logo__mark,
+  .site-logo__wordmark {
+    animation: none;
+
+    opacity: 1;
+
+    transform: none;
+
+    transition: none;
+  }
+}

@@ -4,7 +4,9 @@ import { Link, NavLink } from "react-router-dom";
 import Button from "../ui/Button";
 import Container from "../ui/Container";
 import MobileMenu from "./MobileMenu";
+
 import { navigationLinks } from "../../data/navigation";
+
 import logo from "../../assets/images/adventyz-symbol-optimized.webp";
 
 function Header() {
@@ -15,7 +17,9 @@ function Header() {
   };
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
+    document.body.style.overflow = menuOpen
+      ? "hidden"
+      : "";
 
     return () => {
       document.body.style.overflow = "";
@@ -26,27 +30,45 @@ function Header() {
     <>
       <header className="site-header">
         <Container className="site-header__inner">
+
+          {/* Brand */}
           <Link
             to="/"
-            className="site-logo"
+            className="site-logo site-logo--animated"
             aria-label="Adventyz home"
             onClick={closeMenu}
           >
-            <img
-              src={logo}
-              alt="Adventyz"
-              className="site-logo__image"
-            />
+            <span
+              className="site-logo__mark"
+              aria-hidden="true"
+            >
+              <img
+                src={logo}
+                alt=""
+                className="site-logo__image"
+              />
+            </span>
+
+            <span className="site-logo__wordmark">
+              ADVENTYZ
+            </span>
           </Link>
 
-          <nav className="desktop-nav" aria-label="Primary navigation">
+          {/* Desktop Navigation */}
+          <nav
+            className="desktop-nav"
+            aria-label="Primary navigation"
+          >
             {navigationLinks.map((item) => (
               <NavLink
                 key={item.path}
                 to={item.path}
                 end={item.path === "/"}
                 className={({ isActive }) =>
-                  `desktop-nav__link ${isActive ? "desktop-nav__link--active" : ""
+                  `desktop-nav__link ${
+                    isActive
+                      ? "desktop-nav__link--active"
+                      : ""
                   }`
                 }
               >
@@ -55,15 +77,22 @@ function Header() {
             ))}
           </nav>
 
+          {/* Header Actions */}
           <div className="site-header__actions">
-            <Button to="/contact" className="site-header__cta">
+            <Button
+              to="/contact"
+              className="site-header__cta"
+            >
               Let's Talk
             </Button>
 
             <button
               type="button"
-              className={`menu-toggle ${menuOpen ? "menu-toggle--open" : ""
-                }`}
+              className={`menu-toggle ${
+                menuOpen
+                  ? "menu-toggle--open"
+                  : ""
+              }`}
               aria-label={
                 menuOpen
                   ? "Close navigation menu"
@@ -71,17 +100,25 @@ function Header() {
               }
               aria-expanded={menuOpen}
               aria-controls="mobile-navigation"
-              onClick={() => setMenuOpen((current) => !current)}
+              onClick={() =>
+                setMenuOpen(
+                  (current) => !current,
+                )
+              }
             >
               <span />
               <span />
               <span />
             </button>
           </div>
+
         </Container>
       </header>
 
-      <MobileMenu open={menuOpen} onClose={closeMenu} />
+      <MobileMenu
+        open={menuOpen}
+        onClose={closeMenu}
+      />
     </>
   );
 }
