@@ -1,33 +1,38 @@
 import { useState } from "react";
+
 import Container from "../components/ui/Container";
 import SectionHeading from "../components/ui/SectionHeading";
 import Button from "../components/ui/Button";
-import "../../src/styles/contact.css";
+
+import { services } from "../data/services";
+
+import "../styles/contact.css";
 
 const initialForm = {
   name: "",
   email: "",
+  phone: "",
   company: "",
+  website: "",
   service: "",
+  budget: "",
   message: "",
 };
 
-const services = [
-  "Social Media Management",
-  "Digital Marketing",
-  "Meta Ads",
-  "Google Ads",
-  "Content Creation",
-  "Cinematic Video Production",
-  "Photography",
-  "Website Development",
-  "Branding & Creative Design",
+const budgetOptions = [
+  "Under ₹25,000",
+  "₹25,000 – ₹50,000",
+  "₹50,000 – ₹1,00,000",
+  "₹1,00,000 – ₹2,50,000",
+  "₹2,50,000+",
+  "Not sure yet",
 ];
 
 function Contact() {
   const [formData, setFormData] = useState(initialForm);
   const [errors, setErrors] = useState({});
-  const [submitted, setSubmitted] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState("idle");
+  const [submitError, setSubmitError] = useState("");
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -42,7 +47,8 @@ function Contact() {
       [name]: "",
     }));
 
-    setSubmitted(false);
+    setSubmitStatus("idle");
+    setSubmitError("");
   };
 
   const validateForm = () => {
@@ -58,30 +64,72 @@ function Contact() {
       newErrors.email = "Please enter a valid email address.";
     }
 
+    if (
+      formData.website.trim() &&
+      !/^https?:\/\/.+/i.test(formData.website.trim())
+    ) {
+      newErrors.website =
+        "Please include http:// or https:// in the website URL.";
+    }
+
     if (!formData.service) {
       newErrors.service = "Please select a service.";
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = "Please tell us a little about your project.";
+      newErrors.message =
+        "Please tell us a little about your project.";
     }
 
     return newErrors;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const validationErrors = validateForm();
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
-      setSubmitted(false);
+      setSubmitStatus("idle");
       return;
     }
 
-    setErrors({});
-    setSubmitted(true);
+    const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT;
+
+    if (!endpoint) {
+      setSubmitStatus("error");
+      setSubmitError(
+        "Online form submission is not configured yet. Please email infoadventyz@gmail.com instead.",
+      );
+      return;
+    }
+
+    try {
+      setErrors({});
+      setSubmitError("");
+      setSubmitStatus("loading");
+
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Contact request failed.");
+      }
+
+      setSubmitStatus("success");
+      setFormData(initialForm);
+    } catch {
+      setSubmitStatus("error");
+      setSubmitError(
+        "We couldn't send your enquiry right now. Please try again or email infoadventyz@gmail.com.",
+      );
+    }
   };
 
   return (
@@ -101,20 +149,24 @@ function Contact() {
           <div className="contact-page__grid">
             <div className="contact-page__details">
               <div className="contact-page__intro">
-                <span className="contact-page__label">Let's Talk</span>
+                <span className="contact-page__label">
+                  Let's Talk
+                </span>
 
                 <h2>Have an idea? Let's make it happen.</h2>
 
                 <p>
-                  Whether you need a stronger digital presence, better
-                  campaigns, compelling content or a complete brand
-                  experience, we'd love to hear what you're working on.
+                  Whether you need a stronger digital presence,
+                  better campaigns, compelling content or a complete
+                  brand experience, we'd love to hear what you're
+                  working on.
                 </p>
               </div>
 
               <div className="contact-page__info">
                 <div className="contact-page__info-item">
                   <span>Email</span>
+
                   <a href="mailto:infoadventyz@gmail.com">
                     infoadventyz@gmail.com
                   </a>
@@ -122,19 +174,21 @@ function Contact() {
 
                 <div className="contact-page__info-item">
                   <span>Instagram</span>
+
                   <a
-                    href="https://instagram.com/adventyz"
+                    href="https://www.instagram.com/adventyz.in7/"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    @adventyz
+                    @Adventyz.in7
                   </a>
                 </div>
 
                 <div className="contact-page__info-item">
                   <span>Website</span>
+
                   <a
-                    href="https://adventyz.com"
+                    href="https://www.adventyz.com/"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -145,29 +199,38 @@ function Contact() {
             </div>
 
             <div className="contact-form-wrapper">
-              {submitted ? (
-                <div className="contact-form__success">
-                  <span className="contact-form__success-icon">✓</span>
+              {submitStatus === "success" ? (
+                <div
+                  className="contact-form__success"
+                  role="status"
+                >
+                  <span className="contact-form__success-icon">
+                    ✓
+                  </span>
 
                   <h2>Thanks for reaching out!</h2>
 
                   <p>
-                    We've received your project details. We'll be in touch
-                    soon to talk about what we can create together.
+                    Your enquiry was sent successfully. We'll be in
+                    touch to discuss your project.
                   </p>
 
                   <Button
                     type="button"
                     onClick={() => {
-                      setFormData(initialForm);
-                      setSubmitted(false);
+                      setSubmitStatus("idle");
+                      setSubmitError("");
                     }}
                   >
                     Send Another Enquiry
                   </Button>
                 </div>
               ) : (
-                <form className="contact-form" onSubmit={handleSubmit} noValidate>
+                <form
+                  className="contact-form"
+                  onSubmit={handleSubmit}
+                  noValidate
+                >
                   <div className="contact-form__row">
                     <div className="contact-form__field">
                       <label htmlFor="name">
@@ -178,6 +241,7 @@ function Contact() {
                         id="name"
                         name="name"
                         type="text"
+                        autoComplete="name"
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="Your name"
@@ -185,7 +249,9 @@ function Contact() {
                       />
 
                       {errors.name && (
-                        <p className="contact-form__error">{errors.name}</p>
+                        <p className="contact-form__error">
+                          {errors.name}
+                        </p>
                       )}
                     </div>
 
@@ -198,6 +264,7 @@ function Contact() {
                         id="email"
                         name="email"
                         type="email"
+                        autoComplete="email"
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="you@example.com"
@@ -205,53 +272,126 @@ function Contact() {
                       />
 
                       {errors.email && (
-                        <p className="contact-form__error">{errors.email}</p>
+                        <p className="contact-form__error">
+                          {errors.email}
+                        </p>
                       )}
                     </div>
                   </div>
 
-                  <div className="contact-form__field">
-                    <label htmlFor="company">Company / Brand</label>
+                  <div className="contact-form__row">
+                    <div className="contact-form__field">
+                      <label htmlFor="phone">Phone</label>
 
-                    <input
-                      id="company"
-                      name="company"
-                      type="text"
-                      value={formData.company}
-                      onChange={handleChange}
-                      placeholder="Your company or brand"
-                    />
+                      <input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        autoComplete="tel"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+91"
+                      />
+                    </div>
+
+                    <div className="contact-form__field">
+                      <label htmlFor="company">
+                        Company / Brand
+                      </label>
+
+                      <input
+                        id="company"
+                        name="company"
+                        type="text"
+                        autoComplete="organization"
+                        value={formData.company}
+                        onChange={handleChange}
+                        placeholder="Your company or brand"
+                      />
+                    </div>
                   </div>
 
                   <div className="contact-form__field">
-                    <label htmlFor="service">
-                      What can we help with? <span>*</span>
-                    </label>
+                    <label htmlFor="website">Website</label>
 
-                    <select
-                      id="service"
-                      name="service"
-                      value={formData.service}
+                    <input
+                      id="website"
+                      name="website"
+                      type="url"
+                      value={formData.website}
                       onChange={handleChange}
-                      aria-invalid={Boolean(errors.service)}
-                    >
-                      <option value="">Select a service</option>
+                      placeholder="https://example.com"
+                      aria-invalid={Boolean(errors.website)}
+                    />
 
-                      {services.map((service) => (
-                        <option key={service} value={service}>
-                          {service}
-                        </option>
-                      ))}
-                    </select>
-
-                    {errors.service && (
-                      <p className="contact-form__error">{errors.service}</p>
+                    {errors.website && (
+                      <p className="contact-form__error">
+                        {errors.website}
+                      </p>
                     )}
+                  </div>
+
+                  <div className="contact-form__row">
+                    <div className="contact-form__field">
+                      <label htmlFor="service">
+                        Service Required <span>*</span>
+                      </label>
+
+                      <select
+                        id="service"
+                        name="service"
+                        value={formData.service}
+                        onChange={handleChange}
+                        aria-invalid={Boolean(errors.service)}
+                      >
+                        <option value="">
+                          Select a service
+                        </option>
+
+                        {services.map((service) => (
+                          <option
+                            key={service.id}
+                            value={service.title}
+                          >
+                            {service.title}
+                          </option>
+                        ))}
+                      </select>
+
+                      {errors.service && (
+                        <p className="contact-form__error">
+                          {errors.service}
+                        </p>
+                      )}
+                    </div>
+
+                    <div className="contact-form__field">
+                      <label htmlFor="budget">
+                        Estimated Budget
+                      </label>
+
+                      <select
+                        id="budget"
+                        name="budget"
+                        value={formData.budget}
+                        onChange={handleChange}
+                      >
+                        <option value="">
+                          Select a range
+                        </option>
+
+                        {budgetOptions.map((budget) => (
+                          <option key={budget} value={budget}>
+                            {budget}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
 
                   <div className="contact-form__field">
                     <label htmlFor="message">
-                      Tell us about your project <span>*</span>
+                      Project Details <span>*</span>
                     </label>
 
                     <textarea
@@ -265,12 +405,30 @@ function Contact() {
                     />
 
                     {errors.message && (
-                      <p className="contact-form__error">{errors.message}</p>
+                      <p className="contact-form__error">
+                        {errors.message}
+                      </p>
                     )}
                   </div>
 
+                  {submitStatus === "error" && (
+                    <div
+                      className="contact-form__submit-error"
+                      role="alert"
+                    >
+                      {submitError}
+                    </div>
+                  )}
+
                   <div className="contact-form__submit">
-                    <Button type="submit">Book a Consultation</Button>
+                    <Button
+                      type="submit"
+                      disabled={submitStatus === "loading"}
+                    >
+                      {submitStatus === "loading"
+                        ? "Sending..."
+                        : "Book a Consultation"}
+                    </Button>
                   </div>
                 </form>
               )}
@@ -287,10 +445,6 @@ function Contact() {
             title="Have a project worth building?"
             description="Let's talk about your next idea and explore what we can create together."
           />
-
-          <div className="contact-page__bottom-action">
-            <Button to="/contact">Let's Talk</Button>
-          </div>
         </Container>
       </section>
     </main>

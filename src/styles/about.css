@@ -4,6 +4,7 @@
 
 .about-page {
   overflow: hidden;
+  background: transparent;
 }
 
 /* ========================================
@@ -18,13 +19,7 @@
 
   padding-block: var(--space-10);
 
-  background:
-    radial-gradient(
-      circle at 80% 30%,
-      rgba(233, 149, 26, 0.14),
-      transparent 32%
-    ),
-    var(--color-black);
+  background: transparent;
 }
 
 .about-hero__content {
@@ -154,7 +149,7 @@
    ======================================== */
 
 .about-who {
-  background: var(--color-surface);
+  background: transparent;
 }
 
 /* ========================================
@@ -162,7 +157,7 @@
    ======================================== */
 
 .about-approach {
-  background: var(--color-black);
+  background: transparent;
 }
 
 .about-approach__grid {
@@ -182,6 +177,8 @@
 
   padding: var(--space-6);
 
+  background: rgba(0, 0, 0, 0.72);
+
   border-right: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
 
@@ -189,7 +186,7 @@
 }
 
 .about-approach__card:hover {
-  background: var(--color-surface);
+  background: rgba(20, 20, 20, 0.9);
 }
 
 .about-approach__card > span {
@@ -216,8 +213,8 @@
    ======================================== */
 
 .about-beliefs {
-  background: var(--color-white);
-  color: var(--color-black);
+  background: transparent;
+  color: var(--color-text);
 }
 
 .about-beliefs__header {
@@ -241,7 +238,7 @@
 }
 
 .about-beliefs__list {
-  border-top: 1px solid #d8d8d8;
+  border-top: 1px solid var(--color-border);
 }
 
 .about-beliefs__item {
@@ -253,7 +250,7 @@
 
   padding-block: var(--space-6);
 
-  border-bottom: 1px solid #d8d8d8;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .about-beliefs__number {
@@ -272,7 +269,7 @@
 .about-beliefs__item p {
   max-width: 650px;
 
-  color: #555;
+  color: var(--color-text-muted);
 
   line-height: 1.7;
 }
@@ -282,7 +279,7 @@
    ======================================== */
 
 .about-why {
-  background: var(--color-black);
+  background: transparent;
 }
 
 .about-why__grid {

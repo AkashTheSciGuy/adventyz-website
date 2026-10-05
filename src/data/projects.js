@@ -1,6 +1,7 @@
 export const projects = [
   {
     id: "project-01",
+    verified: false,
     client: "Client Project",
     title: "Featured Project",
     industry: "Industry",
@@ -24,6 +25,7 @@ export const projects = [
   },
   {
     id: "project-02",
+    verified: false,
     client: "Client Project",
     title: "Creative Production Project",
     industry: "Industry",
@@ -47,6 +49,7 @@ export const projects = [
   },
   {
     id: "project-03",
+    verified: false,
     client: "Client Project",
     title: "Photography Project",
     industry: "Industry",
@@ -70,6 +73,7 @@ export const projects = [
   },
   {
     id: "project-04",
+    verified: false,
     client: "Client Project",
     title: "Branding & Creative Project",
     industry: "Industry",
@@ -93,6 +97,7 @@ export const projects = [
   },
   {
     id: "project-05",
+    verified: false,
     client: "Client Project",
     title: "Website Development Project",
     industry: "Industry",
@@ -116,6 +121,7 @@ export const projects = [
   },
   {
     id: "project-06",
+    verified: false,
     client: "Client Project",
     title: "Performance Marketing Project",
     industry: "Industry",
