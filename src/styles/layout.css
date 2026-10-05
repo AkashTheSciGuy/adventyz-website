@@ -1088,8 +1088,8 @@
    ========================= */
 
 .site-logo--animated:hover
-.site-logo__wordmark {
-  color: var(--color-brand);
+.site-logo__letter:not(.site-logo__letter--accent) {
+  color: rgba(255, 255, 255, 0.75);
 }
 
 /* =========================
@@ -1144,4 +1144,8 @@
   .site-logo__particle {
     display: none;
   }
+}
+
+.site-logo__letter--accent {
+  color: var(--color-brand);
 }

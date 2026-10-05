@@ -69,7 +69,8 @@ function Header() {
             >
               {brandLetters.map((letter, index) => (
                 <span
-                  className="site-logo__letter"
+                  className={`site-logo__letter ${index === 0 ? "site-logo__letter--accent" : ""
+                    }`}
                   style={{
                     "--letter-index": index,
                     "--reverse-index":
@@ -93,10 +94,9 @@ function Header() {
                 to={item.path}
                 end={item.path === "/"}
                 className={({ isActive }) =>
-                  `desktop-nav__link ${
-                    isActive
-                      ? "desktop-nav__link--active"
-                      : ""
+                  `desktop-nav__link ${isActive
+                    ? "desktop-nav__link--active"
+                    : ""
                   }`
                 }
               >
@@ -115,11 +115,10 @@ function Header() {
 
             <button
               type="button"
-              className={`menu-toggle ${
-                menuOpen
+              className={`menu-toggle ${menuOpen
                   ? "menu-toggle--open"
                   : ""
-              }`}
+                }`}
               aria-label={
                 menuOpen
                   ? "Close navigation menu"
