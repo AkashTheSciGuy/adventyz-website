@@ -15,32 +15,35 @@ function Home() {
   return (
     <main className="home-page">
       <HeroSection />
+     
 
       <Reveal>
         <IntroSection />
       </Reveal>
 
-      <Reveal>
+      <Reveal delay={70}>
         <ServicesPreviewSection />
       </Reveal>
 
-      <Reveal>
+      <Reveal delay={90}>
         <SelectedWorkSection />
       </Reveal>
 
-      <Reveal>
+      <Reveal delay={100}>
         <WhyAdventyzSection />
       </Reveal>
 
-      <Reveal>
+      <Reveal delay={100}>
         <ProcessPreviewSection />
       </Reveal>
 
-      <Reveal>
+      <Reveal delay={100}>
         <TestimonialsSection />
       </Reveal>
 
-      <FinalCtaSection />
+      <Reveal delay={80}>
+        <FinalCtaSection />
+      </Reveal>
     </main>
   );
 }

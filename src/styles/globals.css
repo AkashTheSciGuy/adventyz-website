@@ -20,16 +20,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
 
-  background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.12),
-      rgba(0, 0, 0, 0.12)
-    ),
-    url("../assets/images/geometric-background.png")
-      center / cover
-      fixed
-      no-repeat;
-
+  background: var(--color-background);
   color: var(--color-text);
 
   font-family: var(--font-family-base);
@@ -42,7 +33,17 @@ body {
 
 #root {
   min-height: 100vh;
-  background: transparent;
+  background: var(--color-background);
+}
+
+.home-page,
+.about-page,
+.services-page,
+.work-page,
+.process-page,
+.contact-page {
+  background: var(--color-background);
+  color: var(--color-text);
 }
 
 body,

@@ -1,9 +1,23 @@
 import Button from "../../components/ui/Button";
 import Container from "../../components/ui/Container";
+import { services } from "../../data/services";
 
 function HeroSection() {
+  const marqueeItems = [...services, ...services];
+
   return (
     <section className="hero">
+      <div
+        className="hero__decorations"
+        aria-hidden="true"
+      >
+        <span className="hero__shape hero__shape--one" />
+        <span className="hero__shape hero__shape--two" />
+        <span className="hero__shape hero__shape--three" />
+        <span className="hero__orb hero__orb--one" />
+        <span className="hero__orb hero__orb--two" />
+      </div>
+
       <Container className="hero__container">
         <div className="hero__content">
           <p className="hero__eyebrow">
@@ -41,6 +55,9 @@ function HeroSection() {
         >
           <div className="hero__visual-glow" />
 
+          <div className="hero__visual-ring hero__visual-ring--one" />
+          <div className="hero__visual-ring hero__visual-ring--two" />
+
           <div className="hero__brand-mark">
             <span className="hero__brand-a">A</span>
             <span>DVENTYZ</span>
@@ -53,11 +70,27 @@ function HeroSection() {
       </Container>
 
       <div
-        className="hero__scroll-indicator"
-        aria-hidden="true"
+        className="hero__marquee"
+        aria-label="Adventyz services"
       >
-        <span />
-        Scroll
+        <div className="hero__marquee-track">
+          {marqueeItems.map((service, index) => (
+            <div
+              className="hero__marquee-item"
+              key={`${service.id}-${index}`}
+              aria-hidden={index >= services.length}
+            >
+              <span>{service.title}</span>
+
+              <span
+                className="hero__marquee-star"
+                aria-hidden="true"
+              >
+                ✦
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
