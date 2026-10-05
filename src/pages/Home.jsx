@@ -16,7 +16,6 @@ function Home() {
     <main className="home-page">
       <HeroSection />
      
-
       <Reveal>
         <IntroSection />
       </Reveal>
