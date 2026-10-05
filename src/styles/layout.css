@@ -597,21 +597,28 @@
 }
 
 /* =========================
-   Animated Header Logo
+   Animated Header Brand
+   Reference-style cycle
    ========================= */
 
 .site-logo--animated {
+  position: relative;
+
   display: inline-flex;
   align-items: center;
 
-  gap: 0.75rem;
+  gap: 0.7rem;
+
+  min-width: 190px;
 
   color: #ffffff;
 
   overflow: visible;
 }
 
-/* Logo icon wrapper */
+/* =========================
+   Logo mark
+   ========================= */
 
 .site-logo__mark {
   position: relative;
@@ -620,136 +627,332 @@
   align-items: center;
   justify-content: center;
 
-  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+
+  flex: 0 0 52px;
 
   transform-origin: center;
 
   animation:
-    logo-mark-cycle
-    7s
+    adventyz-logo-cycle
+    11.9s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    infinite;
+}
+
+.site-logo__image {
+  position: relative;
+  z-index: 2;
+
+  display: block;
+
+  width: auto;
+  height: 52px;
+
+  object-fit: contain;
+
+  transform-origin: center;
+}
+
+/* =========================
+   Temporary logo particles
+   ========================= */
+
+.site-logo__particle {
+  position: absolute;
+
+  z-index: 1;
+
+  width: 7px;
+  height: 7px;
+
+  background: var(--color-brand);
+
+  border-radius: 50%;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  animation:
+    adventyz-particle-cycle
+    11.9s
     ease-in-out
     infinite;
 }
 
+.site-logo__particle--1 {
+  top: 16px;
+  left: 15px;
+
+  --particle-x: -7px;
+  --particle-y: -5px;
+}
+
+.site-logo__particle--2 {
+  top: 17px;
+  right: 14px;
+
+  --particle-x: 7px;
+  --particle-y: -4px;
+}
+
+.site-logo__particle--3 {
+  bottom: 15px;
+  left: 16px;
+
+  --particle-x: -6px;
+  --particle-y: 6px;
+}
+
+.site-logo__particle--4 {
+  right: 15px;
+  bottom: 15px;
+
+  --particle-x: 6px;
+  --particle-y: 5px;
+}
+
+/* =========================
+   Wordmark
+   ========================= */
+
 .site-logo__wordmark {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+
+  margin-left: -0.1rem;
 
   color: #ffffff;
 
   font-family: var(--font-family-brand);
+
   font-size: 1.15rem;
   font-weight: 800;
 
-  letter-spacing: 0.09em;
+  letter-spacing: 0.08em;
 
   white-space: nowrap;
+}
+
+.site-logo__letter {
+  display: inline-block;
 
   transform-origin: left center;
 
   animation:
-    logo-wordmark-cycle
-    7s
-    ease-in-out
+    adventyz-letter-cycle
+    11.9s
+    cubic-bezier(0.22, 1, 0.36, 1)
     infinite;
-
-  transition:
-    color var(--transition-fast);
 }
 
-/* Hover */
+/* =========================
+   Logo sequence
+   ========================= */
 
-.site-logo--animated:hover
-.site-logo__mark {
-  transform:
-    rotate(-7deg)
-    scale(1.06);
-}
+@keyframes adventyz-logo-cycle {
 
-.site-logo--animated:hover
-.site-logo__wordmark {
-  color: var(--color-brand);
+  /* rebuilding at start */
 
-  transform: translateX(3px);
-}
-
-/* Logo entrance */
-
-@keyframes logo-mark-cycle {
   0% {
-    opacity: 1;
+    opacity: 0;
+
+    filter: blur(4px);
 
     transform:
-      scale(1)
-      rotate(0deg);
+      scale(0.16)
+      rotate(-20deg);
+  }
+
+  4% {
+    opacity: 0.8;
+
+    filter: blur(1px);
+
+    transform:
+      scale(0.65)
+      rotate(-8deg);
   }
 
   8% {
+    opacity: 1;
+
+    filter: blur(0);
+
     transform:
       scale(1.08)
-      rotate(-6deg);
+      rotate(3deg);
+  }
+
+  11% {
+    transform:
+      scale(0.97)
+      rotate(-1deg);
   }
 
   14% {
-    transform:
-      scale(0.97)
-      rotate(2deg);
-  }
-
-  20% {
-    transform:
-      scale(1)
-      rotate(0deg);
-  }
-
-  82% {
     opacity: 1;
 
     transform:
       scale(1)
-      rotate(0deg);
+      rotate(0);
   }
 
-  88% {
+  /* visible/resting */
+
+  14%,
+  52% {
+    opacity: 1;
+
+    filter: blur(0);
+
+    transform:
+      scale(1)
+      rotate(0);
+  }
+
+  /* collapse begins */
+
+  58% {
+    opacity: 1;
+
+    transform:
+      scale(0.92)
+      rotate(-3deg);
+  }
+
+  64% {
+    opacity: 0.9;
+
+    filter: blur(0.5px);
+
+    transform:
+      scale(0.55)
+      rotate(-10deg);
+  }
+
+  69% {
+    opacity: 0.75;
+
+    filter: blur(1px);
+
+    transform:
+      scale(0.22)
+      rotate(-18deg);
+  }
+
+  /* dot state */
+
+  72%,
+  79% {
+    opacity: 0.65;
+
+    filter: blur(1.5px);
+
+    transform:
+      scale(0.13)
+      rotate(-20deg);
+  }
+
+  /* reconstruction */
+
+  84% {
+    opacity: 0.85;
+
+    filter: blur(0.8px);
+
+    transform:
+      scale(0.5)
+      rotate(-8deg);
+  }
+
+  90% {
+    opacity: 1;
+
+    filter: blur(0);
+
     transform:
       scale(1.06)
-      rotate(5deg);
+      rotate(2deg);
   }
 
   94% {
     transform:
-      scale(0.96)
-      rotate(-3deg);
+      scale(0.98)
+      rotate(-1deg);
   }
 
   100% {
     opacity: 1;
 
+    filter: blur(0);
+
     transform:
       scale(1)
-      rotate(0deg);
+      rotate(0);
   }
 }
 
-/* Wordmark entrance */
+/* =========================
+   Individual letter sequence
+   ========================= */
 
-@keyframes logo-wordmark-cycle {
+@keyframes adventyz-letter-cycle {
+
+  /* first build */
+
   0% {
     opacity: 0;
 
+    filter: blur(2px);
+
     transform:
-      translateX(-20px)
-      scaleX(0.9);
+      translateX(-8px)
+      scaleX(0.75);
   }
 
   8% {
     opacity: 0;
 
     transform:
-      translateX(-20px)
-      scaleX(0.9);
+      translateX(-8px)
+      scaleX(0.75);
   }
 
-  16% {
+  /*
+    Each letter gets a slightly different
+    effective entrance because of animation-delay
+    set below.
+  */
+
+  14% {
+    opacity: 1;
+
+    filter: blur(0);
+
+    transform:
+      translateX(0)
+      scaleX(1);
+  }
+
+  /* full logo remains */
+
+  14%,
+  51% {
+    opacity: 1;
+
+    filter: blur(0);
+
+    transform:
+      translateX(0)
+      scaleX(1);
+  }
+
+  /* letters retract */
+
+  58% {
     opacity: 1;
 
     transform:
@@ -757,55 +960,188 @@
       scaleX(1);
   }
 
-  76% {
-    opacity: 1;
+  64% {
+    opacity: 0;
+
+    filter: blur(2px);
 
     transform:
-      translateX(0)
-      scaleX(1);
+      translateX(-8px)
+      scaleX(0.55);
   }
 
-  86% {
+  /* hidden during dot state */
+
+  65%,
+  82% {
+    opacity: 0;
+
+    filter: blur(2px);
+
+    transform:
+      translateX(-8px)
+      scaleX(0.55);
+  }
+
+  /* rebuild */
+
+  90% {
     opacity: 0;
 
     transform:
-      translateX(-16px)
-      scaleX(0.92);
+      translateX(-8px)
+      scaleX(0.7);
   }
 
+  97%,
+  100% {
+    opacity: 1;
+
+    filter: blur(0);
+
+    transform:
+      translateX(0)
+      scaleX(1);
+  }
+}
+
+/* =========================
+   Letter staggering
+   ========================= */
+
+.site-logo__letter {
+  animation-delay:
+    calc(
+      var(--letter-index) *
+      45ms
+    );
+}
+
+/* =========================
+   Particle sequence
+   ========================= */
+
+@keyframes adventyz-particle-cycle {
+
+  0%,
+  60% {
+    opacity: 0;
+
+    transform:
+      translate(0, 0)
+      scale(0);
+  }
+
+  66% {
+    opacity: 0.8;
+
+    transform:
+      translate(
+        var(--particle-x),
+        var(--particle-y)
+      )
+      scale(1);
+  }
+
+  72% {
+    opacity: 1;
+
+    transform:
+      translate(0, 0)
+      scale(0.8);
+  }
+
+  79% {
+    opacity: 0.9;
+
+    transform:
+      translate(0, 0)
+      scale(0.55);
+  }
+
+  85% {
+    opacity: 0.4;
+
+    transform:
+      translate(
+        var(--particle-x),
+        var(--particle-y)
+      )
+      scale(0.7);
+  }
+
+  90%,
   100% {
     opacity: 0;
 
     transform:
-      translateX(-20px)
-      scaleX(0.9);
+      translate(
+        var(--particle-x),
+        var(--particle-y)
+      )
+      scale(0);
   }
 }
-/* Mobile */
+
+/* =========================
+   Hover
+   ========================= */
+
+.site-logo--animated:hover
+.site-logo__wordmark {
+  color: var(--color-brand);
+}
+
+/* =========================
+   Mobile
+   ========================= */
 
 @media (max-width: 768px) {
   .site-logo--animated {
-    gap: 0.55rem;
+    min-width: 155px;
+
+    gap: 0.5rem;
+  }
+
+  .site-logo__mark {
+    width: 44px;
+    height: 44px;
+
+    flex-basis: 44px;
+  }
+
+  .site-logo__image {
+    height: 44px;
   }
 
   .site-logo__wordmark {
     font-size: 0.95rem;
 
-    letter-spacing: 0.07em;
+    letter-spacing: 0.06em;
   }
 }
 
-/* Reduced motion */
+/* =========================
+   Reduced motion
+   ========================= */
 
 @media (prefers-reduced-motion: reduce) {
   .site-logo__mark,
-  .site-logo__wordmark {
+  .site-logo__letter,
+  .site-logo__particle {
     animation: none;
+  }
 
+  .site-logo__mark,
+  .site-logo__letter {
     opacity: 1;
 
-    transform: none;
+    filter: none;
 
-    transition: none;
+    transform: none;
+  }
+
+  .site-logo__particle {
+    display: none;
   }
 }

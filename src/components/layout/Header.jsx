@@ -9,6 +9,17 @@ import { navigationLinks } from "../../data/navigation";
 
 import logo from "../../assets/images/adventyz-symbol-optimized.webp";
 
+const brandLetters = [
+  "A",
+  "D",
+  "V",
+  "E",
+  "N",
+  "T",
+  "Y",
+  "Z",
+];
+
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -30,8 +41,6 @@ function Header() {
     <>
       <header className="site-header">
         <Container className="site-header__inner">
-
-          {/* Brand */}
           <Link
             to="/"
             className="site-logo site-logo--animated"
@@ -47,14 +56,33 @@ function Header() {
                 alt=""
                 className="site-logo__image"
               />
+
+              <span className="site-logo__particle site-logo__particle--1" />
+              <span className="site-logo__particle site-logo__particle--2" />
+              <span className="site-logo__particle site-logo__particle--3" />
+              <span className="site-logo__particle site-logo__particle--4" />
             </span>
 
-            <span className="site-logo__wordmark">
-              ADVENTYZ
+            <span
+              className="site-logo__wordmark"
+              aria-hidden="true"
+            >
+              {brandLetters.map((letter, index) => (
+                <span
+                  className="site-logo__letter"
+                  style={{
+                    "--letter-index": index,
+                    "--reverse-index":
+                      brandLetters.length - 1 - index,
+                  }}
+                  key={`${letter}-${index}`}
+                >
+                  {letter}
+                </span>
+              ))}
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
           <nav
             className="desktop-nav"
             aria-label="Primary navigation"
@@ -77,7 +105,6 @@ function Header() {
             ))}
           </nav>
 
-          {/* Header Actions */}
           <div className="site-header__actions">
             <Button
               to="/contact"
@@ -111,7 +138,6 @@ function Header() {
               <span />
             </button>
           </div>
-
         </Container>
       </header>
 
