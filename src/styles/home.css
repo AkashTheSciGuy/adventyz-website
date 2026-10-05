@@ -671,7 +671,9 @@
    Services Preview
    ======================================== */
 
-.services-preview {}
+.services-preview {
+  
+}
 
 .services-preview__header,
 .selected-work__header {
