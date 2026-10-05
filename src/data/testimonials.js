@@ -7,6 +7,7 @@ export const testimonials = [
     role: "Client / Role",
     company: "Company Name",
     project: "Project / Service",
+    approved: false,
   },
   {
     id: "testimonial-02",
@@ -16,6 +17,7 @@ export const testimonials = [
     role: "Client / Role",
     company: "Company Name",
     project: "Project / Service",
+    approved: false,
   },
   {
     id: "testimonial-03",
@@ -25,5 +27,6 @@ export const testimonials = [
     role: "Client / Role",
     company: "Company Name",
     project: "Project / Service",
+    approved: false,
   },
 ];

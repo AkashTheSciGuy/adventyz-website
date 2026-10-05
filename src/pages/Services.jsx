@@ -51,11 +51,39 @@ function Services() {
                         {service.title}
                       </h4>
 
-                      <p className="services-page__description">
-                        We create focused strategies and executions around{" "}
-                        {service.title.toLowerCase()} to help brands build,
-                        communicate and grow.
-                      </p>
+                      <div className="services-page__content">
+                        <div>
+                          <span className="services-page__content-label">
+                            The problem
+                          </span>
+
+                          <p className="services-page__description">
+                            {service.problem}
+                          </p>
+                        </div>
+
+                        <div>
+                          <span className="services-page__content-label">
+                            Our approach
+                          </span>
+
+                          <p className="services-page__description">
+                            {service.approach}
+                          </p>
+                        </div>
+
+                        <div>
+                          <span className="services-page__content-label">
+                            Typical deliverables
+                          </span>
+
+                          <ul className="services-page__deliverables">
+                            {service.deliverables.map((deliverable) => (
+                              <li key={deliverable}>{deliverable}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
                     </article>
                   ))}
                 </div>

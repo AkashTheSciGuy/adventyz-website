@@ -4,6 +4,7 @@
 
 .home-page {
   overflow: hidden;
+  background: transparent;
 }
 
 /* ========================================
@@ -20,13 +21,7 @@
 
   padding-block: var(--space-9);
 
-  background:
-    radial-gradient(
-      circle at 78% 40%,
-      rgba(233, 149, 26, 0.13),
-      transparent 30%
-    ),
-    var(--color-black);
+  background: transparent;
 }
 
 .hero__container {
@@ -121,7 +116,10 @@
       145deg,
       rgba(255, 255, 255, 0.035),
       rgba(255, 255, 255, 0)
-    );
+    ),
+    rgba(0, 0, 0, 0.35);
+
+  backdrop-filter: blur(4px);
 
   border-radius: var(--radius-lg);
 
@@ -215,8 +213,8 @@
    ======================================== */
 
 .home-intro {
-  background: var(--color-white);
-  color: var(--color-black);
+  background: transparent;
+  color: var(--color-text);
 }
 
 .home-intro__grid {
@@ -230,7 +228,7 @@
 .home-intro__label {
   padding-top: 0.6rem;
 
-  color: #696969;
+  color: var(--color-text-muted);
 
   font-size: var(--font-size-sm);
   font-weight: 700;
@@ -267,18 +265,17 @@
 
   margin-top: var(--space-6);
 
-  color: #555;
+  color: var(--color-text-muted);
 
   font-size: var(--font-size-lg);
 }
-
 
 /* ========================================
    Services Preview
    ======================================== */
 
 .services-preview {
-  background: var(--color-surface);
+  background: transparent;
 }
 
 .services-preview__header,
@@ -319,7 +316,9 @@
 
   padding: var(--space-5);
 
-  background: var(--color-black);
+  background: rgba(0, 0, 0, 0.72);
+
+  backdrop-filter: blur(5px);
 
   border-right: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
@@ -372,7 +371,7 @@
    ======================================== */
 
 .selected-work {
-  background: var(--color-black);
+  background: transparent;
 }
 
 .selected-work__grid {
@@ -390,7 +389,7 @@
 .selected-work__media {
   aspect-ratio: 4 / 5;
 
-  background: var(--color-surface);
+  background: rgba(0, 0, 0, 0.68);
 
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -426,7 +425,7 @@
       rgba(233, 149, 26, 0.12),
       transparent 38%
     ),
-    var(--color-surface);
+    rgba(0, 0, 0, 0.72);
 }
 
 .selected-work__placeholder span {
@@ -486,68 +485,11 @@
 }
 
 /* ========================================
-   Integration Responsive
-   ======================================== */
-
-@media (max-width: 1024px) {
-  .services-preview__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .selected-work__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .selected-work__card:last-child {
-    grid-column: 1 / -1;
-  }
-
-  .selected-work__card:last-child .selected-work__media {
-    aspect-ratio: 16 / 9;
-  }
-}
-
-@media (max-width: 768px) {
-  .services-preview__header > .button,
-  .selected-work__header > .button {
-    display: none;
-  }
-
-  .services-preview__mobile-action,
-  .selected-work__mobile-action {
-    display: block;
-  }
-
-  .services-preview__grid,
-  .selected-work__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .services-preview__card {
-    min-height: 200px;
-  }
-
-  .selected-work__card:last-child {
-    grid-column: auto;
-  }
-
-  .selected-work__card:last-child .selected-work__media,
-  .selected-work__media {
-    aspect-ratio: 4 / 5;
-  }
-
-  .services-preview__mobile-action .button,
-  .selected-work__mobile-action .button {
-    width: 100%;
-  }
-}
-
-/* ========================================
    Why Adventyz
    ======================================== */
 
 .why-adventyz {
-  background: var(--color-black);
+  background: transparent;
 }
 
 .why-adventyz__grid {
@@ -570,7 +512,7 @@
 
   padding: var(--space-6);
 
-  background: var(--color-black);
+  background: rgba(0, 0, 0, 0.72);
 
   transition:
     background-color var(--transition-base),
@@ -578,7 +520,7 @@
 }
 
 .why-adventyz__card:hover {
-  background: var(--color-surface);
+  background: rgba(20, 20, 20, 0.9);
 }
 
 .why-adventyz__number {
@@ -604,93 +546,11 @@
 }
 
 /* ========================================
-   Responsive
-   ======================================== */
-
-@media (max-width: 1024px) {
-  .hero {
-    min-height: auto;
-  }
-
-  .hero__container {
-    grid-template-columns: 1fr;
-  }
-
-  .hero__visual {
-    min-height: 400px;
-  }
-
-  .hero__scroll-indicator {
-    display: none;
-  }
-
-  .why-adventyz__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .why-adventyz__card {
-    min-height: 260px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero {
-    padding-block:
-      var(--space-8)
-      var(--space-7);
-  }
-
-  .hero__container {
-    gap: var(--space-7);
-  }
-
-  .hero__title {
-    font-size: clamp(
-      3rem,
-      15vw,
-      5rem
-    );
-  }
-
-  .hero__visual {
-    min-height: 300px;
-  }
-
-  .home-intro__grid {
-    grid-template-columns: 1fr;
-
-    gap: var(--space-5);
-  }
-
-  .home-intro__content p {
-    font-size: var(--font-size-base);
-  }
-}
-
-@media (max-width: 480px) {
-  .hero__actions {
-    flex-direction: column;
-  }
-
-  .hero__actions .button {
-    width: 100%;
-  }
-
-  .hero__visual {
-    min-height: 260px;
-  }
-
-  .why-adventyz__card {
-    min-height: 230px;
-  }
-}
-
-/* ========================================
    Final CTA
    ======================================== */
 
 .final-cta {
-  background: var(--color-surface);
+  background: transparent;
 }
 
 .final-cta__content {
@@ -702,7 +562,9 @@
       rgba(233, 149, 26, 0.16),
       transparent 30%
     ),
-    var(--color-black);
+    rgba(0, 0, 0, 0.76);
+
+  backdrop-filter: blur(6px);
 
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -755,13 +617,290 @@
   margin-top: var(--space-6);
 }
 
+/* ========================================
+   Process Preview
+   ======================================== */
+
+.process-preview {
+  background: transparent;
+}
+
+.process-preview__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-bottom: var(--space-7);
+}
+
+.process-preview__header .section-heading {
+  margin-bottom: 0;
+}
+
+.process-preview__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+}
+
+.process-preview__card {
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: var(--space-5);
+
+  background: rgba(0, 0, 0, 0.72);
+
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.process-preview__number {
+  color: var(--color-brand);
+
+  font-family: var(--font-family-brand);
+  font-weight: 800;
+}
+
+.process-preview__card h3 {
+  margin-bottom: var(--space-3);
+
+  font-family: var(--font-family-brand);
+  font-size: var(--font-size-xl);
+}
+
+.process-preview__card p {
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.process-preview__mobile-action {
+  display: none;
+  margin-top: var(--space-6);
+}
+
+/* ========================================
+   Testimonials
+   ======================================== */
+
+.testimonials-preview {
+  background: transparent;
+}
+
+.testimonials-preview__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.testimonial-card {
+  min-height: 300px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: var(--space-6);
+
+  background: rgba(16, 16, 16, 0.78);
+
+  backdrop-filter: blur(5px);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.testimonial-card blockquote {
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-family: var(--font-family-brand);
+  font-size: var(--font-size-xl);
+  line-height: 1.4;
+}
+
+.testimonial-card__client {
+  display: grid;
+  gap: var(--space-1);
+
+  margin-top: var(--space-6);
+}
+
+.testimonial-card__client strong {
+  color: var(--color-brand);
+}
+
+.testimonial-card__client span {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .services-preview__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .selected-work__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .selected-work__card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .selected-work__card:last-child .selected-work__media {
+    aspect-ratio: 16 / 9;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .hero__container {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__visual {
+    min-height: 400px;
+  }
+
+  .hero__scroll-indicator {
+    display: none;
+  }
+
+  .why-adventyz__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-adventyz__card {
+    min-height: 260px;
+  }
+
+  .process-preview__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonials-preview__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
+  .services-preview__header > .button,
+  .selected-work__header > .button {
+    display: none;
+  }
+
+  .services-preview__mobile-action,
+  .selected-work__mobile-action {
+    display: block;
+  }
+
+  .services-preview__grid,
+  .selected-work__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services-preview__card {
+    min-height: 200px;
+  }
+
+  .selected-work__card:last-child {
+    grid-column: auto;
+  }
+
+  .selected-work__card:last-child .selected-work__media,
+  .selected-work__media {
+    aspect-ratio: 4 / 5;
+  }
+
+  .services-preview__mobile-action .button,
+  .selected-work__mobile-action .button {
+    width: 100%;
+  }
+
+  .hero {
+    padding-block:
+      var(--space-8)
+      var(--space-7);
+  }
+
+  .hero__container {
+    gap: var(--space-7);
+  }
+
+  .hero__title {
+    font-size: clamp(
+      3rem,
+      15vw,
+      5rem
+    );
+  }
+
+  .hero__visual {
+    min-height: 300px;
+  }
+
+  .home-intro__grid {
+    grid-template-columns: 1fr;
+
+    gap: var(--space-5);
+  }
+
+  .home-intro__content p {
+    font-size: var(--font-size-base);
+  }
+
   .final-cta__content {
     padding: var(--space-6);
+  }
+
+  .process-preview__header > .button {
+    display: none;
+  }
+
+  .process-preview__mobile-action {
+    display: block;
+  }
+
+  .process-preview__mobile-action .button {
+    width: 100%;
+  }
+
+  .process-preview__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process-preview__card {
+    min-height: 220px;
   }
 }
 
 @media (max-width: 480px) {
+  .hero__actions {
+    flex-direction: column;
+  }
+
+  .hero__actions .button {
+    width: 100%;
+  }
+
+  .hero__visual {
+    min-height: 260px;
+  }
+
+  .why-adventyz__card {
+    min-height: 230px;
+  }
+
   .final-cta__actions {
     flex-direction: column;
   }

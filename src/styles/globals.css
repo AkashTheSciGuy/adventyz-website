@@ -20,7 +20,16 @@ body {
   min-width: 320px;
   min-height: 100vh;
 
-  background: var(--color-background);
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.12),
+      rgba(0, 0, 0, 0.12)
+    ),
+    url("../assets/images/geometric-background.png")
+      center / cover
+      fixed
+      no-repeat;
+
   color: var(--color-text);
 
   font-family: var(--font-family-base);
@@ -29,6 +38,11 @@ body {
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  background: transparent;
 }
 
 body,
