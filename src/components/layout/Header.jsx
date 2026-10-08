@@ -1,19 +1,65 @@
+
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { motion, useReducedMotion } from "motion/react";
 
 import Button from "../ui/Button";
 import Container from "../ui/Container";
 import MobileMenu from "./MobileMenu";
-
 import { navigationLinks } from "../../data/navigation";
-
 import logo from "../../assets/images/adventyz-symbol-optimized.webp";
 
 const brandLetters = ["A", "D", "V", "E", "N", "T", "Y", "Z"];
 
+const CYCLE_DURATION = 12;
+const EASE = [0.22, 1, 0.36, 1];
+
+function getLetterMotion(index) {
+  const start = 3.4 + index * 0.105;
+  const peak = start + 0.19;
+  const finish = start + 0.56;
+
+  return {
+    y: [0, 0, -5, 0, 0],
+    opacity: [1, 1, 0.86, 1, 1],
+    transition: {
+      duration: CYCLE_DURATION,
+      times: [
+        0,
+        start / CYCLE_DURATION,
+        peak / CYCLE_DURATION,
+        finish / CYCLE_DURATION,
+        1,
+      ],
+      ease: EASE,
+      repeat: Infinity,
+      repeatType: "loop",
+    },
+  };
+}
+
+const underlineAnimation = {
+  scaleX: [0, 0, 1, 1, 0, 0],
+  opacity: [0, 0, 1, 1, 0, 0],
+  transition: {
+    duration: CYCLE_DURATION,
+    times: [
+      0,
+      5.35 / CYCLE_DURATION,
+      6.15 / CYCLE_DURATION,
+      7.05 / CYCLE_DURATION,
+      7.85 / CYCLE_DURATION,
+      1,
+    ],
+    ease: EASE,
+    repeat: Infinity,
+    repeatType: "loop",
+  },
+};
+
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [logoPhase, setLogoPhase] = useState("full");
+  const reduceMotion = useReducedMotion();
 
   const closeMenu = () => {
     setMenuOpen(false);
@@ -27,103 +73,80 @@ function Header() {
     };
   }, [menuOpen]);
 
-  useEffect(() => {
-    let timers = [];
-
-    const runAnimation = () => {
-      setLogoPhase("full");
-
-      timers.push(
-        setTimeout(() => {
-          setLogoPhase("letters-out");
-        }, 3500),
-      );
-
-      timers.push(
-        setTimeout(() => {
-          setLogoPhase("collapse");
-        }, 4800),
-      );
-
-      timers.push(
-        setTimeout(() => {
-          setLogoPhase("dot");
-        }, 5700),
-      );
-
-      timers.push(
-        setTimeout(() => {
-          setLogoPhase("rebuild");
-        }, 7200),
-      );
-
-      timers.push(
-        setTimeout(() => {
-          setLogoPhase("letters-in");
-        }, 8400),
-      );
-
-      timers.push(
-        setTimeout(() => {
-          setLogoPhase("full");
-        }, 9800),
-      );
-    };
-
-    runAnimation();
-
-    const interval = setInterval(() => {
-      timers.forEach(clearTimeout);
-      timers = [];
-      runAnimation();
-    }, 11900);
-
-    return () => {
-      timers.forEach(clearTimeout);
-      clearInterval(interval);
-    };
-  }, []);
-
   return (
     <>
       <header className="site-header">
         <Container className="site-header__inner">
           <Link
             to="/"
-            className={`site-logo site-logo--animated site-logo--${logoPhase}`}
+            className="site-logo site-logo--animated site-logo--kinetic"
             aria-label="Adventyz home"
             onClick={closeMenu}
           >
-            <span className="site-logo__mark" aria-hidden="true">
+            <span
+              className="site-logo__mark"
+              aria-hidden="true"
+            >
               <img
                 src={logo}
                 alt=""
                 className="site-logo__image"
               />
-
-              <span className="site-logo__dot site-logo__dot--1" />
-              <span className="site-logo__dot site-logo__dot--2" />
-              <span className="site-logo__dot site-logo__dot--3" />
             </span>
 
-            <span className="site-logo__wordmark" aria-hidden="true">
-              {brandLetters.map((letter, index) => (
-                <span
-                  key={`${letter}-${index}`}
-                  className={`site-logo__letter ${
-                    index === 0
-                      ? "site-logo__letter--accent"
-                      : ""
-                  }`}
-                  style={{
-                    "--letter-index": index,
-                    "--reverse-index":
-                      brandLetters.length - 1 - index,
-                  }}
-                >
-                  {letter}
-                </span>
-              ))}
+            <span
+              className="site-logo__wordmark"
+              aria-hidden="true"
+            >
+              {brandLetters.map((letter, index) => {
+                const animation = getLetterMotion(index);
+
+                return (
+                  <motion.span
+                    key={`${letter}-${index}`}
+                    className={`site-logo__letter ${
+                      index === 0
+                        ? "site-logo__letter--accent"
+                        : ""
+                    }`}
+                    initial={false}
+                    animate={
+                      reduceMotion
+                        ? { y: 0, opacity: 1 }
+                        : {
+                            y: animation.y,
+                            opacity: animation.opacity,
+                          }
+                    }
+                    transition={
+                      reduceMotion
+                        ? { duration: 0 }
+                        : animation.transition
+                    }
+                  >
+                    {letter}
+                  </motion.span>
+                );
+              })}
+
+              <motion.span
+                className="site-logo__kinetic-line"
+                aria-hidden="true"
+                initial={false}
+                animate={
+                  reduceMotion
+                    ? { scaleX: 0, opacity: 0 }
+                    : {
+                        scaleX: underlineAnimation.scaleX,
+                        opacity: underlineAnimation.opacity,
+                      }
+                }
+                transition={
+                  reduceMotion
+                    ? { duration: 0 }
+                    : underlineAnimation.transition
+                }
+              />
             </span>
           </Link>
 
@@ -138,9 +161,7 @@ function Header() {
                 end={item.path === "/"}
                 className={({ isActive }) =>
                   `desktop-nav__link ${
-                    isActive
-                      ? "desktop-nav__link--active"
-                      : ""
+                    isActive ? "desktop-nav__link--active" : ""
                   }`
                 }
               >

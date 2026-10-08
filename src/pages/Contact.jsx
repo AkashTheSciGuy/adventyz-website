@@ -1,10 +1,11 @@
+
 import { useState } from "react";
+import { MdOutlineEmail } from "react-icons/md";
+import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 import Reveal from "../components/common/Reveal";
 import Container from "../components/ui/Container";
-import SectionHeading from "../components/ui/SectionHeading";
 import Button from "../components/ui/Button";
-
 import { services } from "../data/services";
 
 import "../styles/contact.css";
@@ -27,6 +28,27 @@ const budgetOptions = [
   "₹1,00,000 – ₹2,50,000",
   "₹2,50,000+",
   "Not sure yet",
+];
+
+const nextSteps = [
+  {
+    number: "01",
+    title: "We Connect",
+    description:
+      "We review your inquiry and understand what you're looking to achieve.",
+  },
+  {
+    number: "02",
+    title: "We Discuss",
+    description:
+      "We explore your goals, ideas, and project requirements.",
+  },
+  {
+    number: "03",
+    title: "We Plan",
+    description:
+      "We outline a possible approach and the next steps.",
+  },
 ];
 
 function Contact() {
@@ -101,7 +123,7 @@ function Contact() {
     if (!endpoint) {
       setSubmitStatus("error");
       setSubmitError(
-        "Online form submission is not configured yet. Please email infoadventyz@gmail.com instead.",
+        "Online form submission is not configured yet. Please email infoadventyz@gmail.com instead."
       );
       return;
     }
@@ -128,344 +150,360 @@ function Contact() {
     } catch {
       setSubmitStatus("error");
       setSubmitError(
-        "We couldn't send your enquiry right now. Please try again or email infoadventyz@gmail.com.",
+        "We couldn't send your enquiry right now. Please try again or email infoadventyz@gmail.com."
       );
     }
   };
 
   return (
     <main className="contact-page">
-      <Reveal>
-        <section className="contact-page__hero">
-          <Container>
-            <SectionHeading
-              eyebrow="Contact"
-              title="Let's build something worth talking about."
-              description="Have a project in mind? Tell us what you're building, what you're trying to solve, and where you want to go next."
-            />
-          </Container>
-        </section>
-      </Reveal>
-
       <section className="contact-page__content">
         <Container>
           <div className="contact-page__grid">
-            <Reveal delay={60}>
-              <div className="contact-page__details">
-                <div className="contact-page__intro">
-                  <span className="contact-page__label">
-                    Let's Talk
-                  </span>
+            <div className="contact-page__details">
+              <div className="contact-page__intro">
+                <span className="contact-page__label">
+                  Let's Talk
+                </span>
 
-                  <h2>
-                    Have an idea? Let's make it happen.
-                  </h2>
+                <h2>Have an idea? Let's make it happen.</h2>
 
-                  <p>
-                    Whether you need a stronger digital presence,
-                    better campaigns, compelling content or a
-                    complete brand experience, we'd love to hear
-                    what you're working on.
-                  </p>
+                <p>
+                  Whether you need a stronger digital presence,
+                  better campaigns, compelling content or a complete
+                  brand experience, we'd love to hear what you're
+                  working on.
+                </p>
+              </div>
+
+              <div className="contact-page__info">
+                <div className="contact-page__info-item">
+                  <span>Email</span>
+
+                  <a href="mailto:infoadventyz@gmail.com">
+                    <MdOutlineEmail
+                      size={20}
+                      aria-hidden="true"
+                    />
+                    <span>infoadventyz@gmail.com</span>
+                  </a>
                 </div>
 
-                <div className="contact-page__info">
-                  <div className="contact-page__info-item">
-                    <span>Email</span>
+                <div className="contact-page__info-item">
+                  <span>Instagram</span>
 
-                    <a href="mailto:infoadventyz@gmail.com">
-                      infoadventyz@gmail.com
-                    </a>
-                  </div>
+                  <a
+                    href="https://www.instagram.com/adventyz.in7/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaInstagram
+                      size={20}
+                      aria-hidden="true"
+                    />
+                    <span>@Adventyz.in7</span>
+                  </a>
+                </div>
 
-                  <div className="contact-page__info-item">
-                    <span>Instagram</span>
+                <div className="contact-page__info-item">
+                  <span>LinkedIn</span>
 
-                    <a
-                      href="https://www.instagram.com/adventyz.in7/"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      @Adventyz.in7
-                    </a>
-                  </div>
-
-                  <div className="contact-page__info-item">
-                    <span>Website</span>
-
-                    <a
-                      href="https://www.adventyz.com/"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      adventyz.com
-                    </a>
-                  </div>
+                  <a
+                    href="https://www.linkedin.com/in/adventyz-marketing-agency-1760013bb/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaLinkedinIn
+                      size={20}
+                      aria-hidden="true"
+                    />
+                    <span>Adventyz — LinkedIn</span>
+                  </a>
                 </div>
               </div>
-            </Reveal>
+            </div>
 
-            <Reveal delay={120}>
-              <div className="contact-form-wrapper">
-                {submitStatus === "success" ? (
-                  <div
-                    className="contact-form__success"
-                    role="status"
+            <div className="contact-form-wrapper">
+              {submitStatus === "success" ? (
+                <div
+                  className="contact-form__success"
+                  role="status"
+                >
+                  <span className="contact-form__success-icon">
+                    ✓
+                  </span>
+
+                  <h2>Thanks for reaching out!</h2>
+
+                  <p>
+                    Your enquiry was sent successfully. We'll be in
+                    touch to discuss your project.
+                  </p>
+
+                  <Button
+                    type="button"
+                    onClick={() => {
+                      setSubmitStatus("idle");
+                      setSubmitError("");
+                    }}
                   >
-                    <span className="contact-form__success-icon">
-                      ✓
-                    </span>
-
-                    <h2>
-                      Thanks for reaching out!
-                    </h2>
-
-                    <p>
-                      Your enquiry was sent successfully. We'll be
-                      in touch to discuss your project.
-                    </p>
-
-                    <Button
-                      type="button"
-                      onClick={() => {
-                        setSubmitStatus("idle");
-                        setSubmitError("");
-                      }}
-                    >
-                      Send Another Enquiry
-                    </Button>
-                  </div>
-                ) : (
-                  <form
-                    className="contact-form"
-                    onSubmit={handleSubmit}
-                    noValidate
-                  >
-                    <div className="contact-form__row">
-                      <div className="contact-form__field">
-                        <label htmlFor="name">
-                          Name <span>*</span>
-                        </label>
-
-                        <input
-                          id="name"
-                          name="name"
-                          type="text"
-                          autoComplete="name"
-                          value={formData.name}
-                          onChange={handleChange}
-                          placeholder="Your name"
-                          aria-invalid={Boolean(errors.name)}
-                        />
-
-                        {errors.name && (
-                          <p className="contact-form__error">
-                            {errors.name}
-                          </p>
-                        )}
-                      </div>
-
-                      <div className="contact-form__field">
-                        <label htmlFor="email">
-                          Email <span>*</span>
-                        </label>
-
-                        <input
-                          id="email"
-                          name="email"
-                          type="email"
-                          autoComplete="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          placeholder="you@example.com"
-                          aria-invalid={Boolean(errors.email)}
-                        />
-
-                        {errors.email && (
-                          <p className="contact-form__error">
-                            {errors.email}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="contact-form__row">
-                      <div className="contact-form__field">
-                        <label htmlFor="phone">
-                          Phone
-                        </label>
-
-                        <input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          autoComplete="tel"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          placeholder="+91"
-                        />
-                      </div>
-
-                      <div className="contact-form__field">
-                        <label htmlFor="company">
-                          Company / Brand
-                        </label>
-
-                        <input
-                          id="company"
-                          name="company"
-                          type="text"
-                          autoComplete="organization"
-                          value={formData.company}
-                          onChange={handleChange}
-                          placeholder="Your company or brand"
-                        />
-                      </div>
-                    </div>
-
+                    Send Another Enquiry
+                  </Button>
+                </div>
+              ) : (
+                <form
+                  className="contact-form"
+                  onSubmit={handleSubmit}
+                  noValidate
+                >
+                  <div className="contact-form__row">
                     <div className="contact-form__field">
-                      <label htmlFor="website">
-                        Website
+                      <label htmlFor="name">
+                        Name <span>*</span>
                       </label>
 
                       <input
-                        id="website"
-                        name="website"
-                        type="url"
-                        value={formData.website}
+                        id="name"
+                        name="name"
+                        type="text"
+                        autoComplete="name"
+                        value={formData.name}
                         onChange={handleChange}
-                        placeholder="https://example.com"
-                        aria-invalid={Boolean(errors.website)}
+                        placeholder="Your name"
+                        aria-invalid={Boolean(errors.name)}
                       />
 
-                      {errors.website && (
+                      {errors.name && (
                         <p className="contact-form__error">
-                          {errors.website}
+                          {errors.name}
                         </p>
                       )}
-                    </div>
-
-                    <div className="contact-form__row">
-                      <div className="contact-form__field">
-                        <label htmlFor="service">
-                          Service Required <span>*</span>
-                        </label>
-
-                        <select
-                          id="service"
-                          name="service"
-                          value={formData.service}
-                          onChange={handleChange}
-                          aria-invalid={Boolean(errors.service)}
-                        >
-                          <option value="">
-                            Select a service
-                          </option>
-
-                          {services.map((service) => (
-                            <option
-                              key={service.id}
-                              value={service.title}
-                            >
-                              {service.title}
-                            </option>
-                          ))}
-                        </select>
-
-                        {errors.service && (
-                          <p className="contact-form__error">
-                            {errors.service}
-                          </p>
-                        )}
-                      </div>
-
-                      <div className="contact-form__field">
-                        <label htmlFor="budget">
-                          Estimated Budget
-                        </label>
-
-                        <select
-                          id="budget"
-                          name="budget"
-                          value={formData.budget}
-                          onChange={handleChange}
-                        >
-                          <option value="">
-                            Select a range
-                          </option>
-
-                          {budgetOptions.map((budget) => (
-                            <option
-                              key={budget}
-                              value={budget}
-                            >
-                              {budget}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
                     </div>
 
                     <div className="contact-form__field">
-                      <label htmlFor="message">
-                        Project Details <span>*</span>
+                      <label htmlFor="email">
+                        Email <span>*</span>
                       </label>
 
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                        value={formData.email}
                         onChange={handleChange}
-                        placeholder="What are you building? What are you trying to solve? Where do you want to go next?"
-                        rows="7"
-                        aria-invalid={Boolean(errors.message)}
+                        placeholder="you@example.com"
+                        aria-invalid={Boolean(errors.email)}
                       />
 
-                      {errors.message && (
+                      {errors.email && (
                         <p className="contact-form__error">
-                          {errors.message}
+                          {errors.email}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="contact-form__row">
+                    <div className="contact-form__field">
+                      <label htmlFor="phone">Phone</label>
+
+                      <input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        autoComplete="tel"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+91"
+                      />
+                    </div>
+
+                    <div className="contact-form__field">
+                      <label htmlFor="company">
+                        Company / Brand
+                      </label>
+
+                      <input
+                        id="company"
+                        name="company"
+                        type="text"
+                        autoComplete="organization"
+                        value={formData.company}
+                        onChange={handleChange}
+                        placeholder="Your company or brand"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="contact-form__field">
+                    <label htmlFor="website">Website</label>
+
+                    <input
+                      id="website"
+                      name="website"
+                      type="url"
+                      value={formData.website}
+                      onChange={handleChange}
+                      placeholder="https://example.com"
+                      aria-invalid={Boolean(errors.website)}
+                    />
+
+                    {errors.website && (
+                      <p className="contact-form__error">
+                        {errors.website}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="contact-form__row">
+                    <div className="contact-form__field">
+                      <label htmlFor="service">
+                        Service Required <span>*</span>
+                      </label>
+
+                      <select
+                        id="service"
+                        name="service"
+                        value={formData.service}
+                        onChange={handleChange}
+                        aria-invalid={Boolean(errors.service)}
+                      >
+                        <option value="">
+                          Select a service
+                        </option>
+
+                        {services.map((service) => (
+                          <option
+                            key={service.id}
+                            value={service.title}
+                          >
+                            {service.title}
+                          </option>
+                        ))}
+                      </select>
+
+                      {errors.service && (
+                        <p className="contact-form__error">
+                          {errors.service}
                         </p>
                       )}
                     </div>
 
-                    {submitStatus === "error" && (
-                      <div
-                        className="contact-form__submit-error"
-                        role="alert"
-                      >
-                        {submitError}
-                      </div>
-                    )}
+                    <div className="contact-form__field">
+                      <label htmlFor="budget">
+                        Estimated Budget
+                      </label>
 
-                    <div className="contact-form__submit">
-                      <Button
-                        type="submit"
-                        disabled={
-                          submitStatus === "loading"
-                        }
+                      <select
+                        id="budget"
+                        name="budget"
+                        value={formData.budget}
+                        onChange={handleChange}
                       >
-                        {submitStatus === "loading"
-                          ? "Sending..."
-                          : "Book a Consultation"}
-                      </Button>
+                        <option value="">
+                          Select a range
+                        </option>
+
+                        {budgetOptions.map((budget) => (
+                          <option key={budget} value={budget}>
+                            {budget}
+                          </option>
+                        ))}
+                      </select>
                     </div>
-                  </form>
-                )}
-              </div>
-            </Reveal>
+                  </div>
+
+                  <div className="contact-form__field">
+                    <label htmlFor="message">
+                      Project Details <span>*</span>
+                    </label>
+
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="What are you building? What are you trying to solve? Where do you want to go next?"
+                      rows="7"
+                      aria-invalid={Boolean(errors.message)}
+                    />
+
+                    {errors.message && (
+                      <p className="contact-form__error">
+                        {errors.message}
+                      </p>
+                    )}
+                  </div>
+
+                  {submitStatus === "error" && (
+                    <div
+                      className="contact-form__submit-error"
+                      role="alert"
+                    >
+                      {submitError}
+                    </div>
+                  )}
+
+                  <div className="contact-form__submit">
+                    <Button
+                      type="submit"
+                      disabled={submitStatus === "loading"}
+                    >
+                      {submitStatus === "loading"
+                        ? "Sending..."
+                        : "Book a Consultation"}
+                    </Button>
+                  </div>
+                </form>
+              )}
+            </div>
           </div>
         </Container>
       </section>
 
       <Reveal delay={100}>
-        <section className="contact-page__bottom">
+        <section
+          className="contact-page__next"
+          aria-labelledby="contact-next-title"
+        >
           <Container>
-            <SectionHeading
-              align="center"
-              eyebrow="Start Something New"
-              title="Have a project worth building?"
-              description="Let's talk about your next idea and explore what we can create together."
-            />
+            <Reveal>
+              <div className="contact-page__next-header">
+                <span className="contact-page__next-eyebrow">
+                  The Next Step
+                </span>
+
+                <h2 id="contact-next-title">
+                  What happens <span>next?</span>
+                </h2>
+
+                <p>
+                  A simple look at how we move from your first
+                  message to a potential collaboration.
+                </p>
+              </div>
+            </Reveal>
+
+            <div className="contact-page__next-grid">
+              {nextSteps.map((step, index) => (
+                <Reveal
+                  key={step.number}
+                  delay={index * 110}
+                >
+                  <article className="contact-page__next-card">
+                    <span className="contact-page__next-number">
+                      {step.number}
+                    </span>
+
+                    <div className="contact-page__next-card-content">
+                      <h3>{step.title}</h3>
+                      <p>{step.description}</p>
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
           </Container>
         </section>
       </Reveal>

@@ -1,18 +1,23 @@
 import { Link } from "react-router-dom";
 
+import { MdOutlineEmail } from "react-icons/md";
+import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
+
 import Button from "../ui/Button";
 import Container from "../ui/Container";
 import { navigationLinks } from "../../data/navigation";
+
 import logo from "../../assets/images/adventyz-symbol-optimized.webp";
 
 const currentYear = new Date().getFullYear();
 
 function Footer() {
-
   return (
     <footer className="site-footer">
       <Container>
         <div className="site-footer__top">
+
+          {/* Brand and description */}
           <div className="site-footer__intro">
             <Link
               to="/"
@@ -34,6 +39,7 @@ function Footer() {
             <Button to="/contact">Let's Talk</Button>
           </div>
 
+          {/* Navigation */}
           <div className="site-footer__column">
             <h2 className="site-footer__heading">
               Navigate
@@ -44,42 +50,51 @@ function Footer() {
               aria-label="Footer navigation"
             >
               {navigationLinks.map((item) => (
-                <Link key={item.path} to={item.path}>
+                <Link
+                  key={item.path}
+                  to={item.path}
+                >
                   {item.label}
                 </Link>
               ))}
             </nav>
           </div>
 
+          {/* Contact and social links */}
           <div className="site-footer__column">
             <h2 className="site-footer__heading">
               Contact
             </h2>
 
-            <div className="site-footer__links">
+            <div className="site-footer__links site-footer__contact-links">
               <a href="mailto:infoadventyz@gmail.com">
-                infoadventyz@gmail.com
+              <MdOutlineEmail size={18} aria-hidden="true" />
+                <span>infoadventyz@gmail.com</span>
               </a>
 
               <a
                 href="https://www.instagram.com/adventyz.in7/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
-                Instagram
+                <FaInstagram size={18} aria-hidden="true" />
+                <span>Instagram</span>
               </a>
 
               <a
-                href="https://www.adventyz.com/"
+                href="https://www.linkedin.com/in/adventyz-marketing-agency-1760013bb/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
-                adventyz.com
+               <FaLinkedinIn size={18} aria-hidden="true" />
+                <span>LinkedIn</span>
               </a>
             </div>
           </div>
+
         </div>
 
+        {/* Copyright */}
         <div className="site-footer__bottom">
           <p>
             © {currentYear} Adventyz. All rights reserved.

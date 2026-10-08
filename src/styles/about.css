@@ -499,3 +499,115 @@
     width: 100%;
   }
 }
+
+
+/* About — typography and content density */
+
+.about-hero__description {
+  max-width: 900px;
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  line-height: 1.65;
+}
+
+.about-split__content {
+  max-width: 1100px;
+}
+
+.about-split__content p {
+  max-width: 980px;
+  font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+  line-height: 1.65;
+}
+
+.about-approach__card {
+  min-height: 240px;
+}
+
+.about-approach__card h3 {
+  font-size: clamp(1.65rem, 2.2vw, 2.2rem);
+}
+
+.about-approach__card p,
+.about-beliefs__item p,
+.about-why__reason p {
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  line-height: 1.65;
+}
+
+.about-beliefs__item p {
+  max-width: 850px;
+}
+
+.about-why__content > p:last-child {
+  max-width: 800px;
+  font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+}
+
+@media (max-width: 768px) {
+  .about-hero__description,
+  .about-split__content p {
+    font-size: 1.1rem;
+  }
+
+  .about-approach__card {
+    min-height: auto;
+  }
+}
+
+
+/* ========================================
+   ABOUT — APPROACH CARD ALIGNMENT FIX
+   ======================================== */
+
+.about-approach__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  gap: 0;
+
+  height: 100%;
+}
+
+/* Keep all numbers aligned at the top */
+
+.about-approach__card > span {
+  display: block;
+
+  margin-bottom: var(--space-5);
+
+  flex-shrink: 0;
+
+  line-height: 1.2;
+}
+
+/* Give titles equal vertical space */
+
+.about-approach__card h3 {
+  min-height: 2.4em;
+
+  margin-top: 0;
+  margin-bottom: var(--space-3);
+
+  line-height: 1.2;
+}
+
+/* Align description text across cards */
+
+.about-approach__card p {
+  margin-top: 0;
+
+  line-height: 1.7;
+}
+
+/* Mobile — allow natural heights */
+
+@media (max-width: 768px) {
+  .about-approach__card h3 {
+    min-height: 0;
+  }
+
+  .about-approach__card {
+    height: auto;
+  }
+}

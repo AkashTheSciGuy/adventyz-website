@@ -95,3 +95,414 @@ button:not(:disabled) {
   background: var(--color-brand);
   color: #000;
 }
+
+
+/* ==========================================
+   ADVENTYZ — PREMIUM TYPOGRAPHY REFINEMENT
+   Content typography only
+   ========================================== */
+
+/*
+  This layer only changes content text.
+
+  Preserved:
+  - Navigation
+  - Buttons
+  - Logo
+  - Animations
+  - Backgrounds
+  - Card designs
+  - Responsive grids
+  - Form controls
+*/
+
+
+/* ========================================
+   Shared Section Headings
+   ======================================== */
+
+.home-page .section-heading h2,
+.about-page .section-heading h2,
+.services-page .section-heading h2,
+.work-page .section-heading h2,
+.process-page .section-heading h2,
+.contact-page .section-heading h2,
+.home-page .section-heading__title,
+.about-page .section-heading__title,
+.services-page .section-heading__title,
+.work-page .section-heading__title,
+.process-page .section-heading__title,
+.contact-page .section-heading__title {
+  font-size: clamp(2.75rem, 4.6vw, 4.5rem);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+}
+
+.home-page .section-heading > p,
+.about-page .section-heading > p,
+.services-page .section-heading > p,
+.work-page .section-heading > p,
+.process-page .section-heading > p,
+.contact-page .section-heading > p,
+.home-page .section-heading__description,
+.about-page .section-heading__description,
+.services-page .section-heading__description,
+.work-page .section-heading__description,
+.process-page .section-heading__description,
+.contact-page .section-heading__description {
+  max-width: 850px;
+  font-size: clamp(1.075rem, 1.45vw, 1.3rem);
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   HOME PAGE
+   ======================================== */
+
+/* Hero supporting description */
+
+.home-page .hero__description {
+  max-width: 690px;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.65;
+}
+
+/* Introduction */
+
+.home-page .home-intro__content h2 {
+  font-size: clamp(2.8rem, 5.3vw, 5.5rem);
+  line-height: 1.03;
+}
+
+.home-page .home-intro__content p {
+  max-width: 780px;
+  font-size: clamp(1.125rem, 1.6vw, 1.35rem);
+  line-height: 1.75;
+}
+
+/* Service card titles */
+
+.home-page .services-preview__card h3 {
+  max-width: 340px;
+  font-size: clamp(1.65rem, 2.4vw, 2.2rem);
+  line-height: 1.1;
+}
+
+/* Portfolio */
+
+.home-page .selected-work__content h3 {
+  font-size: clamp(1.5rem, 2vw, 1.95rem);
+  line-height: 1.15;
+}
+
+/* Why Adventyz */
+
+.home-page .why-adventyz__card h3 {
+  font-size: clamp(1.6rem, 2.2vw, 2rem);
+  line-height: 1.15;
+}
+
+.home-page .why-adventyz__card p {
+  font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+  line-height: 1.75;
+}
+
+/* Process preview */
+
+.home-page .process-preview__card h3 {
+  font-size: clamp(1.5rem, 1.9vw, 1.85rem);
+  line-height: 1.15;
+}
+
+.home-page .process-preview__card p {
+  font-size: clamp(1.025rem, 1.3vw, 1.15rem);
+  line-height: 1.75;
+}
+
+/* Testimonials */
+
+.home-page .testimonial-card blockquote {
+  font-size: clamp(1.45rem, 1.9vw, 1.8rem);
+  line-height: 1.5;
+}
+
+/* Final CTA */
+
+.home-page .final-cta__description {
+  max-width: 760px;
+  font-size: clamp(1.125rem, 1.5vw, 1.35rem);
+}
+
+
+/* ========================================
+   ABOUT PAGE
+   ======================================== */
+
+/* Hero description */
+
+.about-page .about-hero__description {
+  max-width: 850px;
+  font-size: clamp(1.125rem, 1.6vw, 1.4rem);
+  line-height: 1.75;
+}
+
+/* Large split sections */
+
+.about-page .about-split__content h2 {
+  font-size: clamp(2.8rem, 5.6vw, 5.5rem);
+  line-height: 1.02;
+}
+
+.about-page .about-split__content p {
+  max-width: 820px;
+  font-size: clamp(1.125rem, 1.6vw, 1.35rem);
+  line-height: 1.8;
+}
+
+/* Approach cards */
+
+.about-page .about-approach__card h3 {
+  font-size: clamp(1.6rem, 2vw, 1.95rem);
+  line-height: 1.15;
+}
+
+.about-page .about-approach__card p {
+  font-size: clamp(1.05rem, 1.25vw, 1.18rem);
+  line-height: 1.7;
+}
+
+/* Beliefs */
+
+.about-page .about-beliefs__item h3 {
+  font-size: clamp(1.5rem, 2vw, 1.9rem);
+}
+
+.about-page .about-beliefs__item p {
+  max-width: 780px;
+  font-size: clamp(1.075rem, 1.4vw, 1.25rem);
+  line-height: 1.75;
+}
+
+/* Why Adventyz */
+
+.about-page .about-why__content > p:last-child,
+.about-page .about-why__reason p {
+  font-size: clamp(1.075rem, 1.4vw, 1.25rem);
+  line-height: 1.75;
+}
+
+
+/* ========================================
+   SERVICES PAGE
+   ======================================== */
+
+/* Service categories */
+
+.services-page .services-page__category {
+  font-size: clamp(1.3rem, 1.8vw, 1.65rem);
+  line-height: 1.3;
+}
+
+/* Service card headings */
+
+.services-page .services-page__title {
+  font-size: clamp(1.8rem, 2.5vw, 2.35rem);
+  line-height: 1.12;
+}
+
+/* Service descriptions */
+
+.services-page .services-page__description {
+  max-width: 620px;
+  font-size: clamp(1.075rem, 1.4vw, 1.25rem);
+  line-height: 1.75;
+}
+
+/* Deliverables */
+
+.services-page .services-page__deliverables li {
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
+  line-height: 1.4;
+}
+
+
+/* ========================================
+   WORK / PORTFOLIO PAGE
+   ======================================== */
+
+/* Project titles */
+
+.work-page .work-card__title {
+  font-size: clamp(2rem, 2.8vw, 2.6rem);
+  line-height: 1.12;
+}
+
+/* Project descriptions */
+
+.work-page .work-card__industry,
+.work-page .work-card__details p {
+  font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+  line-height: 1.7;
+}
+
+/* Empty portfolio heading */
+
+.work-page .work-page__empty h2 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.05;
+}
+
+/* Empty portfolio explanation */
+
+.work-page .work-page__empty > p {
+  max-width: 760px;
+  font-size: clamp(1.125rem, 1.5vw, 1.3rem);
+  line-height: 1.75;
+}
+
+
+/* ========================================
+   PROCESS PAGE
+   ======================================== */
+
+/* Process step numbers */
+
+.process-page .process-card__number {
+  font-size: clamp(1.5rem, 1.9vw, 1.8rem);
+}
+
+/* Process titles */
+
+.process-page .process-card__title {
+  font-size: clamp(2rem, 2.5vw, 2.35rem);
+  line-height: 1.15;
+}
+
+/* Process descriptions */
+
+.process-page .process-card__description {
+  max-width: 620px;
+  font-size: clamp(1.075rem, 1.4vw, 1.25rem);
+  line-height: 1.75;
+}
+
+
+/* ========================================
+   CONTACT PAGE
+   ======================================== */
+
+/* Intro heading */
+
+.contact-page .contact-page__intro h2 {
+  font-size: clamp(2.75rem, 4vw, 4rem);
+  line-height: 1.08;
+}
+
+/* Intro description */
+
+.contact-page .contact-page__intro p {
+  max-width: 560px;
+  font-size: clamp(1.1rem, 1.45vw, 1.3rem);
+  line-height: 1.75;
+}
+
+/* Contact email / links */
+
+.contact-page .contact-page__info-item a {
+  font-size: clamp(1.125rem, 1.5vw, 1.35rem);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+/* Form labels and inputs keep existing sizes */
+
+
+/* ========================================
+   TABLET
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .home-page .section-heading h2,
+  .about-page .section-heading h2,
+  .services-page .section-heading h2,
+  .work-page .section-heading h2,
+  .process-page .section-heading h2,
+  .contact-page .section-heading h2,
+  .home-page .section-heading__title,
+  .about-page .section-heading__title,
+  .services-page .section-heading__title,
+  .work-page .section-heading__title,
+  .process-page .section-heading__title,
+  .contact-page .section-heading__title {
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+  }
+}
+
+
+/* ========================================
+   MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .home-page .section-heading h2,
+  .about-page .section-heading h2,
+  .services-page .section-heading h2,
+  .work-page .section-heading h2,
+  .process-page .section-heading h2,
+  .contact-page .section-heading h2,
+  .home-page .section-heading__title,
+  .about-page .section-heading__title,
+  .services-page .section-heading__title,
+  .work-page .section-heading__title,
+  .process-page .section-heading__title,
+  .contact-page .section-heading__title {
+    font-size: clamp(2.1rem, 7vw, 3.1rem);
+    line-height: 1.1;
+  }
+
+  .home-page .hero__description,
+  .home-page .home-intro__content p,
+  .about-page .about-hero__description,
+  .about-page .about-split__content p,
+  .services-page .services-page__description,
+  .process-page .process-card__description,
+  .contact-page .contact-page__intro p {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+
+  .home-page .services-preview__card h3,
+  .home-page .why-adventyz__card h3,
+  .services-page .services-page__title,
+  .process-page .process-card__title {
+    font-size: clamp(1.5rem, 5vw, 1.9rem);
+  }
+
+  .contact-page .contact-page__intro h2 {
+    font-size: clamp(2rem, 7vw, 3rem);
+  }
+
+  .about-page .about-split__content h2 {
+    font-size: clamp(2.25rem, 8vw, 3.5rem);
+  }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+   ======================================== */
+
+@media (max-width: 480px) {
+  .home-page .hero__description,
+  .home-page .home-intro__content p,
+  .about-page .about-split__content p,
+  .services-page .services-page__description,
+  .process-page .process-card__description {
+    font-size: 1rem;
+  }
+
+  .home-page .testimonial-card blockquote {
+    font-size: 1.35rem;
+  }
+}

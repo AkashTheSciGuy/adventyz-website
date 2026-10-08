@@ -1,3 +1,4 @@
+
 import AboutHeroSection from "../sections/about/AboutHeroSection";
 import WhoWeAreSection from "../sections/about/WhoWeAreSection";
 import ApproachSection from "../sections/about/ApproachSection";
@@ -11,7 +12,9 @@ import "../styles/about.css";
 function About() {
   return (
     <main className="about-page">
-      <AboutHeroSection />
+      <Reveal>
+        <AboutHeroSection />
+      </Reveal>
 
       <Reveal>
         <WhoWeAreSection />

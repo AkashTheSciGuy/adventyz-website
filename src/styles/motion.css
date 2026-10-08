@@ -1,49 +1,31 @@
+
 /* ========================================
-   Scroll Reveal
+   ADVENTYZ — MOTION STYLES
    ======================================== */
 
-.reveal {
-  opacity: 0;
+/*
+  Scroll reveal animations are handled
+  by Motion for React in Reveal.jsx.
+*/
 
-  transform:
-    translateY(38px)
-    scale(0.985);
-
-  filter: blur(3px);
-
-  transition:
-    opacity 750ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 750ms cubic-bezier(0.22, 1, 0.36, 1),
-    filter 750ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.reveal--visible {
-  opacity: 1;
-
-  transform:
-    translateY(0)
-    scale(1);
-
-  filter: blur(0);
-}
 
 /* ========================================
-   Hover lift
+   Hover Lift
    ======================================== */
 
 .hover-lift {
   transition:
     transform var(--transition-base),
-    box-shadow var(--transition-base),
-    border-color var(--transition-base);
+    box-shadow var(--transition-base);
 }
 
 .hover-lift:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
 }
 
+
 /* ========================================
-   Media reveal
+   Media Reveal
    ======================================== */
 
 .media-reveal {
@@ -52,31 +34,29 @@
 
 .media-reveal img,
 .media-reveal video {
-  transition:
-    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 700ms ease;
 }
 
 .media-reveal:hover img,
 .media-reveal:hover video {
-  transform: scale(1.045);
+  transform: scale(1.03);
 }
 
+
 /* ========================================
-   Reduced motion
+   Reduced Motion Accessibility
    ======================================== */
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal,
-  .reveal--visible,
   .hover-lift,
   .media-reveal img,
   .media-reveal video {
-    opacity: 1;
-
-    filter: none;
-
-    transform: none;
-
     transition: none;
+  }
+
+  .hover-lift:hover,
+  .media-reveal:hover img,
+  .media-reveal:hover video {
+    transform: none;
   }
 }

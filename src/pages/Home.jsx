@@ -1,5 +1,5 @@
+
 import HeroSection from "../sections/home/HeroSection";
-import IntroSection from "../sections/home/IntroSection";
 import ServicesPreviewSection from "../sections/home/ServicesPreviewSection";
 import SelectedWorkSection from "../sections/home/SelectedWorkSection";
 import WhyAdventyzSection from "../sections/home/WhyAdventyzSection";
@@ -15,34 +15,28 @@ function Home() {
   return (
     <main className="home-page">
       <HeroSection />
-     
-      <Reveal>
-        <IntroSection />
-      </Reveal>
 
-      <Reveal delay={70}>
+      <Reveal>
         <ServicesPreviewSection />
       </Reveal>
 
-      <Reveal delay={90}>
+      <Reveal>
         <SelectedWorkSection />
       </Reveal>
 
-      <Reveal delay={100}>
+      <Reveal>
         <WhyAdventyzSection />
       </Reveal>
 
-      <Reveal delay={100}>
+      <Reveal>
         <ProcessPreviewSection />
       </Reveal>
 
-      <Reveal delay={100}>
+      <Reveal>
         <TestimonialsSection />
       </Reveal>
 
-      <Reveal delay={80}>
-        <FinalCtaSection />
-      </Reveal>
+      <FinalCtaSection />
     </main>
   );
 }

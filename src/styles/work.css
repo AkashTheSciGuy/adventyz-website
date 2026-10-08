@@ -325,3 +325,54 @@
 
   font-size: var(--font-size-xs);
 }
+
+
+/* Work — editorial typography */
+
+.work-card__title {
+  font-size: clamp(2.2rem, 3vw, 3rem);
+  line-height: 1.1;
+}
+
+.work-card__industry,
+.work-card__details p {
+  font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+  line-height: 1.65;
+}
+
+.work-card__client {
+  font-size: 1rem;
+}
+
+.work-card__services span {
+  font-size: 0.95rem;
+}
+
+.work-page__empty {
+  max-width: 1100px;
+}
+
+.work-page__empty h2 {
+  max-width: 950px;
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
+}
+
+.work-page__empty > p {
+  max-width: 850px;
+  font-size: clamp(1.2rem, 1.7vw, 1.5rem);
+  line-height: 1.65;
+}
+
+@media (max-width: 768px) {
+  .work-card__title {
+    font-size: 1.9rem;
+  }
+
+  .work-page__empty {
+    padding: var(--space-6);
+  }
+
+  .work-page__empty h2 {
+    font-size: clamp(2.1rem, 8vw, 3rem);
+  }
+}
