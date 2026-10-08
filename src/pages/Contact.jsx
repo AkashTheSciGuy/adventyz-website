@@ -1,9 +1,11 @@
+
 import { useState } from "react";
+import { MdOutlineEmail } from "react-icons/md";
+import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
+import Reveal from "../components/common/Reveal";
 import Container from "../components/ui/Container";
-import SectionHeading from "../components/ui/SectionHeading";
 import Button from "../components/ui/Button";
-
 import { services } from "../data/services";
 
 import "../styles/contact.css";
@@ -26,6 +28,27 @@ const budgetOptions = [
   "₹1,00,000 – ₹2,50,000",
   "₹2,50,000+",
   "Not sure yet",
+];
+
+const nextSteps = [
+  {
+    number: "01",
+    title: "We Connect",
+    description:
+      "We review your inquiry and understand what you're looking to achieve.",
+  },
+  {
+    number: "02",
+    title: "We Discuss",
+    description:
+      "We explore your goals, ideas, and project requirements.",
+  },
+  {
+    number: "03",
+    title: "We Plan",
+    description:
+      "We outline a possible approach and the next steps.",
+  },
 ];
 
 function Contact() {
@@ -100,7 +123,7 @@ function Contact() {
     if (!endpoint) {
       setSubmitStatus("error");
       setSubmitError(
-        "Online form submission is not configured yet. Please email infoadventyz@gmail.com instead.",
+        "Online form submission is not configured yet. Please email infoadventyz@gmail.com instead."
       );
       return;
     }
@@ -127,23 +150,13 @@ function Contact() {
     } catch {
       setSubmitStatus("error");
       setSubmitError(
-        "We couldn't send your enquiry right now. Please try again or email infoadventyz@gmail.com.",
+        "We couldn't send your enquiry right now. Please try again or email infoadventyz@gmail.com."
       );
     }
   };
 
   return (
     <main className="contact-page">
-      <section className="contact-page__hero">
-        <Container>
-          <SectionHeading
-            eyebrow="Contact"
-            title="Let's build something worth talking about."
-            description="Have a project in mind? Tell us what you're building, what you're trying to solve, and where you want to go next."
-          />
-        </Container>
-      </section>
-
       <section className="contact-page__content">
         <Container>
           <div className="contact-page__grid">
@@ -168,7 +181,11 @@ function Contact() {
                   <span>Email</span>
 
                   <a href="mailto:infoadventyz@gmail.com">
-                    infoadventyz@gmail.com
+                    <MdOutlineEmail
+                      size={20}
+                      aria-hidden="true"
+                    />
+                    <span>infoadventyz@gmail.com</span>
                   </a>
                 </div>
 
@@ -178,21 +195,29 @@ function Contact() {
                   <a
                     href="https://www.instagram.com/adventyz.in7/"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                   >
-                    @Adventyz.in7
+                    <FaInstagram
+                      size={20}
+                      aria-hidden="true"
+                    />
+                    <span>@Adventyz.in7</span>
                   </a>
                 </div>
 
                 <div className="contact-page__info-item">
-                  <span>Website</span>
+                  <span>LinkedIn</span>
 
                   <a
-                    href="https://www.adventyz.com/"
+                    href="https://www.linkedin.com/in/adventyz-marketing-agency-1760013bb/"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                   >
-                    adventyz.com
+                    <FaLinkedinIn
+                      size={20}
+                      aria-hidden="true"
+                    />
+                    <span>Adventyz — LinkedIn</span>
                   </a>
                 </div>
               </div>
@@ -437,16 +462,51 @@ function Contact() {
         </Container>
       </section>
 
-      <section className="contact-page__bottom">
-        <Container>
-          <SectionHeading
-            align="center"
-            eyebrow="Start Something New"
-            title="Have a project worth building?"
-            description="Let's talk about your next idea and explore what we can create together."
-          />
-        </Container>
-      </section>
+      <Reveal delay={100}>
+        <section
+          className="contact-page__next"
+          aria-labelledby="contact-next-title"
+        >
+          <Container>
+            <Reveal>
+              <div className="contact-page__next-header">
+                <span className="contact-page__next-eyebrow">
+                  The Next Step
+                </span>
+
+                <h2 id="contact-next-title">
+                  What happens <span>next?</span>
+                </h2>
+
+                <p>
+                  A simple look at how we move from your first
+                  message to a potential collaboration.
+                </p>
+              </div>
+            </Reveal>
+
+            <div className="contact-page__next-grid">
+              {nextSteps.map((step, index) => (
+                <Reveal
+                  key={step.number}
+                  delay={index * 110}
+                >
+                  <article className="contact-page__next-card">
+                    <span className="contact-page__next-number">
+                      {step.number}
+                    </span>
+
+                    <div className="contact-page__next-card-content">
+                      <h3>{step.title}</h3>
+                      <p>{step.description}</p>
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </Container>
+        </section>
+      </Reveal>
     </main>
   );
 }

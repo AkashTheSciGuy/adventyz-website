@@ -1,16 +1,17 @@
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
 
-  transition:
-    opacity 600ms ease,
-    transform 600ms ease;
-}
+/* ========================================
+   ADVENTYZ — MOTION STYLES
+   ======================================== */
 
-.reveal--visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+/*
+  Scroll reveal animations are handled
+  by Motion for React in Reveal.jsx.
+*/
+
+
+/* ========================================
+   Hover Lift
+   ======================================== */
 
 .hover-lift {
   transition:
@@ -21,6 +22,11 @@
 .hover-lift:hover {
   transform: translateY(-4px);
 }
+
+
+/* ========================================
+   Media Reveal
+   ======================================== */
 
 .media-reveal {
   overflow: hidden;
@@ -36,14 +42,21 @@
   transform: scale(1.03);
 }
 
+
+/* ========================================
+   Reduced Motion Accessibility
+   ======================================== */
+
 @media (prefers-reduced-motion: reduce) {
-  .reveal,
-  .reveal--visible,
   .hover-lift,
   .media-reveal img,
   .media-reveal video {
-    opacity: 1;
-    transform: none;
     transition: none;
+  }
+
+  .hover-lift:hover,
+  .media-reveal:hover img,
+  .media-reveal:hover video {
+    transform: none;
   }
 }

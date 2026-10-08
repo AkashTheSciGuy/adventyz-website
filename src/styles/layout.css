@@ -1,35 +1,18 @@
-@media (max-width: 768px) {
-  .site-logo__image {
-    height: 44px;
-  }
-
-  .site-logo__image--footer {
-    height: 60px;
-  }
-}
-
-/* =========================
+/* ========================================
    Accessibility
-   ========================= */
+   ======================================== */
 
 .skip-link {
   position: fixed;
   top: var(--space-4);
   left: var(--space-4);
-
   z-index: calc(var(--z-overlay) + 1);
-
   padding: 0.75rem 1rem;
-
   background: var(--color-brand);
   color: var(--color-black);
-
   border-radius: var(--radius-sm);
-
   font-weight: 700;
-
   transform: translateY(-200%);
-
   transition: transform var(--transition-fast);
 }
 
@@ -41,51 +24,45 @@
   outline: none;
 }
 
-/* =========================
-   Header
-   ========================= */
+/* ========================================
+   Main Header
+   ======================================== */
 
 .site-header {
   position: sticky;
   top: 0;
-  z-index: var(--z-header);
-
+  z-index: var(--z-header, 100);
   width: 100%;
-
   background: rgba(0, 0, 0, 0.9);
-  border-bottom: 1px solid var(--color-border);
-
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 }
 
 .site-header__inner {
   min-height: 78px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: var(--space-6);
 }
 
-/* =========================
-   Logo
-   ========================= */
+/* ========================================
+   Logo Base
+   ======================================== */
 
 .site-logo {
   display: inline-flex;
   align-items: center;
-
   flex-shrink: 0;
+  text-decoration: none;
 }
 
 .site-logo__image {
   display: block;
-
   width: auto;
   height: 52px;
-
+  max-width: none;
   object-fit: contain;
 }
 
@@ -93,9 +70,9 @@
   height: 72px;
 }
 
-/* =========================
-   Desktop navigation
-   ========================= */
+/* ========================================
+   Desktop Navigation
+   ======================================== */
 
 .desktop-nav {
   display: flex;
@@ -105,32 +82,24 @@
 
 .desktop-nav__link {
   position: relative;
-
   padding-block: 0.5rem;
-
-  color: var(--color-text-muted);
-
+  color: rgba(255, 255, 255, 0.55);
   font-size: var(--font-size-sm);
   font-weight: 600;
-
+  text-decoration: none;
   transition: color var(--transition-fast);
 }
 
 .desktop-nav__link::after {
   content: "";
-
   position: absolute;
   left: 0;
   bottom: 0;
-
   width: 100%;
   height: 2px;
-
   background: var(--color-brand);
-
   transform: scaleX(0);
   transform-origin: right;
-
   transition: transform var(--transition-base);
 }
 
@@ -145,9 +114,9 @@
   transform-origin: left;
 }
 
-/* =========================
-   Header actions
-   ========================= */
+/* ========================================
+   Header Actions
+   ======================================== */
 
 .site-header__actions {
   display: flex;
@@ -157,29 +126,22 @@
 
 .menu-toggle {
   display: none;
-
   width: 44px;
   height: 44px;
-
   padding: 10px;
-
   background: transparent;
-
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   gap: 5px;
+  cursor: pointer;
 }
 
 .menu-toggle span {
   display: block;
-
   width: 22px;
   height: 2px;
-
   background: var(--color-white);
-
   transition:
     transform var(--transition-base),
     opacity var(--transition-base);
@@ -197,15 +159,14 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* =========================
-   Mobile menu
-   ========================= */
+/* ========================================
+   Mobile Menu
+   ======================================== */
 
 .mobile-menu {
   position: fixed;
   inset: 78px 0 0;
-
-  z-index: var(--z-menu);
+  z-index: var(--z-menu, 90);
 
   display: flex;
   flex-direction: column;
@@ -216,7 +177,6 @@
     max(var(--space-5), calc((100vw - var(--container-lg)) / 2));
 
   background: var(--color-black);
-
   overflow-y: auto;
 }
 
@@ -227,15 +187,12 @@
 
 .mobile-menu__link {
   padding-block: var(--space-4);
-
-  border-bottom: 1px solid var(--color-border);
-
-  color: var(--color-text-muted);
-
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
   font-family: var(--font-family-brand);
   font-size: clamp(2rem, 8vw, 3.5rem);
   font-weight: 800;
-
+  text-decoration: none;
   transition: color var(--transition-fast);
 }
 
@@ -248,15 +205,12 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
   gap: var(--space-5);
-
   margin-top: var(--space-8);
 }
 
 .mobile-menu__email {
-  color: var(--color-text-muted);
-
+  color: rgba(255, 255, 255, 0.62);
   transition: color var(--transition-fast);
 }
 
@@ -264,9 +218,9 @@
   color: var(--color-white);
 }
 
-/* =========================
+/* ========================================
    Footer
-   ========================= */
+   ======================================== */
 
 .site-footer {
   padding-block:
@@ -275,12 +229,16 @@
 
   background: var(--color-surface);
 
-  border-top: 1px solid var(--color-border);
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
 }
 
 .site-footer__top {
-  display: grid;
+  position: relative;
+  z-index: 1;
 
+  display: grid;
   grid-template-columns:
     minmax(0, 2fr)
     minmax(150px, 1fr)
@@ -299,15 +257,13 @@
 
 .site-footer__description {
   margin-bottom: var(--space-6);
-
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.66);
+  line-height: 1.7;
 }
 
 .site-footer__heading {
   margin-bottom: var(--space-5);
-
-  color: var(--color-white);
-
+  color: #ffffff;
   font-family: var(--font-family-brand);
   font-size: var(--font-size-sm);
   font-weight: 800;
@@ -319,28 +275,32 @@
 .site-footer__links {
   display: flex;
   flex-direction: column;
-
   gap: var(--space-3);
 }
 
 .site-footer__links a {
-  color: var(--color-text-muted);
-
-  transition: color var(--transition-fast);
+  position: relative;
+  width: fit-content;
+  color: rgba(255, 255, 255, 0.68);
+  transition:
+    color var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .site-footer__links a:hover {
   color: var(--color-brand);
+  transform: translateX(3px);
 }
 
 .site-footer__bottom {
+  position: relative;
+  z-index: 1;
+
   margin-top: var(--space-8);
   padding-top: var(--space-5);
 
-  border-top: 1px solid var(--color-border);
-
-  color: var(--color-text-subtle);
-
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.45);
   font-size: var(--font-size-sm);
 }
 
@@ -390,16 +350,14 @@
   }
 }
 
-/* =========================
-   404
-   ========================= */
+/* ========================================
+   404 Page
+   ======================================== */
 
 .not-found {
   min-height: 70vh;
-
   display: flex;
   align-items: center;
-
   padding-block: var(--space-9);
 
   background:
@@ -417,35 +375,25 @@
 
 .not-found__code {
   margin-bottom: var(--space-4);
-
   color: var(--color-brand);
-
   font-family: var(--font-family-brand);
   font-size: clamp(5rem, 18vw, 11rem);
   font-weight: 800;
-
   line-height: 0.8;
 }
 
 .not-found h1 {
+  color: var(--color-white);
   font-family: var(--font-family-brand);
-
   font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 800;
-
   line-height: 1;
 }
 
 .not-found__description {
   max-width: 520px;
-
-  margin:
-    var(--space-5)
-    auto
-    0;
-
-  color: var(--color-text-muted);
-
+  margin: var(--space-5) auto 0;
+  color: rgba(255, 255, 255, 0.65);
   font-size: var(--font-size-lg);
 }
 
@@ -453,11 +401,260 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-
   gap: var(--space-4);
-
   margin-top: var(--space-6);
 }
+
+/* ========================================
+   Route Loading
+   ======================================== */
+
+.page-loader {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-loader__indicator {
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--color-border);
+  border-top-color: var(--color-brand);
+  border-radius: 50%;
+  animation: page-loader-spin 700ms linear infinite;
+}
+
+@keyframes page-loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================
+   Adventyz Kinetic Wordmark
+   ======================================== */
+
+/*
+  The original disappearing logo animation
+  has been removed.
+
+  Motion for React controls the letter wave
+  and orange underline only.
+*/
+
+.site-logo--animated,
+.site-logo--kinetic {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 0.65rem;
+
+  min-width: 190px;
+
+  flex-shrink: 0;
+  overflow: visible;
+  isolation: isolate;
+}
+
+/* ========================================
+   Logo Symbol
+   ======================================== */
+
+.site-logo--kinetic .site-logo__mark {
+  position: relative;
+
+  width: 52px;
+  height: 52px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 52px;
+
+  opacity: 1;
+  visibility: visible;
+}
+
+.site-logo--kinetic .site-logo__image {
+  display: block;
+
+  width: auto;
+  height: 52px;
+  max-width: none;
+
+  object-fit: contain;
+
+  opacity: 1;
+  visibility: visible;
+
+  filter: none;
+  transform: none;
+  transition: none;
+}
+
+/* ========================================
+   Wordmark
+   ======================================== */
+
+.site-logo--kinetic .site-logo__wordmark {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+
+  height: 1.4em;
+
+  color: #ffffff;
+
+  font-family: var(--font-family-brand);
+  font-size: 1.15rem;
+  font-weight: 800;
+
+  letter-spacing: 0.075em;
+  white-space: nowrap;
+
+  opacity: 1;
+  visibility: visible;
+
+  overflow: visible;
+  transition: none;
+}
+
+.site-logo--kinetic .site-logo__letter {
+  display: inline-block;
+
+  color: #ffffff;
+
+  opacity: 1;
+  visibility: visible;
+
+  filter: none;
+
+  transform-origin: center center;
+  transition: none;
+
+  will-change: transform, opacity;
+}
+
+.site-logo--kinetic .site-logo__letter--accent {
+  color: var(--color-brand);
+}
+
+/* ========================================
+   Kinetic Orange Underline
+   ======================================== */
+
+.site-logo--kinetic .site-logo__kinetic-line {
+  position: absolute;
+
+  left: 0;
+  bottom: -4px;
+
+  width: 100%;
+  height: 2px;
+
+  display: block;
+
+  background: var(--color-brand);
+  border-radius: 999px;
+
+  opacity: 0;
+
+  transform: scaleX(0);
+  transform-origin: left center;
+
+  pointer-events: none;
+
+  will-change: transform, opacity;
+}
+
+/* ========================================
+   Responsive — Tablet
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .site-header__cta {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+/* ========================================
+   Responsive — Mobile
+   ======================================== */
+
+@media (max-width: 768px) {
+  .site-header__inner {
+    min-height: 70px;
+  }
+
+  .mobile-menu {
+    inset: 70px 0 0;
+
+    padding:
+      var(--space-6)
+      var(--space-5);
+  }
+
+  .site-logo__image {
+    height: 44px;
+  }
+
+  .site-logo__image--footer {
+    height: 60px;
+  }
+
+  .site-logo--animated,
+  .site-logo--kinetic {
+    min-width: 155px;
+    gap: 0.5rem;
+  }
+
+  .site-logo--kinetic .site-logo__mark {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+  }
+
+  .site-logo--kinetic .site-logo__image {
+    height: 44px;
+  }
+
+  .site-logo--kinetic .site-logo__wordmark {
+    font-size: 0.95rem;
+    letter-spacing: 0.055em;
+  }
+
+  .site-footer {
+    padding-block:
+      var(--space-8)
+      var(--space-5);
+  }
+
+  .site-footer__top {
+    grid-template-columns: 1fr;
+    gap: var(--space-7);
+  }
+
+  .site-footer__bottom {
+    margin-top: var(--space-7);
+  }
+}
+
+/* ========================================
+   Responsive — Small Mobile
+   ======================================== */
 
 @media (max-width: 480px) {
   .not-found__actions {
@@ -468,39 +665,196 @@
     width: 100%;
   }
 }
-/* =========================
-   Route loading
-   ========================= */
 
-.page-loader {
-  min-height: 60vh;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.page-loader__indicator {
-  width: 32px;
-  height: 32px;
-
-  border: 2px solid var(--color-border);
-  border-top-color: var(--color-brand);
-
-  border-radius: 50%;
-
-  animation: page-loader-spin 700ms linear infinite;
-}
-
-@keyframes page-loader-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* ========================================
+   Reduced Motion
+   ======================================== */
 
 @media (prefers-reduced-motion: reduce) {
+  .desktop-nav__link::after,
+  .menu-toggle span,
+  .site-footer__links a,
+  .site-footer .button,
+  .site-logo--kinetic .site-logo__letter {
+    transition: none;
+  }
+
+  .site-footer__links a:hover,
+  .site-footer .button:hover {
+    transform: none;
+  }
+
+  .site-logo--kinetic .site-logo__mark,
+  .site-logo--kinetic .site-logo__image,
+  .site-logo--kinetic .site-logo__wordmark,
+  .site-logo--kinetic .site-logo__letter {
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    transform: none !important;
+  }
+
+  .site-logo--kinetic .site-logo__kinetic-line {
+    display: none;
+  }
+
   .page-loader__indicator {
     animation: none;
     border-color: var(--color-brand);
+  }
+}
+
+/* ==============================================
+   ADVENTYZ — PREMIUM BUTTON GLOW SYSTEM
+   ============================================== */
+
+/* 1. Universal ambient glow */
+
+.button {
+  position: relative;
+
+  box-shadow:
+    0 5px 18px rgba(233, 149, 26, 0.12),
+    0 0 22px rgba(233, 149, 26, 0.07);
+
+  transition:
+    background-color 250ms ease,
+    color 250ms ease,
+    border-color 250ms ease,
+    box-shadow 350ms ease,
+    transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 2. Premium hover interaction */
+
+.button:hover {
+  box-shadow:
+    0 8px 26px rgba(233, 149, 26, 0.22),
+    0 0 34px rgba(233, 149, 26, 0.14);
+
+  transform: translateY(-2px);
+}
+
+/* 3. Dark sections */
+
+.hero .button,
+.site-footer .button,
+.site-header .button,
+.not-found .button {
+  box-shadow:
+    0 5px 22px rgba(233, 149, 26, 0.24),
+    0 0 30px rgba(233, 149, 26, 0.13);
+}
+
+.hero .button:hover,
+.site-footer .button:hover,
+.site-header .button:hover,
+.not-found .button:hover {
+  box-shadow:
+    0 9px 30px rgba(233, 149, 26, 0.35),
+    0 0 44px rgba(233, 149, 26, 0.22);
+}
+
+/* 4. Light backgrounds */
+
+.home-intro .button,
+.services-preview .button,
+.selected-work .button,
+.about-page .button,
+.services-page .button,
+.work-page .button,
+.process-page .button,
+.contact-page .button {
+  box-shadow:
+    0 6px 20px rgba(30, 22, 10, 0.10),
+    0 0 24px rgba(233, 149, 26, 0.10);
+}
+
+.home-intro .button:hover,
+.services-preview .button:hover,
+.selected-work .button:hover,
+.about-page .button:hover,
+.services-page .button:hover,
+.work-page .button:hover,
+.process-page .button:hover,
+.contact-page .button:hover {
+  box-shadow:
+    0 10px 28px rgba(30, 22, 10, 0.15),
+    0 0 36px rgba(233, 149, 26, 0.19);
+}
+
+/* 5. Orange background sections */
+
+.final-cta .button,
+.about-cta .button {
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.16),
+    0 0 26px rgba(0, 0, 0, 0.10);
+}
+
+.final-cta .button:hover,
+.about-cta .button:hover {
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25),
+    0 0 38px rgba(0, 0, 0, 0.15);
+}
+
+/* 6. Accessible keyboard focus */
+
+.button:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 4px;
+
+  box-shadow:
+    0 0 0 4px rgba(233, 149, 26, 0.15),
+    0 0 28px rgba(233, 149, 26, 0.24);
+}
+
+/* 7. Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+
+  .button:hover {
+    transform: none;
+  }
+}
+
+
+/* ========================================
+   FOOTER CONTACT ICONS
+   ======================================== */
+
+.site-footer__contact-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+}
+
+.site-footer__contact-links a svg {
+  flex-shrink: 0;
+  color: var(--color-brand);
+  stroke-width: 1.8;
+  transition: transform 250ms ease;
+}
+
+.site-footer__contact-links a:hover svg {
+  transform: translateY(-2px);
+}
+
+.site-footer__contact-links a span {
+  color: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-footer__contact-links a svg {
+    transition: none;
+  }
+
+  .site-footer__contact-links a:hover svg {
+    transform: none;
   }
 }

@@ -177,3 +177,126 @@
 
   font-size: var(--font-size-xs);
 }
+
+
+/* Services — larger content, less wasted space */
+
+.services-page__card {
+  min-height: 310px;
+}
+
+.services-page__category {
+  font-size: clamp(1.4rem, 1.9vw, 1.8rem);
+}
+
+.services-page__number {
+  margin-bottom: var(--space-5);
+  font-size: 1rem;
+}
+
+.services-page__title {
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  line-height: 1.12;
+}
+
+.services-page__description {
+  max-width: 100%;
+  font-size: clamp(1.15rem, 1.65vw, 1.4rem);
+  line-height: 1.65;
+}
+
+.services-page__content-label {
+  font-size: 0.95rem;
+}
+
+.services-page__deliverables li {
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .services-page__card {
+    min-height: auto;
+  }
+
+  .services-page__title {
+    font-size: clamp(1.75rem, 6vw, 2.2rem);
+  }
+
+  .services-page__description {
+    font-size: 1.1rem;
+  }
+}
+
+
+/* ========================================
+   SERVICES — UNIFORM CARD SIZES
+   ======================================== */
+
+/* Keep both columns equal in width */
+
+.services-page__grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  align-items: stretch;
+
+  gap: var(--space-4);
+}
+
+/* Make every service card the same height */
+
+.services-page__card {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+
+  box-sizing: border-box;
+}
+
+/* Keep service content aligned */
+
+.services-page__title {
+  margin-top: 0;
+}
+
+.services-page__description {
+  max-width: 100%;
+}
+
+/* Ensure nested content uses available space */
+
+.services-page__content {
+  display: grid;
+  align-content: start;
+
+  gap: var(--space-5);
+}
+
+/* ========================================
+   RESPONSIVE — TABLET
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .services-page__card {
+    min-height: 390px;
+  }
+}
+
+/* ========================================
+   RESPONSIVE — MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .services-page__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services-page__card {
+    min-height: 0;
+    height: auto;
+  }
+}

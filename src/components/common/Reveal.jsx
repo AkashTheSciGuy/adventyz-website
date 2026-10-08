@@ -1,65 +1,44 @@
-import { useEffect, useRef, useState } from "react";
 
-function getInitialVisibility() {
-  if (typeof window === "undefined") {
-    return false;
-  }
-
-  return window.matchMedia(
-    "(prefers-reduced-motion: reduce)",
-  ).matches;
-}
+import { motion, useReducedMotion } from "motion/react";
 
 function Reveal({
   children,
-  className = "",
   delay = 0,
-  threshold = 0.15,
+  className = "",
 }) {
-  const elementRef = useRef(null);
-
-  const [visible, setVisible] = useState(
-    getInitialVisibility,
-  );
-
-  useEffect(() => {
-    const element = elementRef.current;
-
-    if (!element || visible) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      {
-        threshold,
-      },
-    );
-
-    observer.observe(element);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [threshold, visible]);
+  const reduceMotion = useReducedMotion();
 
   return (
-    <div
-      ref={elementRef}
-      className={`reveal ${
-        visible ? "reveal--visible" : ""
-      } ${className}`.trim()}
-      style={{
-        transitionDelay: visible ? `${delay}ms` : "0ms",
+    <motion.div
+      className={className}
+      initial={
+        reduceMotion
+          ? false
+          : {
+              opacity: 0,
+              y: 48,
+              scale: 0.985,
+              filter: "blur(6px)",
+            }
+      }
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        filter: "blur(0px)",
+      }}
+      viewport={{
+        once: true,
+        amount: 0.12,
+      }}
+      transition={{
+        duration: reduceMotion ? 0 : 0.9,
+        delay: delay / 1000,
+        ease: [0.22, 1, 0.36, 1],
       }}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }
 

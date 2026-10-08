@@ -144,3 +144,42 @@
     padding-bottom: var(--space-8);
   }
 }
+
+
+/* Process — stronger step hierarchy */
+
+.process-card {
+  min-height: 185px;
+}
+
+.process-card__content {
+  max-width: 100%;
+}
+
+.process-card__number {
+  font-size: 1.75rem;
+}
+
+.process-card__title {
+  font-size: clamp(2.1rem, 2.8vw, 2.75rem);
+  line-height: 1.1;
+}
+
+.process-card__description {
+  font-size: clamp(1.125rem, 1.55vw, 1.35rem);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .process-card {
+    min-height: auto;
+  }
+
+  .process-card__title {
+    font-size: 1.8rem;
+  }
+
+  .process-card__description {
+    font-size: 1.1rem;
+  }
+}

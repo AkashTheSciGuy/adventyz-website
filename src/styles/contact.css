@@ -321,3 +321,533 @@
 .contact-form__submit .button:disabled {
   cursor: wait;
 }
+
+
+/* Contact — more prominent introduction */
+
+.contact-page__intro {
+  max-width: 650px;
+}
+
+.contact-page__intro h2 {
+  font-size: clamp(3rem, 4.5vw, 4.5rem);
+  line-height: 1.08;
+}
+
+.contact-page__intro p {
+  font-size: clamp(1.2rem, 1.7vw, 1.45rem);
+  line-height: 1.65;
+}
+
+.contact-page__info-item a {
+  font-size: clamp(1.2rem, 1.7vw, 1.45rem);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 700px) {
+  .contact-page__intro h2 {
+    font-size: clamp(2.1rem, 8vw, 3rem);
+  }
+
+  .contact-page__intro p {
+    font-size: 1.1rem;
+  }
+}
+
+
+/* ========================================
+   CONTACT PAGE — REFINED LAYOUT
+   ======================================== */
+
+/* Contact form is now the first section */
+
+.contact-page__content {
+  padding-top: clamp(4rem, 7vw, 7rem);
+}
+
+
+/* ========================================
+   WHAT HAPPENS NEXT
+   ======================================== */
+
+.contact-page__next {
+  position: relative;
+
+  padding-block:
+    clamp(4rem, 7vw, 7rem);
+
+  border-top: 1px solid var(--color-border);
+
+  background: transparent;
+}
+
+
+/* Section heading */
+
+.contact-page__next-header {
+  max-width: 900px;
+
+  margin-bottom: var(--space-8);
+}
+
+.contact-page__next-eyebrow {
+  display: block;
+
+  margin-bottom: var(--space-4);
+
+  color: var(--color-brand);
+
+  font-family: var(--font-family-brand);
+  font-size: var(--font-size-sm);
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.contact-page__next-header h2 {
+  margin: 0;
+
+  color: var(--color-black);
+
+  font-family: var(--font-family-brand);
+  font-size: clamp(3rem, 5.8vw, 5.5rem);
+  font-weight: 800;
+
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.contact-page__next-header h2 span {
+  color: var(--color-brand);
+}
+
+.contact-page__next-header > p {
+  max-width: 710px;
+
+  margin-top: var(--space-5);
+
+  color: var(--color-text-muted);
+
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  line-height: 1.7;
+}
+
+
+/* Three-step grid */
+
+.contact-page__next-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: var(--space-4);
+}
+
+.contact-page__next-grid > * {
+  min-width: 0;
+  height: 100%;
+}
+
+
+/* Individual step cards */
+
+.contact-page__next-card {
+  min-height: 285px;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  gap: var(--space-7);
+
+  padding: var(--space-6);
+
+  background: var(--color-surface-elevated);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  box-shadow: var(--shadow-sm);
+
+  transition:
+    transform var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.contact-page__next-card:hover {
+  transform: translateY(-4px);
+
+  border-color: var(--color-border-brand);
+
+  box-shadow: var(--shadow-brand);
+}
+
+.contact-page__next-number {
+  color: var(--color-brand);
+
+  font-family: var(--font-family-brand);
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.contact-page__next-card-content h3 {
+  margin-bottom: var(--space-3);
+
+  color: var(--color-black);
+
+  font-family: var(--font-family-brand);
+  font-size: clamp(1.6rem, 2.2vw, 2.1rem);
+  font-weight: 800;
+
+  line-height: 1.15;
+}
+
+.contact-page__next-card-content p {
+  max-width: 360px;
+
+  color: var(--color-text-muted);
+
+  font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   TABLET
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .contact-page__next-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-page__next-card {
+    min-height: 250px;
+  }
+}
+
+
+/* ========================================
+   MOBILE
+   ======================================== */
+
+@media (max-width: 700px) {
+  .contact-page__content {
+    padding-top: var(--space-7);
+  }
+
+  .contact-page__next {
+    padding-block: var(--space-8);
+  }
+
+  .contact-page__next-header {
+    margin-bottom: var(--space-6);
+  }
+
+  .contact-page__next-header h2 {
+    font-size: clamp(2.5rem, 9vw, 3.5rem);
+  }
+
+  .contact-page__next-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-page__next-card {
+    min-height: 210px;
+    padding: var(--space-5);
+  }
+
+  .contact-page__next-card-content h3 {
+    font-size: 1.7rem;
+  }
+
+  .contact-page__next-card-content p {
+    font-size: 1.05rem;
+  }
+}
+
+
+/* ========================================
+   REDUCED MOTION
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-page__next-card {
+    transition: none;
+  }
+
+  .contact-page__next-card:hover {
+    transform: none;
+  }
+}
+
+
+/* ========================================
+   CONTACT — NEXT STEPS CARD SPACING FIX
+   ======================================== */
+
+.contact-page__next-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  gap: 0;
+
+  height: 100%;
+  min-height: 240px;
+}
+
+/* Number positioning */
+
+.contact-page__next-number {
+  display: block;
+  flex-shrink: 0;
+
+  margin-bottom: var(--space-5);
+
+  line-height: 1.2;
+}
+
+/* Keep heading and description together */
+
+.contact-page__next-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.contact-page__next-card-content h3 {
+  margin: 0;
+  line-height: 1.15;
+}
+
+.contact-page__next-card-content p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* Mobile adjustments */
+
+@media (max-width: 700px) {
+  .contact-page__next-card {
+    min-height: 0;
+  }
+
+  .contact-page__next-number {
+    margin-bottom: var(--space-4);
+  }
+}
+
+
+/* ========================================
+   CONTACT PAGE — SOCIAL LINK ICONS
+   ======================================== */
+
+.contact-page__info-item a {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 12px;
+
+  width: fit-content;
+  max-width: 100%;
+
+  text-decoration: none;
+}
+
+/* Icon styling */
+
+.contact-page__info-item a svg {
+  flex-shrink: 0;
+
+  color: var(--color-brand);
+
+  transition:
+    transform 250ms ease,
+    color 250ms ease;
+}
+
+/* Preserve existing link text */
+
+.contact-page__info-item a span {
+  color: inherit;
+  overflow-wrap: anywhere;
+}
+
+/* Subtle hover animation */
+
+.contact-page__info-item a:hover svg {
+  transform: translateY(-2px);
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+  .contact-page__info-item a {
+    gap: 10px;
+  }
+
+  .contact-page__info-item a svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-page__info-item a svg {
+    transition: none;
+  }
+
+  .contact-page__info-item a:hover svg {
+    transform: none;
+  }
+}
+
+
+/* ==============================================
+   ADVENTYZ — DARK LUXURY CONTACT FORM
+   ============================================== */
+
+/* Main form container */
+
+.contact-form-wrapper {
+  background: #181818;
+
+  border: 1px solid #393939;
+
+  border-radius: var(--radius-lg);
+
+  box-shadow:
+    0 16px 45px rgba(0, 0, 0, 0.14),
+    0 0 35px rgba(233, 149, 26, 0.035);
+}
+
+/* Form labels */
+
+.contact-form__field label {
+  color: #f5f5f5;
+}
+
+/* Required field asterisk */
+
+.contact-form__field label span {
+  color: #e9951a;
+}
+
+/* Text inputs, dropdowns and textarea */
+
+.contact-form__field input,
+.contact-form__field select,
+.contact-form__field textarea {
+  background: #292929;
+
+  color: #ffffff;
+
+  border: 1px solid #505050;
+
+  caret-color: #e9951a;
+
+  color-scheme: dark;
+
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease,
+    box-shadow 250ms ease;
+}
+
+/* Readable placeholder text */
+
+.contact-form__field input::placeholder,
+.contact-form__field textarea::placeholder {
+  color: #b1b1b1;
+
+  opacity: 1;
+}
+
+/* Dropdown options */
+
+.contact-form__field select option {
+  background: #292929;
+  color: #ffffff;
+}
+
+/* Softer border on hover */
+
+.contact-form__field input:hover,
+.contact-form__field select:hover,
+.contact-form__field textarea:hover {
+  border-color: #777777;
+}
+
+/* Orange focus glow */
+
+.contact-form__field input:focus,
+.contact-form__field select:focus,
+.contact-form__field textarea:focus {
+  background: #303030;
+
+  color: #ffffff;
+
+  border-color: #e9951a;
+
+  outline: none;
+
+  box-shadow:
+    0 0 0 3px rgba(233, 149, 26, 0.15),
+    0 0 20px rgba(233, 149, 26, 0.08);
+}
+
+/* Validation errors */
+
+.contact-form__field input[aria-invalid="true"],
+.contact-form__field select[aria-invalid="true"],
+.contact-form__field textarea[aria-invalid="true"] {
+  border-color: var(--color-error);
+}
+
+/* Error messages */
+
+.contact-form__error {
+  color: #ff9999;
+}
+
+/* Form submission error */
+
+.contact-form__submit-error {
+  background: rgba(197, 61, 61, 0.12);
+
+  border-color: #d96969;
+
+  color: #ffb2b2;
+}
+
+/* Success state */
+
+.contact-form__success h2 {
+  color: #ffffff;
+}
+
+.contact-form__success p {
+  color: #c0c0c0;
+}
+
+/* Disabled button readability */
+
+.contact-form__submit .button:disabled {
+  opacity: 0.65;
+}
+
+/* Accessibility: reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-form__field input,
+  .contact-form__field select,
+  .contact-form__field textarea {
+    transition: none;
+  }
+}
