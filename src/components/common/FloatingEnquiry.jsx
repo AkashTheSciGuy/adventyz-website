@@ -50,7 +50,7 @@ function FloatingEnquiry() {
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, [open]);
 
-  if (!visible) return null;
+  if (!visible || pathname === "/contact") return null;
 
   const message = [
     "Hello Adventyz, I'd like to enquire about your services.",
