@@ -860,6 +860,10 @@
   transition: color 0.2s ease;
 }
 .site-header__phone:hover { color: var(--color-brand); }
+/* Visually centre the phone number in the gap before the CTA. */
+@media (min-width: 1025px) {
+  .site-header__phone { transform: translateX(-90px); }
+}
 @media (max-width: 1024px) {
   .site-header__phone { display: none; }
 }
