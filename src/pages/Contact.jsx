@@ -87,13 +87,6 @@ function Contact() {
       newErrors.email = "Please enter a valid email address.";
     }
 
-    if (
-      formData.website.trim() &&
-      !/^https?:\/\/.+/i.test(formData.website.trim())
-    ) {
-      newErrors.website =
-        "Please include http:// or https:// in the website URL.";
-    }
 
     if (!formData.service) {
       newErrors.service = "Please select a service.";
@@ -342,10 +335,11 @@ function Contact() {
                     <input
                       id="website"
                       name="website"
-                      type="url"
+                      type="text"
+                      inputMode="url"
                       value={formData.website}
                       onChange={handleChange}
-                      placeholder="https://example.com"
+                      placeholder="example.com"
                       aria-invalid={Boolean(errors.website)}
                     />
 
