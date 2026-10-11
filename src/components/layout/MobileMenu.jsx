@@ -14,6 +14,9 @@ function MobileMenu({ open, onClose }) {
     }
 
     const previouslyFocusedElement = document.activeElement;
+    const background = [...document.querySelectorAll("#main-content, .site-footer, .floating-enquiry")];
+    const previousInert = background.map((element) => element.inert);
+    background.forEach((element) => { element.inert = true; });
 
     firstLinkRef.current?.focus();
 
@@ -58,6 +61,7 @@ function MobileMenu({ open, onClose }) {
 
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
+      background.forEach((element, index) => { element.inert = previousInert[index]; });
       previouslyFocusedElement?.focus();
     };
   }, [open, onClose]);
@@ -71,7 +75,13 @@ function MobileMenu({ open, onClose }) {
       id="mobile-navigation"
       className="mobile-menu"
       ref={menuRef}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navigation menu"
     >
+      <button type="button" className="mobile-menu__close" onClick={onClose}>
+        Close navigation
+      </button>
       <nav
         className="mobile-menu__nav"
         aria-label="Mobile navigation"

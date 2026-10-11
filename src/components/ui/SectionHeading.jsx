@@ -4,6 +4,7 @@ function SectionHeading({
   description,
   align = "left",
   className = "",
+  titleTag: Heading = "h2",
 }) {
   return (
     <div
@@ -13,7 +14,7 @@ function SectionHeading({
         <p className="section-heading__eyebrow">{eyebrow}</p>
       )}
 
-      <h2 className="section-heading__title">{title}</h2>
+      <Heading className="section-heading__title">{title}</Heading>
 
       {description && (
         <p className="section-heading__description">

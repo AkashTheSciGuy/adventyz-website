@@ -1,7 +1,7 @@
 
 import Button from "../../components/ui/Button";
 import Container from "../../components/ui/Container";
-import heroCardImage from "../../assets/images/hero-card-image4.png";
+import heroCardImage from "../../assets/images/hero-card-image4.webp";
 
 const marqueeServices = [
   "Digital Marketing",

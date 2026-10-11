@@ -14,6 +14,7 @@ function Process() {
         <section className="process-page__hero">
           <Container>
             <SectionHeading
+            titleTag="h1"
               eyebrow="Our Process"
               title="From idea to impact."
               description="A clear, collaborative process that turns strategy into meaningful creative work and measurable growth."

@@ -38,7 +38,7 @@
       rgba(8, 8, 8, 0.28),
       rgba(8, 8, 8, 0.08)
     ),
-    url("../assets/images/home-hero-background.png")
+    url("../assets/images/home-hero-background.webp")
       center / cover
       no-repeat;
 
@@ -1354,6 +1354,7 @@
   }
 
   .hero {
+    height: auto;
     min-height: auto;
   }
 
@@ -1413,7 +1414,9 @@
 
   .selected-work__card:last-child .selected-work__media,
   .selected-work__media {
+    width: 100%;
     aspect-ratio: 4 / 5;
+    max-height: 360px;
   }
 
   .services-preview__mobile-action .button,
@@ -1423,7 +1426,7 @@
 
   .hero {
     padding-block:
-      var(--space-9) calc(var(--space-9) + 58px);
+      var(--space-7) calc(var(--space-7) + 58px);
   }
 
   .hero__container {
@@ -2087,21 +2090,23 @@
 
 @media (max-width: 1024px) {
   .hero__visual {
+    height: 420px;
     min-height: 420px;
   }
 
   .hero__image-frame {
-    min-height: 420px;
+    min-height: 0;
   }
 }
 
 @media (max-width: 768px) {
   .hero__visual {
+    height: 320px;
     min-height: 320px;
   }
 
   .hero__image-frame {
-    min-height: 320px;
+    min-height: 0;
   }
 
   .hero__image-content {

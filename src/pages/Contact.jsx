@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MdOutlineEmail } from "react-icons/md";
 import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
@@ -7,6 +7,8 @@ import Reveal from "../components/common/Reveal";
 import Container from "../components/ui/Container";
 import Button from "../components/ui/Button";
 import { services } from "../data/services";
+import { validateContact } from "../utils/contactValidation";
+import { buildContactEmail } from "../utils/contactHandoffs";
 
 import "../styles/contact.css";
 
@@ -56,8 +58,19 @@ function Contact() {
   const [errors, setErrors] = useState({});
   const [submitStatus, setSubmitStatus] = useState("idle");
   const [submitError, setSubmitError] = useState("");
+  const successRef = useRef(null);
+  const emailDraftRef = useRef(null);
+  const requestRef = useRef(null);
+
+  useEffect(() => () => requestRef.current?.abort(), []);
+
+  useEffect(() => {
+    if (submitStatus === "success") successRef.current?.focus({ preventScroll: true });
+    if (submitStatus === "email") emailDraftRef.current?.focus({ preventScroll: true });
+  }, [submitStatus]);
 
   const handleChange = (event) => {
+    if (submitStatus === "loading") return;
     const { name, value } = event.target;
 
     setFormData((current) => ({
@@ -74,64 +87,41 @@ function Contact() {
     setSubmitError("");
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = "Please enter your name.";
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = "Please enter your email address.";
-    } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address.";
-    }
-
-
-    if (!formData.service) {
-      newErrors.service = "Please select a service.";
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message =
-        "Please tell us a little about your project.";
-    }
-
-    return newErrors;
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (requestRef.current) return;
 
-    const validationErrors = validateForm();
+    const validationErrors = validateContact(formData);
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       setSubmitStatus("idle");
+      document.getElementById(Object.keys(validationErrors)[0])?.focus();
       return;
     }
 
     const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT;
 
     if (!endpoint) {
-      setSubmitStatus("error");
-      setSubmitError(
-        "Online form submission is not configured yet. Please email infoadventyz@gmail.com instead."
-      );
+      setSubmitStatus("email");
       return;
     }
 
+    const controller = new AbortController();
+    requestRef.current = controller;
+    const timeout = setTimeout(() => controller.abort(), 15000);
     try {
       setErrors({});
       setSubmitError("");
       setSubmitStatus("loading");
 
       const response = await fetch(endpoint, {
+        signal: controller.signal,
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(Object.fromEntries(Object.entries(formData).map(([key, value]) => [key, value.trim()]))),
       });
 
       if (!response.ok) {
@@ -145,6 +135,9 @@ function Contact() {
       setSubmitError(
         "We couldn't send your enquiry right now. Please try again or email infoadventyz@gmail.com."
       );
+    } finally {
+      clearTimeout(timeout);
+      requestRef.current = null;
     }
   };
 
@@ -159,7 +152,7 @@ function Contact() {
                   Let's Talk
                 </span>
 
-                <h2>Have an idea? Let's make it happen.</h2>
+                <h1>Have an idea? Let's make it happen.</h1>
 
                 <p>
                   Whether you need a stronger digital presence,
@@ -220,6 +213,8 @@ function Contact() {
               {submitStatus === "success" ? (
                 <div
                   className="contact-form__success"
+                  ref={successRef}
+                  tabIndex={-1}
                   role="status"
                 >
                   <span className="contact-form__success-icon">
@@ -260,6 +255,10 @@ function Contact() {
                         name="name"
                         type="text"
                         autoComplete="name"
+                        required
+                        maxLength={100}
+                        disabled={submitStatus === "loading"}
+                        aria-describedby={errors.name ? "name-error" : undefined}
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="Your name"
@@ -267,7 +266,7 @@ function Contact() {
                       />
 
                       {errors.name && (
-                        <p className="contact-form__error">
+                        <p id="name-error" className="contact-form__error">
                           {errors.name}
                         </p>
                       )}
@@ -283,6 +282,10 @@ function Contact() {
                         name="email"
                         type="email"
                         autoComplete="email"
+                        required
+                        maxLength={150}
+                        disabled={submitStatus === "loading"}
+                        aria-describedby={errors.email ? "email-error" : undefined}
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="you@example.com"
@@ -290,7 +293,7 @@ function Contact() {
                       />
 
                       {errors.email && (
-                        <p className="contact-form__error">
+                        <p id="email-error" className="contact-form__error">
                           {errors.email}
                         </p>
                       )}
@@ -306,6 +309,8 @@ function Contact() {
                         name="phone"
                         type="tel"
                         autoComplete="tel"
+                        maxLength={25}
+                        disabled={submitStatus === "loading"}
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="+91"
@@ -322,6 +327,8 @@ function Contact() {
                         name="company"
                         type="text"
                         autoComplete="organization"
+                        maxLength={150}
+                        disabled={submitStatus === "loading"}
                         value={formData.company}
                         onChange={handleChange}
                         placeholder="Your company or brand"
@@ -337,6 +344,9 @@ function Contact() {
                       name="website"
                       type="text"
                       inputMode="url"
+                      maxLength={2048}
+                      disabled={submitStatus === "loading"}
+                      aria-describedby={errors.website ? "website-error" : undefined}
                       value={formData.website}
                       onChange={handleChange}
                       placeholder="example.com"
@@ -344,7 +354,7 @@ function Contact() {
                     />
 
                     {errors.website && (
-                      <p className="contact-form__error">
+                      <p id="website-error" className="contact-form__error">
                         {errors.website}
                       </p>
                     )}
@@ -359,6 +369,9 @@ function Contact() {
                       <select
                         id="service"
                         name="service"
+                        required
+                        disabled={submitStatus === "loading"}
+                        aria-describedby={errors.service ? "service-error" : undefined}
                         value={formData.service}
                         onChange={handleChange}
                         aria-invalid={Boolean(errors.service)}
@@ -378,7 +391,7 @@ function Contact() {
                       </select>
 
                       {errors.service && (
-                        <p className="contact-form__error">
+                        <p id="service-error" className="contact-form__error">
                           {errors.service}
                         </p>
                       )}
@@ -392,6 +405,7 @@ function Contact() {
                       <select
                         id="budget"
                         name="budget"
+                        disabled={submitStatus === "loading"}
                         value={formData.budget}
                         onChange={handleChange}
                       >
@@ -416,6 +430,10 @@ function Contact() {
                     <textarea
                       id="message"
                       name="message"
+                      required
+                      maxLength={2000}
+                      disabled={submitStatus === "loading"}
+                      aria-describedby={errors.message ? "message-error" : undefined}
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="What are you building? What are you trying to solve? Where do you want to go next?"
@@ -424,7 +442,7 @@ function Contact() {
                     />
 
                     {errors.message && (
-                      <p className="contact-form__error">
+                      <p id="message-error" className="contact-form__error">
                         {errors.message}
                       </p>
                     )}
@@ -436,6 +454,13 @@ function Contact() {
                       role="alert"
                     >
                       {submitError}
+                    </div>
+                  )}
+
+                  {submitStatus === "email" && (
+                    <div className="contact-form__email-draft" role="status">
+                      <p>Your enquiry is ready to email. Open the draft below and send it to infoadventyz@gmail.com from your email app.</p>
+                      <a ref={emailDraftRef} className="button button--primary" href={buildContactEmail(formData)}>Open email draft</a>
                     </div>
                   )}
 
