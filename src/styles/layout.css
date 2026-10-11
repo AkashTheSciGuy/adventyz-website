@@ -849,3 +849,17 @@
     transform: none;
   }
 }
+
+
+/* Header contact number */
+.site-header__phone {
+  color: #f7f7f7;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+.site-header__phone:hover { color: var(--color-brand); }
+@media (max-width: 1024px) {
+  .site-header__phone { display: none; }
+}
