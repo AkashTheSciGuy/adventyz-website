@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { MdOutlineEmail, MdClose } from "react-icons/md";
 import { FaWhatsapp } from "react-icons/fa";
 import { services } from "../../data/services";
+import { buildWhatsAppUrl } from "../../utils/contactHandoffs";
 import "../../styles/floating-enquiry.css";
 
-const whatsappNumber = "918105579097";
 const initialDetails = { name: "", email: "", phone: "", service: "", message: "" };
 
-function FloatingEnquiry() {
-  const { pathname } = useLocation();
+function EnquiryWidget({ pathname }) {
   const [visible, setVisible] = useState(false);
   const [open, setOpen] = useState(false);
   const [details, setDetails] = useState(initialDetails);
+  const [handoffReady, setHandoffReady] = useState(false);
+  const panelRef = useRef(null);
+  const triggerRef = useRef(null);
 
   useEffect(() => {
     const updateVisibility = () => {
@@ -24,8 +26,6 @@ function FloatingEnquiry() {
       }
     };
 
-    setVisible(false);
-    setOpen(false);
     updateVisibility();
     window.addEventListener("scroll", updateVisibility, { passive: true });
     window.addEventListener("resize", updateVisibility);
@@ -43,34 +43,37 @@ function FloatingEnquiry() {
 
   useEffect(() => {
     if (!open) return;
+    const trigger = triggerRef.current;
+    panelRef.current?.querySelector("input")?.focus({ preventScroll: true });
     const closeOnEscape = (event) => {
       if (event.key === "Escape") setOpen(false);
     };
     window.addEventListener("keydown", closeOnEscape);
-    return () => window.removeEventListener("keydown", closeOnEscape);
+    return () => {
+      window.removeEventListener("keydown", closeOnEscape);
+      trigger?.focus({ preventScroll: true });
+    };
   }, [open]);
 
-  if (!visible || pathname === "/contact") return null;
+  if ((!visible && !open) || pathname === "/contact") return null;
 
-  const message = [
-    "Hello Adventyz, I'd like to enquire about your services.",
-    details.name.trim() && `Name: ${details.name.trim()}`,
-    details.email.trim() && `Email: ${details.email.trim()}`,
-    details.phone.trim() && `Phone: ${details.phone.trim()}`,
-    details.service && `Service: ${details.service}`,
-    details.message.trim() && `Project: ${details.message.trim()}`,
-  ].filter(Boolean).join("\n");
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+  const whatsappUrl = buildWhatsAppUrl(details);
 
   const sendEnquiry = (event) => {
     event.preventDefault();
+    for (const field of ["name", "message"]) {
+      const input = event.currentTarget.elements.namedItem(field);
+      input.setCustomValidity(details[field].trim() ? "" : "Please enter a value, not only spaces.");
+      if (!input.reportValidity()) return;
+    }
+    setHandoffReady(true);
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
 
   return (
     <div className="floating-enquiry">
       {open && (
-        <section className="floating-enquiry__panel" aria-label="Quick enquiry form" id="floating-enquiry-panel">
+        <section ref={panelRef} role="dialog" className="floating-enquiry__panel" aria-label="Quick enquiry form" id="floating-enquiry-panel">
           <div className="floating-enquiry__heading">
             <div>
               <span className="floating-enquiry__eyebrow">LET'S TALK</span>
@@ -81,7 +84,10 @@ function FloatingEnquiry() {
               <MdClose size={22} />
             </button>
           </div>
-          <form className="floating-enquiry__form" onSubmit={sendEnquiry}>
+          <form className="floating-enquiry__form" onSubmit={sendEnquiry} onInput={(event) => {
+            event.target.setCustomValidity?.("");
+            setHandoffReady(false);
+          }}>
             <label htmlFor="quick-name">Name *</label>
             <input id="quick-name" name="name" autoComplete="name" required maxLength={100} placeholder="Your name" value={details.name} onChange={(e) => setDetails({ ...details, name: e.target.value })} />
 
@@ -104,7 +110,12 @@ function FloatingEnquiry() {
               <FaWhatsapp size={20} aria-hidden="true" />
               Send enquiry on WhatsApp
             </button>
-            <p className="floating-enquiry__note">Your details are shared only when you send the WhatsApp message.</p>
+            <p className="floating-enquiry__note">WhatsApp receives these details when you open the draft. Review your message before sending.</p>
+            {handoffReady && (
+              <p className="floating-enquiry__note" role="status">
+                If WhatsApp did not open, <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">continue on WhatsApp</a>. Review your message before sending.
+              </p>
+            )}
           </form>
           <a className="floating-enquiry__email" href="mailto:infoadventyz@gmail.com">
             <MdOutlineEmail size={18} aria-hidden="true" /> Prefer email? Contact us
@@ -112,12 +123,17 @@ function FloatingEnquiry() {
         </section>
       )}
 
-      <button type="button" className="floating-enquiry__trigger" aria-expanded={open} aria-controls="floating-enquiry-panel" onClick={() => setOpen((current) => !current)}>
+      <button ref={triggerRef} type="button" className="floating-enquiry__trigger" aria-expanded={open} aria-controls="floating-enquiry-panel" onClick={() => setOpen((current) => !current)}>
         <MdOutlineEmail size={21} aria-hidden="true" />
         <span>{open ? "Close enquiry" : "Enquire now"}</span>
       </button>
     </div>
   );
+}
+
+function FloatingEnquiry() {
+  const { pathname } = useLocation();
+  return <EnquiryWidget key={pathname} pathname={pathname} />;
 }
 
 export default FloatingEnquiry;

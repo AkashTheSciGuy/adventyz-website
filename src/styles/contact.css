@@ -58,7 +58,7 @@
   letter-spacing: 0.08em;
 }
 
-.contact-page__intro h2 {
+.contact-page__intro h1 {
   margin: 0;
   color: var(--color-text);
   font-family: var(--font-family-brand);
@@ -120,6 +120,13 @@
 .contact-form {
   display: grid;
   gap: var(--space-5);
+}
+
+.contact-form__email-draft {
+  display: grid;
+  gap: var(--space-4);
+  color: var(--color-white);
+  overflow-wrap: anywhere;
 }
 
 .contact-form__row {
@@ -295,7 +302,7 @@
     grid-template-columns: 1fr;
   }
 
-  .contact-page__intro h2 {
+  .contact-page__intro h1 {
     font-size: var(--font-size-2xl);
   }
 
@@ -329,7 +336,7 @@
   max-width: 650px;
 }
 
-.contact-page__intro h2 {
+.contact-page__intro h1 {
   font-size: clamp(3rem, 4.5vw, 4.5rem);
   line-height: 1.08;
 }
@@ -345,7 +352,7 @@
 }
 
 @media (max-width: 700px) {
-  .contact-page__intro h2 {
+  .contact-page__intro h1 {
     font-size: clamp(2.1rem, 8vw, 3rem);
   }
 

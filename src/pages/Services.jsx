@@ -19,6 +19,7 @@ function Services() {
       <Reveal>
         <Section className="services-page__intro">
           <SectionHeading
+            titleTag="h1"
             eyebrow="What We Do"
             title="Services built to move your brand forward."
             description="From growth and performance to content, production, digital experiences and brand design, Adventyz brings the pieces together under one roof."
@@ -36,9 +37,9 @@ function Services() {
                   delay={categoryIndex * 80}
                 >
                   <section className="services-page__group">
-                    <h3 className="services-page__category">
+                    <h2 className="services-page__category">
                       {category}
-                    </h3>
+                    </h2>
 
                     <div className="services-page__grid">
                       {categoryServices.map((service, index) => (
@@ -51,9 +52,9 @@ function Services() {
                               {String(index + 1).padStart(2, "0")}
                             </span>
 
-                            <h4 className="services-page__title">
+                            <h3 className="services-page__title">
                               {service.title}
-                            </h4>
+                            </h3>
 
                             <div className="services-page__content">
                               <div>

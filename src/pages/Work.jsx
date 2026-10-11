@@ -26,6 +26,7 @@ function Work() {
       <Reveal>
         <Section className="work-page__intro">
           <SectionHeading
+            titleTag="h1"
             eyebrow="Our Work"
             title="Work that brings ideas to life."
             description="Our portfolio spans social media, production, photography, branding, web and performance marketing."

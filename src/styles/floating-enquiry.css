@@ -33,7 +33,7 @@
 .floating-enquiry__panel {
   pointer-events: auto;
   width: min(370px, calc(100vw - 32px));
-  max-height: min(640px, calc(100dvh - 105px));
+  max-height: min(640px, calc(100dvh - 190px));
   overflow-y: auto;
   overscroll-behavior: contain;
   padding: 20px;
@@ -135,8 +135,11 @@
 }
 @media (max-width: 480px) {
   .floating-enquiry { right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); }
-  .floating-enquiry__panel { width: calc(100vw - 24px); padding: 16px; max-height: calc(100dvh - 88px); }
+  .floating-enquiry__panel { width: calc(100vw - 24px); padding: 16px; max-height: calc(100dvh - 170px); }
   .floating-enquiry__trigger { padding-inline: 16px; }
+  .floating-enquiry__form :is(input, select, textarea) { font-size: 16px; }
+  .floating-enquiry__close { width: 44px; height: 44px; }
+  .floating-enquiry__send { min-height: 44px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .floating-enquiry__trigger { transition: none; }
