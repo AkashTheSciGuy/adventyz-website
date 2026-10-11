@@ -1414,6 +1414,7 @@
 
   .selected-work__card:last-child .selected-work__media,
   .selected-work__media {
+    width: 100%;
     aspect-ratio: 4 / 5;
     max-height: 360px;
   }
