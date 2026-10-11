@@ -171,6 +171,7 @@ function Header() {
           </nav>
 
           <div className="site-header__actions">
+            <a className="site-header__phone" href="tel:+918105579097" aria-label="Call Adventyz at +91 8105579097">+91 8105579097</a>
             <Button
               to="/contact"
               className="site-header__cta"
