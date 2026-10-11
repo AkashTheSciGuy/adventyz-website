@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
+import FloatingEnquiry from "./components/common/FloatingEnquiry";
 import RouteChangeHandler from "./components/common/RouteChangeHandler";
 import RouteMetadata from "./components/common/RouteMetadata";
 
@@ -54,6 +55,7 @@ function App() {
       </div>
 
       <Footer />
+      <FloatingEnquiry />
     </div>
   );
 }
