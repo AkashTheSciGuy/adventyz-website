@@ -1,0 +1,49 @@
+/* Bright artwork stays local to the requested principle/approach/process cards. */
+article.light-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #fffaf1;
+}
+
+.light-card-image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.light-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 65% center;
+}
+
+.light-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  /* Keep the upper artwork visible; descriptions sit over a softer pale wash. */
+  background: linear-gradient(180deg, rgba(255, 250, 241, 0.6), rgba(255, 250, 241, 0.65) 40%, rgba(255, 250, 241, 0.94));
+}
+
+article.light-card :is(h2, h3) {
+  color: #111;
+}
+
+article.light-card p {
+  color: #333;
+}
+
+article.light-card :is(.why-adventyz__number, .process-preview__number, .process-card__number),
+.about-approach__card.light-card > span {
+  color: #914300;
+  align-self: flex-start;
+  width: fit-content;
+  background: rgba(255, 250, 241, 0.94);
+  box-shadow: 0 0 0 4px rgba(255, 250, 241, 0.94);
+  border-radius: 2px;
+}

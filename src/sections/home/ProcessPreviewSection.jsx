@@ -1,4 +1,5 @@
 import Button from "../../components/ui/Button";
+import LightCardImage from "../../components/common/LightCardImage";
 import Section from "../../components/ui/Section";
 import SectionHeading from "../../components/ui/SectionHeading";
 
@@ -25,8 +26,9 @@ function ProcessPreviewSection() {
         {previewSteps.map((step) => (
           <article
             key={step.number}
-            className="process-preview__card hover-lift"
+            className="process-preview__card hover-lift light-card"
           >
+            <LightCardImage image={step.image} />
             <span className="process-preview__number">
               {step.number}
             </span>

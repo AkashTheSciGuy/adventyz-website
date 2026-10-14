@@ -1,4 +1,5 @@
 import Reveal from "../components/common/Reveal";
+import LightCardImage from "../components/common/LightCardImage";
 import Container from "../components/ui/Container";
 import SectionHeading from "../components/ui/SectionHeading";
 import Button from "../components/ui/Button";
@@ -31,7 +32,8 @@ function Process() {
                 key={step.number}
                 delay={index * 80}
               >
-                <article className="process-card hover-lift">
+                <article className="process-card hover-lift light-card">
+                  <LightCardImage image={step.image} wide />
                   <div className="process-card__number">
                     {step.number}
                   </div>
