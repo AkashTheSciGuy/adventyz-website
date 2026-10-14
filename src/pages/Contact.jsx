@@ -4,6 +4,8 @@ import { MdOutlineEmail } from "react-icons/md";
 import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 import Reveal from "../components/common/Reveal";
+import LightCardImage from "../components/common/LightCardImage";
+import { lightCardImages } from "../data/lightCardImages";
 import Container from "../components/ui/Container";
 import Button from "../components/ui/Button";
 import { services } from "../data/services";
@@ -36,18 +38,21 @@ const nextSteps = [
   {
     number: "01",
     title: "We Connect",
+    image: lightCardImages.connect,
     description:
       "We review your inquiry and understand what you're looking to achieve.",
   },
   {
     number: "02",
     title: "We Discuss",
+    image: lightCardImages.discuss,
     description:
       "We explore your goals, ideas, and project requirements.",
   },
   {
     number: "03",
     title: "We Plan",
+    image: lightCardImages.plan,
     description:
       "We outline a possible approach and the next steps.",
   },
@@ -510,7 +515,8 @@ function Contact() {
                   key={step.number}
                   delay={index * 110}
                 >
-                  <article className="contact-page__next-card">
+                  <article className="contact-page__next-card light-card">
+                    <LightCardImage image={step.image} />
                     <span className="contact-page__next-number">
                       {step.number}
                     </span>

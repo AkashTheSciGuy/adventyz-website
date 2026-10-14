@@ -1,4 +1,16 @@
 export const lightCardImages = {
+  connect: {
+    small: new URL("../assets/images/light-cards/connect-480.webp", import.meta.url).href,
+    large: new URL("../assets/images/light-cards/connect-960.webp", import.meta.url).href,
+  },
+  discuss: {
+    small: new URL("../assets/images/light-cards/discuss-480.webp", import.meta.url).href,
+    large: new URL("../assets/images/light-cards/discuss-960.webp", import.meta.url).href,
+  },
+  plan: {
+    small: new URL("../assets/images/light-cards/plan-480.webp", import.meta.url).href,
+    large: new URL("../assets/images/light-cards/plan-960.webp", import.meta.url).href,
+  },
   "strategy-first": {
     small: new URL("../assets/images/light-cards/strategy-first-480.webp", import.meta.url).href,
     large: new URL("../assets/images/light-cards/strategy-first-960.webp", import.meta.url).href,
