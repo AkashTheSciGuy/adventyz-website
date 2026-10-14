@@ -1,6 +1,10 @@
 export const services = [
   {
     id: "social-media-management",
+    image: {
+      small: new URL("../assets/images/services/social-media-management-480.webp", import.meta.url).href,
+      large: new URL("../assets/images/services/social-media-management-960.webp", import.meta.url).href,
+    },
     title: "Social Media Management",
     category: "Growth / Performance",
     problem:
@@ -16,6 +20,10 @@ export const services = [
   },
   {
     id: "digital-marketing",
+    image: {
+      small: new URL("../assets/images/services/digital-marketing-480.webp", import.meta.url).href,
+      large: new URL("../assets/images/services/digital-marketing-960.webp", import.meta.url).href,
+    },
     title: "Digital Marketing",
     category: "Growth / Performance",
     problem:
@@ -31,6 +39,10 @@ export const services = [
   },
   {
     id: "meta-ads",
+    image: {
+      small: new URL("../assets/images/services/meta-ads-480.webp", import.meta.url).href,
+      large: new URL("../assets/images/services/meta-ads-960.webp", import.meta.url).href,
+    },
     title: "Meta Ads",
     category: "Growth / Performance",
     problem:
@@ -46,6 +58,10 @@ export const services = [
   },
   {
     id: "google-ads",
+    image: {
+      small: new URL("../assets/images/services/google-ads-480.webp", import.meta.url).href,
+      large: new URL("../assets/images/services/google-ads-960.webp", import.meta.url).href,
+    },
     title: "Google Ads",
     category: "Growth / Performance",
     problem:
@@ -61,6 +77,10 @@ export const services = [
   },
   {
     id: "content-creation",
+    image: {
+      small: new URL("../assets/images/services/content-creation-480.webp", import.meta.url).href,
+      large: new URL("../assets/images/services/content-creation-960.webp", import.meta.url).href,
+    },
     title: "Content Creation",
     category: "Content / Production",
     problem:
@@ -76,6 +96,10 @@ export const services = [
   },
   {
     id: "cinematic-video-production",
+    image: {
+      small: new URL("../assets/images/services/cinematic-video-production-480.webp", import.meta.url).href,
+      large: new URL("../assets/images/services/cinematic-video-production-960.webp", import.meta.url).href,
+    },
     title: "Cinematic Video Production",
     category: "Content / Production",
     problem:
@@ -91,6 +115,10 @@ export const services = [
   },
   {
     id: "photography",
+    image: {
+      small: new URL("../assets/images/services/photography-480.webp", import.meta.url).href,
+      large: new URL("../assets/images/services/photography-960.webp", import.meta.url).href,
+    },
     title: "Photography",
     category: "Content / Production",
     problem:
@@ -106,6 +134,10 @@ export const services = [
   },
   {
     id: "website-development",
+    image: {
+      small: new URL("../assets/images/services/website-development-480.webp", import.meta.url).href,
+      large: new URL("../assets/images/services/website-development-960.webp", import.meta.url).href,
+    },
     title: "Website Development",
     category: "Digital / Brand",
     problem:
@@ -121,6 +153,10 @@ export const services = [
   },
   {
     id: "branding-creative-design",
+    image: {
+      small: new URL("../assets/images/services/branding-creative-design-480.webp", import.meta.url).href,
+      large: new URL("../assets/images/services/branding-creative-design-960.webp", import.meta.url).href,
+    },
     title: "Branding & Creative Design",
     category: "Digital / Brand",
     problem:

@@ -1,4 +1,5 @@
 import { services } from "../../data/services";
+import ServiceCardImage from "../../components/common/ServiceCardImage";
 
 import Button from "../../components/ui/Button";
 import Section from "../../components/ui/Section";
@@ -25,8 +26,9 @@ function ServicesPreviewSection() {
         {featuredServices.map((service, index) => (
           <article
             key={service.id}
-            className="services-preview__card hover-lift"
+            className="services-preview__card hover-lift service-card--illustrated"
           >
+            <ServiceCardImage service={service} preview />
             <div className="services-preview__card-top">
               <span className="services-preview__number">
                 {String(index + 1).padStart(2, "0")}

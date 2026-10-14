@@ -1,4 +1,5 @@
 import Reveal from "../components/common/Reveal";
+import ServiceCardImage from "../components/common/ServiceCardImage";
 import Section from "../components/ui/Section";
 import SectionHeading from "../components/ui/SectionHeading";
 import Button from "../components/ui/Button";
@@ -47,7 +48,8 @@ function Services() {
                           key={service.id}
                           delay={index * 70}
                         >
-                          <article className="services-page__card">
+                          <article className="services-page__card service-card--illustrated">
+                            <ServiceCardImage service={service} />
                             <span className="services-page__number">
                               {String(index + 1).padStart(2, "0")}
                             </span>
