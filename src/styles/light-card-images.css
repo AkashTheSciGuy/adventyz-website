@@ -1,4 +1,4 @@
-/* Bright artwork stays local to the requested principle/approach/process cards. */
+/* Bright artwork stays local to articles explicitly marked as light cards. */
 article.light-card {
   position: relative;
   isolation: isolate;
@@ -38,7 +38,7 @@ article.light-card p {
   color: #333;
 }
 
-article.light-card :is(.why-adventyz__number, .process-preview__number, .process-card__number),
+article.light-card :is(.why-adventyz__number, .process-preview__number, .process-card__number, .contact-page__next-number),
 .about-approach__card.light-card > span {
   color: #914300;
   align-self: flex-start;
