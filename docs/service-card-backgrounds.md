@@ -34,10 +34,14 @@ Artwork is stored locally in `src/assets/images/services/` as 480×320 and 960×
 - Browser console and uncaught-error capture reported zero errors during those checks.
 - Mobile Home → Services CTA, direct Services load and reload passed. Reduced-motion rendering and the existing normal reveal animation were checked.
 - Desktop and mobile screenshots were visually inspected for subject distinction, crop, legibility and card layout. Example screenshots are linked below. Some screenshot headings are above the viewport after scrolling to the cards; this is the existing sticky header behavior.
-- Contrast measured over actual rendered image backgrounds at 320, 390 and 1440px across all cards: 351 text bounding regions passed a conservative 4.5:1 threshold; minimum measured ratio was 4.83:1. Text was temporarily hidden for background sampling, and unrelated fixed header/enquiry controls were excluded from these measurements. This is a targeted contrast check, not a full accessibility certification.
+- Contrast measured over actual rendered image backgrounds at 320, 390 and 1440px across all cards: 351 text bounding regions passed a conservative 4.5:1 threshold; minimum measured ratio was 4.72:1 after lightening the overlays. Text was temporarily made transparent for background sampling while retaining label backplates, and unrelated fixed header/enquiry controls were excluded from these measurements. This is a targeted contrast check, not a full accessibility certification.
 - `git diff --check`: passed.
 
 Performance verification covers payload sizes, responsive sources, lazy/async loading and layout stability by construction. No Lighthouse score or real-device/network benchmark is claimed. Existing large hero images are outside this change. Browser testing used the local production preview; hosted routing and production infrastructure were not changed or tested.
+
+## Lighter overlay revision
+
+Reduced the shading across the image detail and lower portion of the Home cards. Services cards now use 65% black at the middle and 78% at the bottom, down from 86% and 94%, so artwork is more apparent behind the copy. The top remains shaded for orange numbers. Subtle local backplates protect small category and section labels without darkening the entire image. Updated screenshots below show this revision. Build, lint, all 14 route/width checks, mobile navigation/refresh and the 351-region contrast check passed again. Image bytes and loading behavior are unchanged.
 
 ![Home cards at 390px](service-card-assets/home-390.png)
 
