@@ -1,6 +1,8 @@
 import { motion, useReducedMotion } from "motion/react";
 
 import Section from "../../components/ui/Section";
+import LightCardImage from "../../components/common/LightCardImage";
+import { lightCardImages } from "../../data/lightCardImages";
 import SectionHeading from "../../components/ui/SectionHeading";
 import SpotlightCard from "../../components/common/SpotlightCard";
 
@@ -8,18 +10,21 @@ const principles = [
   {
     number: "01",
     title: "Strategy First",
+    image: lightCardImages["strategy-first"],
     description:
       "Creative decisions begin with the business, audience and objective rather than content for content's sake.",
   },
   {
     number: "02",
     title: "One Creative Direction",
+    image: lightCardImages["creative-direction"],
     description:
       "Marketing, branding, content and production are approached as connected parts of the same brand experience.",
   },
   {
     number: "03",
     title: "Built for Modern Brands",
+    image: lightCardImages["modern-brands"],
     description:
       "Digital-first creative work designed for businesses competing for attention across today's online platforms.",
   },
@@ -51,10 +56,11 @@ function WhyAdventyzSection() {
             }}
           >
             <SpotlightCard
-              className="why-adventyz__card hover-lift"
+              className="why-adventyz__card hover-lift light-card"
               tilt={true}
               spotlightColor="rgba(233, 149, 26, 0.15)"
             >
+              <LightCardImage image={principle.image} />
               <div className="why-adventyz__number-wrap">
                 <span className="why-adventyz__number">
                   {principle.number}

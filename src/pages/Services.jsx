@@ -1,4 +1,5 @@
 import Reveal from "../components/common/Reveal";
+import ServiceCardImage from "../components/common/ServiceCardImage";
 import Section from "../components/ui/Section";
 import SectionHeading from "../components/ui/SectionHeading";
 import Button from "../components/ui/Button";
@@ -49,10 +50,12 @@ function Services() {
                           delay={index * 70}
                         >
                           <SpotlightCard
-                            className="services-page__card"
+                            className="services-page__card service-card--illustrated hover-lift"
                             spotlightColor="rgba(233, 149, 26, 0.16)"
                             tilt={true}
                           >
+                            <ServiceCardImage service={service} />
+
                             <span className="services-page__number">
                               {String(index + 1).padStart(2, "0")}
                             </span>

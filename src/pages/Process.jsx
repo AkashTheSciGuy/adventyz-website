@@ -1,4 +1,5 @@
 import Reveal from "../components/common/Reveal";
+import LightCardImage from "../components/common/LightCardImage";
 import Container from "../components/ui/Container";
 import SectionHeading from "../components/ui/SectionHeading";
 import Button from "../components/ui/Button";
@@ -33,10 +34,11 @@ function Process() {
                 delay={index * 80}
               >
                 <SpotlightCard
-                  className="process-card hover-lift"
+                  className="process-card hover-lift light-card"
                   spotlightColor="rgba(233, 149, 26, 0.16)"
                   tilt={true}
                 >
+                  <LightCardImage image={step.image} wide />
                   <div className="process-card__number">
                     {step.number}
                   </div>

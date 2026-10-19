@@ -1,0 +1,61 @@
+/* Scoped to service cards: preserve existing dimensions and page surfaces. */
+.services-preview__card.service-card--illustrated,
+.services-page__card.service-card--illustrated {
+  isolation: isolate;
+  overflow: hidden;
+  background: #111;
+  --color-text: #fff;
+  --color-text-muted: #e5e5e5;
+  --color-border: rgba(255, 255, 255, 0.22);
+}
+
+.service-card-image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.service-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 65% center;
+}
+
+.service-card--illustrated::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.68) 30%, rgba(0, 0, 0, 0.48) 45%, rgba(0, 0, 0, 0.7) 65%, rgba(0, 0, 0, 0.8));
+}
+
+.services-page__card.service-card--illustrated::before {
+  /* Detailed copy needs a stronger scrim even over bright image highlights. */
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.65) 35%, rgba(0, 0, 0, 0.78));
+}
+
+.services-preview__card.service-card--illustrated h3 {
+  color: #fff;
+}
+
+.service-card--illustrated .services-preview__category {
+  color: #f0f0f0;
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+}
+
+.service-card--illustrated .services-page__deliverables li {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Protect small orange labels locally while keeping the artwork visible. */
+.service-card--illustrated .services-page__content-label {
+  width: fit-content;
+  background: rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.35);
+  border-radius: 2px;
+}

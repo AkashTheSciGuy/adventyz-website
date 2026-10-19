@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "motion/react";
 
 import Button from "../../components/ui/Button";
+import LightCardImage from "../../components/common/LightCardImage";
 import Section from "../../components/ui/Section";
 import SectionHeading from "../../components/ui/SectionHeading";
 import SpotlightCard from "../../components/common/SpotlightCard";
@@ -40,10 +41,11 @@ function ProcessPreviewSection() {
             }}
           >
             <SpotlightCard
-              className="process-preview__card hover-lift"
+              className="process-preview__card hover-lift light-card"
               tilt={true}
               spotlightColor="rgba(233, 149, 26, 0.16)"
             >
+              <LightCardImage image={step.image} />
               <div className="process-preview__card-head">
                 <span className="process-preview__number">
                   {step.number}
