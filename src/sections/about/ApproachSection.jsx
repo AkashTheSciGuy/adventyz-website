@@ -1,5 +1,7 @@
+import { motion, useReducedMotion } from "motion/react";
 import Section from "../../components/ui/Section";
 import SectionHeading from "../../components/ui/SectionHeading";
+import SpotlightCard from "../../components/common/SpotlightCard";
 
 const approachSteps = [
   {
@@ -29,6 +31,8 @@ const approachSteps = [
 ];
 
 function ApproachSection() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <Section className="about-approach">
       <SectionHeading
@@ -38,15 +42,28 @@ function ApproachSection() {
       />
 
       <div className="about-approach__grid">
-        {approachSteps.map((step) => (
-          <article
+        {approachSteps.map((step, index) => (
+          <motion.div
             key={step.number}
-            className="about-approach__card"
+            initial={reduceMotion ? false : { opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{
+              duration: 0.65,
+              delay: index * 0.1,
+              ease: [0.22, 1, 0.36, 1],
+            }}
           >
-            <span>{step.number}</span>
-            <h3>{step.title}</h3>
-            <p>{step.description}</p>
-          </article>
+            <SpotlightCard
+              className="about-approach__card hover-lift"
+              spotlightColor="rgba(233, 149, 26, 0.16)"
+              tilt={true}
+            >
+              <span>{step.number}</span>
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+            </SpotlightCard>
+          </motion.div>
         ))}
       </div>
     </Section>

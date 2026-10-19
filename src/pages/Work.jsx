@@ -1,7 +1,10 @@
+import { useState } from "react";
+import { motion, useReducedMotion } from "motion/react";
 import Reveal from "../components/common/Reveal";
 import Section from "../components/ui/Section";
 import SectionHeading from "../components/ui/SectionHeading";
 import Button from "../components/ui/Button";
+import SpotlightCard from "../components/common/SpotlightCard";
 
 import { projects } from "../data/projects";
 
@@ -17,9 +20,17 @@ const categories = [
 ];
 
 function Work() {
+  const reduceMotion = useReducedMotion();
+  const [activeCategory, setActiveCategory] = useState("All");
+
   const verifiedProjects = projects.filter(
     (project) => project.verified === true,
   );
+
+  const filteredProjects =
+    activeCategory === "All"
+      ? verifiedProjects
+      : verifiedProjects.filter((p) => p.category === activeCategory);
 
   return (
     <main className="work-page">
@@ -39,28 +50,48 @@ function Work() {
                   className="work-page__filters"
                   aria-label="Project categories"
                 >
-                  <span className="work-page__filter work-page__filter--active">
+                  <button
+                    type="button"
+                    onClick={() => setActiveCategory("All")}
+                    className={`work-page__filter ${
+                      activeCategory === "All" ? "work-page__filter--active" : ""
+                    }`}
+                  >
                     All
-                  </span>
+                  </button>
 
                   {categories.map((category) => (
-                    <span
+                    <button
+                      type="button"
                       key={category}
-                      className="work-page__filter"
+                      onClick={() => setActiveCategory(category)}
+                      className={`work-page__filter ${
+                        activeCategory === category ? "work-page__filter--active" : ""
+                      }`}
                     >
                       {category}
-                    </span>
+                    </button>
                   ))}
                 </div>
               </Reveal>
 
               <div className="work-page__grid">
-                {verifiedProjects.map((project, index) => (
-                  <Reveal
+                {filteredProjects.map((project, index) => (
+                  <motion.div
                     key={project.id}
-                    delay={index * 90}
+                    initial={reduceMotion ? false : { opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: index * 0.08,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
                   >
-                    <article className="work-card">
+                    <SpotlightCard
+                      className="work-card hover-lift"
+                      spotlightColor="rgba(233, 149, 26, 0.16)"
+                      tilt={true}
+                    >
                       <div className="work-card__media media-reveal">
                         {project.coverMedia?.src ? (
                           <img
@@ -105,14 +136,18 @@ function Work() {
                           ))}
                         </div>
                       </div>
-                    </article>
-                  </Reveal>
+                    </SpotlightCard>
+                  </motion.div>
                 ))}
               </div>
             </>
           ) : (
             <Reveal delay={80}>
-              <div className="work-page__empty">
+              <SpotlightCard
+                className="work-page__empty"
+                spotlightColor="rgba(233, 149, 26, 0.14)"
+                tilt={false}
+              >
                 <span className="work-page__empty-label">
                   Portfolio in progress
                 </span>
@@ -128,13 +163,24 @@ function Work() {
                 </p>
 
                 <div className="work-page__capabilities">
-                  {categories.map((category) => (
-                    <span key={category}>
+                  {categories.map((category, index) => (
+                    <motion.span
+                      key={category}
+                      initial={reduceMotion ? false : { opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: 0.4,
+                        delay: index * 0.05,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className="hover-lift"
+                    >
                       {category}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
-              </div>
+              </SpotlightCard>
             </Reveal>
           )}
         </Section>
@@ -150,7 +196,7 @@ function Work() {
           />
 
           <div className="work-page__cta-action">
-            <Button to="/contact">
+            <Button to="/contact" className="button--glow">
               Book a Consultation
             </Button>
           </div>

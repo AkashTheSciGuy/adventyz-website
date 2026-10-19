@@ -1,5 +1,8 @@
+import { motion, useReducedMotion } from "motion/react";
+
 import Section from "../../components/ui/Section";
 import SectionHeading from "../../components/ui/SectionHeading";
+import SpotlightCard from "../../components/common/SpotlightCard";
 
 const principles = [
   {
@@ -23,6 +26,8 @@ const principles = [
 ];
 
 function WhyAdventyzSection() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <Section className="why-adventyz">
       <SectionHeading
@@ -32,19 +37,36 @@ function WhyAdventyzSection() {
       />
 
       <div className="why-adventyz__grid">
-        {principles.map((principle) => (
-          <article
+        {principles.map((principle, index) => (
+          <motion.div
             key={principle.number}
-            className="why-adventyz__card"
+            className="why-adventyz__item"
+            initial={reduceMotion ? false : { opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+              duration: 0.7,
+              delay: index * 0.12,
+              ease: [0.22, 1, 0.36, 1],
+            }}
           >
-            <span className="why-adventyz__number">
-              {principle.number}
-            </span>
+            <SpotlightCard
+              className="why-adventyz__card hover-lift"
+              tilt={true}
+              spotlightColor="rgba(233, 149, 26, 0.15)"
+            >
+              <div className="why-adventyz__number-wrap">
+                <span className="why-adventyz__number">
+                  {principle.number}
+                </span>
+                <span className="why-adventyz__number-badge" aria-hidden="true" />
+              </div>
 
-            <h3>{principle.title}</h3>
+              <h3>{principle.title}</h3>
 
-            <p>{principle.description}</p>
-          </article>
+              <p>{principle.description}</p>
+            </SpotlightCard>
+          </motion.div>
         ))}
       </div>
     </Section>

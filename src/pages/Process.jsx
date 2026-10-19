@@ -2,6 +2,7 @@ import Reveal from "../components/common/Reveal";
 import Container from "../components/ui/Container";
 import SectionHeading from "../components/ui/SectionHeading";
 import Button from "../components/ui/Button";
+import SpotlightCard from "../components/common/SpotlightCard";
 
 import { processSteps } from "../data/process";
 
@@ -14,7 +15,7 @@ function Process() {
         <section className="process-page__hero">
           <Container>
             <SectionHeading
-            titleTag="h1"
+              titleTag="h1"
               eyebrow="Our Process"
               title="From idea to impact."
               description="A clear, collaborative process that turns strategy into meaningful creative work and measurable growth."
@@ -31,7 +32,11 @@ function Process() {
                 key={step.number}
                 delay={index * 80}
               >
-                <article className="process-card hover-lift">
+                <SpotlightCard
+                  className="process-card hover-lift"
+                  spotlightColor="rgba(233, 149, 26, 0.16)"
+                  tilt={true}
+                >
                   <div className="process-card__number">
                     {step.number}
                   </div>
@@ -45,7 +50,7 @@ function Process() {
                       {step.description}
                     </p>
                   </div>
-                </article>
+                </SpotlightCard>
               </Reveal>
             ))}
           </div>
@@ -63,7 +68,7 @@ function Process() {
             />
 
             <div className="process-page__cta-action">
-              <Button to="/contact">
+              <Button to="/contact" className="button--glow">
                 Book a Consultation
               </Button>
             </div>

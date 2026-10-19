@@ -1,4 +1,6 @@
+import { motion, useReducedMotion } from "motion/react";
 import Section from "../../components/ui/Section";
+import SpotlightCard from "../../components/common/SpotlightCard";
 
 const beliefs = [
   {
@@ -19,6 +21,8 @@ const beliefs = [
 ];
 
 function BeliefsSection() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <Section className="about-beliefs">
       <div className="about-beliefs__header">
@@ -28,25 +32,38 @@ function BeliefsSection() {
 
         <h2>
           Good creative should do
-          <span> more than look good.</span>
+          <span className="hero__title-accent--shimmer"> more than look good.</span>
         </h2>
       </div>
 
       <div className="about-beliefs__list">
         {beliefs.map((belief, index) => (
-          <article
+          <motion.div
             key={belief.title}
-            className="about-beliefs__item"
+            initial={reduceMotion ? false : { opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+              duration: 0.65,
+              delay: index * 0.1,
+              ease: [0.22, 1, 0.36, 1],
+            }}
           >
-            <span className="about-beliefs__number">
-              0{index + 1}
-            </span>
+            <SpotlightCard
+              className="about-beliefs__item hover-lift"
+              spotlightColor="rgba(233, 149, 26, 0.16)"
+              tilt={true}
+            >
+              <span className="about-beliefs__number">
+                0{index + 1}
+              </span>
 
-            <div>
-              <h3>{belief.title}</h3>
-              <p>{belief.description}</p>
-            </div>
-          </article>
+              <div>
+                <h3>{belief.title}</h3>
+                <p>{belief.description}</p>
+              </div>
+            </SpotlightCard>
+          </motion.div>
         ))}
       </div>
     </Section>

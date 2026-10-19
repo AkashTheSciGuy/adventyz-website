@@ -2,6 +2,7 @@ import Reveal from "../components/common/Reveal";
 import Section from "../components/ui/Section";
 import SectionHeading from "../components/ui/SectionHeading";
 import Button from "../components/ui/Button";
+import SpotlightCard from "../components/common/SpotlightCard";
 
 import { services } from "../data/services";
 
@@ -47,7 +48,11 @@ function Services() {
                           key={service.id}
                           delay={index * 70}
                         >
-                          <article className="services-page__card">
+                          <SpotlightCard
+                            className="services-page__card"
+                            spotlightColor="rgba(233, 149, 26, 0.16)"
+                            tilt={true}
+                          >
                             <span className="services-page__number">
                               {String(index + 1).padStart(2, "0")}
                             </span>
@@ -93,7 +98,7 @@ function Services() {
                                 </ul>
                               </div>
                             </div>
-                          </article>
+                          </SpotlightCard>
                         </Reveal>
                       ))}
                     </div>
@@ -115,7 +120,7 @@ function Services() {
           />
 
           <div className="services-page__cta-action">
-            <Button to="/contact">
+            <Button to="/contact" className="button--glow">
               Book a Consultation
             </Button>
           </div>

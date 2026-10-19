@@ -1,5 +1,7 @@
+import { motion, useReducedMotion } from "motion/react";
 import Section from "../../components/ui/Section";
 import Button from "../../components/ui/Button";
+import SpotlightCard from "../../components/common/SpotlightCard";
 
 const reasons = [
   "Strategy and creative execution under one direction",
@@ -9,6 +11,8 @@ const reasons = [
 ];
 
 function WhyAdventyzSection() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <Section className="about-why">
       <div className="about-why__grid">
@@ -19,7 +23,7 @@ function WhyAdventyzSection() {
 
           <h2>
             One direction.
-            <span> Multiple capabilities.</span>
+            <span className="hero__title-accent--shimmer"> Multiple capabilities.</span>
           </h2>
 
           <p>
@@ -31,13 +35,26 @@ function WhyAdventyzSection() {
 
         <div className="about-why__reasons">
           {reasons.map((reason, index) => (
-            <div
+            <motion.div
               key={reason}
-              className="about-why__reason"
+              initial={reduceMotion ? false : { opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.08,
+                ease: [0.22, 1, 0.36, 1],
+              }}
             >
-              <span>0{index + 1}</span>
-              <p>{reason}</p>
-            </div>
+              <SpotlightCard
+                className="about-why__reason hover-lift"
+                spotlightColor="rgba(233, 149, 26, 0.15)"
+                tilt={true}
+              >
+                <span>0{index + 1}</span>
+                <p>{reason}</p>
+              </SpotlightCard>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -53,7 +70,7 @@ function WhyAdventyzSection() {
           </h2>
         </div>
 
-        <Button to="/contact">
+        <Button to="/contact" className="button--glow">
           Book a Consultation
         </Button>
       </div>

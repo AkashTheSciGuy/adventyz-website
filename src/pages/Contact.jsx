@@ -6,6 +6,7 @@ import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import Reveal from "../components/common/Reveal";
 import Container from "../components/ui/Container";
 import Button from "../components/ui/Button";
+import SpotlightCard from "../components/common/SpotlightCard";
 import { services } from "../data/services";
 import { validateContact } from "../utils/contactValidation";
 import { buildContactEmail } from "../utils/contactHandoffs";
@@ -468,6 +469,7 @@ function Contact() {
                     <Button
                       type="submit"
                       disabled={submitStatus === "loading"}
+                      className="button--glow"
                     >
                       {submitStatus === "loading"
                         ? "Sending..."
@@ -510,7 +512,11 @@ function Contact() {
                   key={step.number}
                   delay={index * 110}
                 >
-                  <article className="contact-page__next-card">
+                  <SpotlightCard
+                    className="contact-page__next-card hover-lift"
+                    spotlightColor="rgba(233, 149, 26, 0.16)"
+                    tilt={true}
+                  >
                     <span className="contact-page__next-number">
                       {step.number}
                     </span>
@@ -519,7 +525,7 @@ function Contact() {
                       <h3>{step.title}</h3>
                       <p>{step.description}</p>
                     </div>
-                  </article>
+                  </SpotlightCard>
                 </Reveal>
               ))}
             </div>

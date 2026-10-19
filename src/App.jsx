@@ -1,11 +1,15 @@
 import { lazy, Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { AnimatePresence } from "motion/react";
 
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import FloatingEnquiry from "./components/common/FloatingEnquiry";
 import RouteChangeHandler from "./components/common/RouteChangeHandler";
 import RouteMetadata from "./components/common/RouteMetadata";
+import CustomCursor from "./components/common/CustomCursor";
+import ScrollProgress from "./components/common/ScrollProgress";
+import PageTransition from "./components/common/PageTransition";
 
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -25,8 +29,12 @@ function PageFallback() {
 }
 
 function App() {
+  const location = useLocation();
+
   return (
     <div className="app">
+      <CustomCursor />
+      <ScrollProgress />
       <RouteChangeHandler />
       <RouteMetadata />
 
@@ -42,15 +50,17 @@ function App() {
         tabIndex="-1"
       >
         <Suspense fallback={<PageFallback />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/work" element={<Work />} />
-            <Route path="/process" element={<Process />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+              <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+              <Route path="/services" element={<PageTransition><Services /></PageTransition>} />
+              <Route path="/work" element={<PageTransition><Work /></PageTransition>} />
+              <Route path="/process" element={<PageTransition><Process /></PageTransition>} />
+              <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+              <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+            </Routes>
+          </AnimatePresence>
         </Suspense>
       </div>
 

@@ -734,16 +734,17 @@
 
 .services-preview__grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(
-      3,
-      minmax(0, 1fr)
-    );
-
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  align-items: stretch;
   gap: var(--space-4);
 }
 
+.services-preview__item {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
 /* ========================================
    Service Card
@@ -751,34 +752,20 @@
 
 .services-preview__card {
   position: relative;
-
   min-width: 0;
-  min-height: 240px;
-
+  height: 100%;
+  min-height: 250px;
   display: flex;
-
   flex-direction: column;
-
   justify-content: space-between;
-
-  gap: var(--space-6);
-
+  flex: 1 1 auto;
+  gap: var(--space-4);
   padding: var(--space-5);
-
   background: var(--home-card);
-
-  border:
-    1px solid
-    var(--color-border);
-
-  border-radius:
-    var(--radius-md);
-
-  box-shadow:
-    var(--shadow-sm);
-
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   overflow: hidden;
-
   transition:
     transform var(--transition-base),
     border-color var(--transition-base),
@@ -886,28 +873,14 @@
 
 .services-preview__card h3 {
   position: relative;
-
   z-index: 1;
-
   max-width: 280px;
-
-  margin: 0;
-
+  margin: var(--space-4) 0 auto;
   color: var(--color-black);
-
   font-family: var(--font-family-brand);
-
-  font-size:
-    clamp(
-      1.5rem,
-      2.3vw,
-      2rem
-    );
-
+  font-size: clamp(1.45rem, 2.1vw, 1.9rem);
   font-weight: 800;
-
-  line-height: 1.05;
-
+  line-height: 1.15;
   letter-spacing: -0.015em;
 }
 
@@ -1053,27 +1026,29 @@
 
 .why-adventyz__grid {
   display: grid;
-
   grid-template-columns: repeat(3, 1fr);
-
+  grid-auto-rows: 1fr;
+  align-items: stretch;
   gap: var(--space-4);
+}
+
+.why-adventyz__item {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .why-adventyz__card {
   min-height: 340px;
-
+  height: 100%;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-
   padding: var(--space-6);
-
   background: var(--color-white);
-
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-
   box-shadow: var(--shadow-sm);
-
   transition:
     transform var(--transition-base),
     border-color var(--transition-base),
@@ -1208,26 +1183,29 @@
 
 .process-preview__grid {
   display: grid;
-
   grid-template-columns: repeat(4, minmax(0, 1fr));
-
+  grid-auto-rows: 1fr;
+  align-items: stretch;
   gap: var(--space-4);
+}
+
+.process-preview__item {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .process-preview__card {
   min-height: 280px;
-
+  height: 100%;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   padding: var(--space-5);
-
   background: var(--color-white);
-
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-
   box-shadow: var(--shadow-sm);
 
   transition:
@@ -2122,3 +2100,415 @@
     font-size: 0.78rem;
   }
 }
+
+/* ========================================
+   Hero Animations & Interactive Upgrades
+   ======================================== */
+
+.hero__particles-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero__eyebrow-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: rgba(233, 149, 26, 0.12);
+  border: 1px solid rgba(233, 149, 26, 0.32);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.hero__eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-brand);
+  box-shadow: 0 0 10px var(--color-brand), 0 0 18px rgba(233, 149, 26, 0.6);
+  animation: pulse-dot 2.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.hero__title-accent--shimmer {
+  background: linear-gradient(
+    115deg,
+    #e9951a 0%,
+    #f8b652 35%,
+    #fff4df 50%,
+    #f8b652 65%,
+    #e9951a 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shine 7s ease-in-out infinite;
+}
+
+.hero__visual-wrapper {
+  position: relative;
+  perspective: 1200px;
+  z-index: 3;
+}
+
+/* Floating interactive badges */
+.hero__floating-badge {
+  position: absolute;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 18px;
+  border-radius: 16px;
+  background: rgba(18, 16, 14, 0.85);
+  border: 1px solid rgba(233, 149, 26, 0.42);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.45),
+    0 0 24px rgba(233, 149, 26, 0.2);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  pointer-events: none;
+  user-select: none;
+  color: #fff;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero__floating-badge-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: rgba(233, 149, 26, 0.18);
+  color: var(--color-brand);
+  font-size: 1.1rem;
+  border: 1px solid rgba(233, 149, 26, 0.3);
+  box-shadow: 0 0 12px rgba(233, 149, 26, 0.35);
+}
+
+.hero__floating-badge strong {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+
+.hero__floating-badge small {
+  display: block;
+  font-size: 0.74rem;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero__floating-badge--top {
+  top: -24px;
+  left: -28px;
+  animation: badge-float-top 5.5s ease-in-out infinite;
+}
+
+.hero__floating-badge--bottom {
+  bottom: -22px;
+  right: -24px;
+  animation: badge-float-bottom 6.2s ease-in-out infinite 0.8s;
+}
+
+/* Button glow */
+.button--glow {
+  position: relative;
+  box-shadow:
+    0 4px 18px rgba(233, 149, 26, 0.35),
+    0 0 0 1px rgba(233, 149, 26, 0.4);
+  overflow: hidden;
+}
+
+.button--glow::after {
+  content: "";
+  position: absolute;
+  inset: -100%;
+  background: linear-gradient(
+    90deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 80%
+  );
+  transform: translateX(-100%) rotate(25deg);
+  animation: button-sheen 5s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 10px var(--color-brand), 0 0 18px rgba(233, 149, 26, 0.6);
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.75;
+    box-shadow: 0 0 14px var(--color-brand), 0 0 26px rgba(233, 149, 26, 0.9);
+  }
+}
+
+@keyframes text-shine {
+  0% {
+    background-position: 180% 0%;
+  }
+  50% {
+    background-position: -20% 0%;
+  }
+  100% {
+    background-position: -20% 0%;
+  }
+}
+
+@keyframes badge-float-top {
+  0%, 100% {
+    transform: translateY(0px) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(1.5deg);
+  }
+}
+
+@keyframes badge-float-bottom {
+  0%, 100% {
+    transform: translateY(0px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(10px) rotate(-1.5deg);
+  }
+}
+
+@keyframes button-sheen {
+  0%, 65% {
+    transform: translateX(-120%) rotate(25deg);
+  }
+  85%, 100% {
+    transform: translateX(120%) rotate(25deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__floating-badge {
+    padding: 7px 12px;
+    gap: 8px;
+  }
+  .hero__floating-badge-icon {
+    width: 26px;
+    height: 26px;
+    font-size: 0.85rem;
+  }
+  .hero__floating-badge strong {
+    font-size: 0.8rem;
+  }
+  .hero__floating-badge small {
+    font-size: 0.65rem;
+  }
+  .hero__floating-badge--top {
+    top: -14px;
+    left: -10px;
+  }
+  .hero__floating-badge--bottom {
+    bottom: -14px;
+    right: -10px;
+  }
+}
+
+/* ========================================
+   Interactive Section Enhancements
+   ======================================== */
+
+/* Services Preview Arrow */
+.services-preview__card-bottom {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+  padding-top: var(--space-4);
+}
+
+.services-preview__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--color-brand);
+  font-size: 1.15rem;
+  font-weight: 700;
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 250ms ease,
+    color 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.services-preview__card:hover .services-preview__arrow {
+  transform: translate(3px, -3px) rotate(-45deg);
+  background: var(--color-brand);
+  color: #000;
+  box-shadow: 0 4px 14px rgba(233, 149, 26, 0.45);
+}
+
+/* Selected Work Media Overlay */
+.selected-work__media {
+  position: relative;
+}
+
+.selected-work__media-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity 350ms cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 2;
+}
+
+.selected-work__card:hover .selected-work__media-overlay {
+  opacity: 1;
+}
+
+.selected-work__media-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #111;
+  font-size: 0.88rem;
+  font-weight: 700;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  transform: translateY(12px) scale(0.94);
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.selected-work__card:hover .selected-work__media-action {
+  transform: translateY(0) scale(1);
+}
+
+/* Why Adventyz Number Badge */
+.why-adventyz__number-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: auto;
+}
+
+.why-adventyz__number-badge {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-brand);
+  box-shadow: 0 0 12px var(--color-brand);
+  opacity: 0.55;
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.why-adventyz__card:hover .why-adventyz__number-badge {
+  opacity: 1;
+  transform: scale(1.4);
+}
+
+/* Process Preview Card Head */
+.process-preview__card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.process-preview__pulse-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-brand);
+  box-shadow: 0 0 10px var(--color-brand);
+  animation: pulse-dot 2.5s infinite;
+}
+
+/* Final CTA Atmosphere & Rings */
+.final-cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.final-cta__aura {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(233, 149, 26, 0.28) 0%, transparent 68%);
+  filter: blur(40px);
+  pointer-events: none;
+  animation: hero-glow 8s ease-in-out infinite alternate;
+}
+
+.final-cta__decorations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.final-cta__ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+}
+
+.final-cta__ring--one {
+  width: 450px;
+  height: 450px;
+  top: -150px;
+  right: -100px;
+  animation: ring-spin 35s linear infinite;
+}
+
+.final-cta__ring--two {
+  width: 300px;
+  height: 300px;
+  bottom: -100px;
+  left: 5%;
+  border-color: rgba(0, 0, 0, 0.12);
+  animation: ring-spin 25s linear infinite reverse;
+}
+
+.final-cta__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.final-cta__eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-black);
+  animation: pulse-dot 2s infinite;
+}
+
+.final-cta__accent-text {
+  color: var(--color-white);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+}
+
+

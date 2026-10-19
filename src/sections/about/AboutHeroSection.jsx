@@ -6,11 +6,14 @@ function AboutHeroSection() {
     <section className="about-hero">
       <Container>
         <div className="about-hero__content">
-          <p className="about-hero__eyebrow">About Adventyz</p>
+          <p className="about-hero__eyebrow">
+            <span className="hero__eyebrow-dot" style={{ display: "inline-block", marginRight: "8px" }} />
+            About Adventyz
+          </p>
 
           <h1 className="about-hero__title">
             Creative thinking.
-            <span> Built for growth.</span>
+            <span className="hero__title-accent--shimmer"> Built for growth.</span>
           </h1>
 
           <p className="about-hero__description">
@@ -20,7 +23,7 @@ function AboutHeroSection() {
           </p>
 
           <div className="about-hero__actions">
-            <Button to="/contact">
+            <Button to="/contact" className="button--glow">
               Book a Consultation
             </Button>
 

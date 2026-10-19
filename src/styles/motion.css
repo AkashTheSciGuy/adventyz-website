@@ -1,17 +1,177 @@
-
 /* ========================================
-   Motion for React
+   Motion for React & Interactive Animations
    ======================================== */
 
-/*
-  Scroll reveal opacity, transforms,
-  blur and timing are now handled
-  by Reveal.jsx.
-*/
+/* ========================================
+   Top Scroll Progress Bar
+   ======================================== */
 
+.scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3.5px;
+  z-index: 9990;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    #e9951a 0%,
+    #f2a42f 50%,
+    #ffc869 100%
+  );
+  box-shadow:
+    0 0 12px rgba(233, 149, 26, 0.8),
+    0 0 20px rgba(233, 149, 26, 0.4);
+}
 
 /* ========================================
-   Existing hover lift
+   Custom Kinetic Cursor
+   ======================================== */
+
+.custom-cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 38px;
+  height: 38px;
+  margin: -19px 0 0 -19px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(233, 149, 26, 0.45);
+  pointer-events: none;
+  z-index: 9998;
+  backdrop-filter: blur(0.5px);
+  -webkit-backdrop-filter: blur(0.5px);
+  transition:
+    width 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    margin 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 250ms ease,
+    border-color 250ms ease,
+    box-shadow 250ms ease,
+    opacity 200ms ease;
+}
+
+.custom-cursor-follower--hovered {
+  width: 62px;
+  height: 62px;
+  margin: -31px 0 0 -31px;
+  background-color: rgba(233, 149, 26, 0.12);
+  border-color: rgba(233, 149, 26, 0.9);
+  box-shadow:
+    0 0 24px rgba(233, 149, 26, 0.32),
+    inset 0 0 14px rgba(233, 149, 26, 0.15);
+}
+
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background-color: var(--color-brand);
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow: 0 0 10px rgba(233, 149, 26, 0.85);
+  transition:
+    transform 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 200ms ease;
+}
+
+.custom-cursor-dot--hovered {
+  transform: scale(0.35);
+  opacity: 0.55;
+}
+
+/* Hide native cursor on devices with fine pointer when custom cursor is active */
+@media (pointer: fine) {
+  /* Cursor stays visible by default, dot acts as precision point */
+}
+
+/* ========================================
+   Spotlight Dynamic Hover Cards
+   ======================================== */
+
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.spotlight-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 20px 40px -15px rgba(0, 0, 0, 0.08),
+    0 0 24px -5px rgba(233, 149, 26, 0.12);
+}
+
+.spotlight-card__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 350ms ease;
+}
+
+.spotlight-card__border {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  border-radius: inherit;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1.5px;
+  transition: opacity 350ms ease;
+}
+
+.spotlight-card__content {
+  display: contents;
+}
+
+.spotlight-card > *:not(.spotlight-card__glow):not(.spotlight-card__border) {
+  position: relative;
+  z-index: 2;
+}
+
+/* ========================================
+   Kinetic Typography / Text Reveal
+   ======================================== */
+
+.text-reveal-container {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.text-reveal-word-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.text-reveal-word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* ========================================
+   Existing hover lift & media reveal
    ======================================== */
 
 .hover-lift {
@@ -23,12 +183,10 @@
 
 .hover-lift:hover {
   transform: translateY(-6px);
+  box-shadow:
+    0 18px 36px -10px rgba(0, 0, 0, 0.07),
+    0 0 20px -5px rgba(233, 149, 26, 0.1);
 }
-
-
-/* ========================================
-   Existing media reveal
-   ======================================== */
 
 .media-reveal {
   overflow: hidden;
@@ -42,9 +200,46 @@
 
 .media-reveal:hover img,
 .media-reveal:hover video {
-  transform: scale(1.045);
+  transform: scale(1.055);
 }
 
+/* ========================================
+   Interactive Button Ripple / Sheen
+   ======================================== */
+
+.button {
+  position: relative;
+  overflow: hidden;
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  transition: left 600ms ease;
+}
+
+.button:hover::after {
+  left: 200%;
+}
+
+/* ========================================
+   Card Stagger Micro-Interactions
+   ======================================== */
+
+.animated-stagger-card {
+  will-change: transform, opacity;
+}
 
 /* ========================================
    Reduced motion
@@ -52,14 +247,24 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hover-lift,
+  .spotlight-card,
   .media-reveal img,
-  .media-reveal video {
-    transition: none;
+  .media-reveal video,
+  .scroll-progress-bar,
+  .custom-cursor-follower,
+  .custom-cursor-dot {
+    transition: none !important;
+    animation: none !important;
   }
 
   .hover-lift:hover,
+  .spotlight-card:hover,
   .media-reveal:hover img,
   .media-reveal:hover video {
-    transform: none;
+    transform: none !important;
+  }
+
+  .button::after {
+    display: none;
   }
 }
