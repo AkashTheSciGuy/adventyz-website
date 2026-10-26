@@ -31,6 +31,7 @@ function SelectedWorkSection() {
           return (
             <motion.div
               key={project.id}
+              className="selected-work__item"
               initial={reduceMotion ? false : { opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
@@ -42,7 +43,8 @@ function SelectedWorkSection() {
             >
               <SpotlightCard
                 className="selected-work__card hover-lift"
-                spotlightColor="rgba(233, 149, 26, 0.18)"
+                tilt={true}
+                spotlightColor="rgba(233, 149, 26, 0.16)"
               >
                 <div className="selected-work__media media-reveal">
                   {hasMedia ? (
