@@ -198,8 +198,9 @@
 
   color: var(--color-brand);
 
+  font-family: var(--font-family-base);
   font-size: var(--font-size-sm);
-  font-weight: 700;
+  font-weight: 600; /* Inter Semi-Bold */
 
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -228,8 +229,10 @@
 
   margin-top: var(--space-6);
 
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(255, 255, 255, 0.72);
 
+  font-family: var(--font-family-base);
+  font-weight: 400; /* Inter Regular */
   font-size: clamp(var(--font-size-base),
       1.6vw,
       var(--font-size-lg));
@@ -2088,8 +2091,10 @@
 .hero__visual-label {
   margin-top: 1rem;
   color: rgba(255, 255, 255, 0.74);
+  font-family: var(--font-family-base);
   font-size: 0.95rem;
-  letter-spacing: 0.06em;
+  font-weight: 500; /* Inter Medium */
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -2152,6 +2157,11 @@
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  font-family: var(--font-family-base);
+  font-size: 0.82rem;
+  font-weight: 600; /* Inter Semi-Bold */
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .hero__eyebrow-dot {
