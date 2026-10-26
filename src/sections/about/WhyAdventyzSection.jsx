@@ -66,7 +66,7 @@ function WhyAdventyzSection() {
           </p>
 
           <h2>
-            Ready to talk about your brand?
+            Ready to talk about <span>your brand?</span>
           </h2>
         </div>
 

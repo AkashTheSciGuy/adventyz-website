@@ -37,7 +37,7 @@ function WhyAdventyzSection() {
     <Section className="why-adventyz">
       <SectionHeading
         eyebrow="Why Adventyz"
-        title="Creative work with a reason behind it."
+        title={<>Creative work with a <span>reason behind it.</span></>}
         description="A connected approach to strategy, marketing, content and production."
       />
 

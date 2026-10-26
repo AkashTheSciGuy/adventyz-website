@@ -16,7 +16,7 @@ function ServicesPreviewSection() {
       <div className="services-preview__header">
         <SectionHeading
           eyebrow="What We Do"
-          title="Creative and digital capabilities built around growth."
+          title={<>Creative and digital capabilities built around <span>growth.</span></>}
           description="From strategy and performance marketing to content, production and digital experiences."
         />
 

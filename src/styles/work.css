@@ -304,6 +304,10 @@
   line-height: 1;
 }
 
+.work-page__empty h2 span {
+  color: var(--color-brand);
+}
+
 .work-page__empty > p {
   max-width: 620px;
 

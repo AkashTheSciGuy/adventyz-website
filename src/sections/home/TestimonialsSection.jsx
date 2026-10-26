@@ -16,7 +16,7 @@ function TestimonialsSection() {
     <Section className="testimonials-preview">
       <SectionHeading
         eyebrow="Testimonials"
-        title="What our clients say."
+        title={<>What our clients <span>say.</span></>}
         description="Feedback from brands we've worked with."
       />
 

@@ -17,7 +17,7 @@ function ProcessPreviewSection() {
       <div className="process-preview__header">
         <SectionHeading
           eyebrow="Our Process"
-          title="From idea to impact."
+          title={<>From idea to <span>impact.</span></>}
           description="A structured approach that connects strategy, creative execution and growth."
         />
 

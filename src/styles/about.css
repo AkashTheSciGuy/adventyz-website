@@ -420,6 +420,10 @@
   line-height: 1;
 }
 
+.about-cta h2 span {
+  color: var(--color-brand);
+}
+
 .about-cta .button {
   flex-shrink: 0;
 

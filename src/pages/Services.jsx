@@ -23,7 +23,7 @@ function Services() {
           <SectionHeading
             titleTag="h1"
             eyebrow="What We Do"
-            title="Services built to move your brand forward."
+            title={<>Services built to move your brand <span>forward.</span></>}
             description="From growth and performance to content, production, digital experiences and brand design, Adventyz brings the pieces together under one roof."
           />
 
@@ -117,7 +117,7 @@ function Services() {
         <Section className="services-page__cta">
           <SectionHeading
             eyebrow="Let's Work Together"
-            title="Have a project in mind?"
+            title={<>Have a project <span>in mind?</span></>}
             description="Tell us what you're building, what you're trying to solve, and where you want to go next."
             align="center"
           />

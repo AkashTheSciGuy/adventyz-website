@@ -67,6 +67,10 @@
   line-height: 1.1;
 }
 
+.contact-page__intro h1 span {
+  color: var(--color-brand);
+}
+
 .contact-page__intro p {
   margin: var(--space-5) 0 0;
   color: var(--color-text-muted);
@@ -242,6 +246,10 @@
   font-family: var(--font-family-brand);
   font-size: var(--font-size-2xl);
   font-weight: 800;
+}
+
+.contact-form__success h2 span {
+  color: var(--color-brand);
 }
 
 .contact-form__success p {

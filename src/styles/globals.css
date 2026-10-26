@@ -151,6 +151,15 @@ button:not(:disabled) {
   letter-spacing: -0.03em;
 }
 
+.home-page .section-heading__title span,
+.about-page .section-heading__title span,
+.services-page .section-heading__title span,
+.work-page .section-heading__title span,
+.process-page .section-heading__title span,
+.contact-page .section-heading__title span {
+  color: var(--color-brand);
+}
+
 .home-page .section-heading > p,
 .about-page .section-heading > p,
 .services-page .section-heading > p,

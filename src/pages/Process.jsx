@@ -18,7 +18,7 @@ function Process() {
             <SectionHeading
               titleTag="h1"
               eyebrow="Our Process"
-              title="From idea to impact."
+              title={<>From idea to <span>impact.</span></>}
               description="A clear, collaborative process that turns strategy into meaningful creative work and measurable growth."
             />
           </Container>
@@ -65,7 +65,7 @@ function Process() {
             <SectionHeading
               align="center"
               eyebrow="Ready to Begin?"
-              title="Let's build something worth talking about."
+              title={<>Let's build something <span>worth talking about.</span></>}
               description="Have an idea, a challenge or a goal in mind? Let's talk about where you want to go next."
             />
 

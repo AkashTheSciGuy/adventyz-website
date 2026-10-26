@@ -396,6 +396,10 @@ body:has(.mobile-menu) .floating-enquiry {
   line-height: 1;
 }
 
+.not-found h1 span {
+  color: var(--color-brand);
+}
+
 .not-found__description {
   max-width: 520px;
   margin: var(--space-5) auto 0;

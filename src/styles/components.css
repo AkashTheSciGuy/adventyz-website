@@ -37,6 +37,10 @@
   line-height: 1.1;
 }
 
+.section-heading__title span {
+  color: var(--color-brand);
+}
+
 .section-heading__description {
   margin-top: var(--space-4);
 

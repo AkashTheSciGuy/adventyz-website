@@ -158,7 +158,7 @@ function Contact() {
                   Let's Talk
                 </span>
 
-                <h1>Have an idea? Let's make it happen.</h1>
+                <h1>Have an idea? <span>Let's make it happen.</span></h1>
 
                 <p>
                   Whether you need a stronger digital presence,
@@ -227,7 +227,7 @@ function Contact() {
                     ✓
                   </span>
 
-                  <h2>Thanks for reaching out!</h2>
+                  <h2>Thanks for <span>reaching out!</span></h2>
 
                   <p>
                     Your enquiry was sent successfully. We'll be in

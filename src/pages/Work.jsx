@@ -39,7 +39,7 @@ function Work() {
           <SectionHeading
             titleTag="h1"
             eyebrow="Our Work"
-            title="Work that brings ideas to life."
+            title={<>Work that brings ideas <span>to life.</span></>}
             description="Our portfolio spans social media, production, photography, branding, web and performance marketing."
           />
 
@@ -153,7 +153,7 @@ function Work() {
                 </span>
 
                 <h2>
-                  Selected client work is being prepared.
+                  Selected client work is <span>being prepared.</span>
                 </h2>
 
                 <p>
@@ -190,7 +190,7 @@ function Work() {
         <Section className="work-page__cta">
           <SectionHeading
             eyebrow="Start a Project"
-            title="Have something worth creating?"
+            title={<>Have something <span>worth creating?</span></>}
             description="Tell us what you're building and where you want to take it."
             align="center"
           />

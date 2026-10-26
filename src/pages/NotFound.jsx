@@ -10,7 +10,7 @@ function NotFound() {
         </p>
 
         <h1>
-          This page went off-script.
+          This page went <span>off-script.</span>
         </h1>
 
         <p className="not-found__description">

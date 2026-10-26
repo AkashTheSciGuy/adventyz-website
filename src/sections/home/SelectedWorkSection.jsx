@@ -15,7 +15,7 @@ function SelectedWorkSection() {
       <div className="selected-work__header">
         <SectionHeading
           eyebrow="Selected Work"
-          title="Work designed to move brands forward."
+          title={<>Work designed to move brands <span>forward.</span></>}
           description="A selection of creative, digital and production work. Verified project material will be added as it becomes available."
         />
 
