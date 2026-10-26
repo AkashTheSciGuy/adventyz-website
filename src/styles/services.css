@@ -26,9 +26,9 @@
 .services-page__category {
   margin: 0 0 var(--space-5);
   color: var(--color-brand);
-  font-family: var(--font-family-brand);
+  font-family: var(--font-family-base);
   font-size: var(--font-size-lg);
-  font-weight: 800;
+  font-weight: 600; /* Inter Semi-Bold */
   letter-spacing: 0.02em;
 }
 
@@ -61,9 +61,9 @@
   display: block;
   margin-bottom: var(--space-7);
   color: var(--color-brand);
-  font-family: var(--font-family-brand);
+  font-family: var(--font-family-base);
   font-size: var(--font-size-sm);
-  font-weight: 800;
+  font-weight: 700; /* Inter Bold */
 }
 
 .services-page__title {
@@ -148,8 +148,9 @@
 
   color: var(--color-brand);
 
+  font-family: var(--font-family-base);
   font-size: var(--font-size-xs);
-  font-weight: 700;
+  font-weight: 600; /* Inter Semi-Bold */
 
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -175,7 +176,9 @@
 
   color: var(--color-text-muted);
 
+  font-family: var(--font-family-base);
   font-size: var(--font-size-xs);
+  font-weight: 500; /* Inter Medium */
 }
 
 

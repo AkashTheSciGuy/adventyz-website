@@ -296,9 +296,9 @@ body:has(.mobile-menu) .floating-enquiry {
 .site-footer__heading {
   margin-bottom: var(--space-5);
   color: #ffffff;
-  font-family: var(--font-family-brand);
+  font-family: var(--font-family-base);
   font-size: var(--font-size-sm);
-  font-weight: 800;
+  font-weight: 600; /* Inter Semi-Bold */
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
