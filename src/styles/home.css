@@ -2495,7 +2495,6 @@
   background: radial-gradient(circle, rgba(233, 149, 26, 0.28) 0%, transparent 68%);
   filter: blur(40px);
   pointer-events: none;
-  animation: hero-glow 8s ease-in-out infinite alternate;
 }
 
 .final-cta__decorations {
@@ -2517,7 +2516,6 @@
   height: 450px;
   top: -150px;
   right: -100px;
-  animation: ring-spin 35s linear infinite;
 }
 
 .final-cta__ring--two {
@@ -2526,7 +2524,6 @@
   bottom: -100px;
   left: 5%;
   border-color: rgba(0, 0, 0, 0.12);
-  animation: ring-spin 25s linear infinite reverse;
 }
 
 .final-cta__eyebrow {
@@ -2540,22 +2537,11 @@
   height: 7px;
   border-radius: 50%;
   background: var(--color-black);
-  animation: pulse-dot 2s infinite;
 }
 
 .final-cta__accent-text {
-  background: linear-gradient(
-    115deg,
-    #e9951a 0%,
-    #f8b652 35%,
-    #fff4df 50%,
-    #f8b652 65%,
-    #e9951a 100%
-  );
-  background-size: 220% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: text-shine 6.5s ease-in-out infinite;
+  color: var(--color-white);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
 }
 
 
