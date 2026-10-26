@@ -38,7 +38,18 @@
 }
 
 .section-heading__title span {
-  color: var(--color-brand);
+  background: linear-gradient(
+    115deg,
+    #e9951a 0%,
+    #f8b652 35%,
+    #fff4df 50%,
+    #f8b652 65%,
+    #e9951a 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shine 6.5s ease-in-out infinite;
 }
 
 .section-heading__description {

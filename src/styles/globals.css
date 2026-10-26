@@ -151,13 +151,40 @@ button:not(:disabled) {
   letter-spacing: -0.03em;
 }
 
+/* Golden Shimmer Beam Effect */
+@keyframes text-shine {
+  0% {
+    background-position: 180% 0%;
+  }
+  50% {
+    background-position: -20% 0%;
+  }
+  100% {
+    background-position: -20% 0%;
+  }
+}
+
+.text-shimmer,
+.hero__title-accent--shimmer,
+.final-cta__accent-text,
 .home-page .section-heading__title span,
 .about-page .section-heading__title span,
 .services-page .section-heading__title span,
 .work-page .section-heading__title span,
 .process-page .section-heading__title span,
 .contact-page .section-heading__title span {
-  color: var(--color-brand);
+  background: linear-gradient(
+    115deg,
+    #e9951a 0%,
+    #f8b652 35%,
+    #fff4df 50%,
+    #f8b652 65%,
+    #e9951a 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shine 6.5s ease-in-out infinite;
 }
 
 .home-page .section-heading > p,
