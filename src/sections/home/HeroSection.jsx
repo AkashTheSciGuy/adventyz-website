@@ -115,23 +115,6 @@ function HeroSection() {
           onMouseMove={handleCardMouseMove}
           onMouseLeave={handleCardMouseLeave}
         >
-          {/* Floating animated metric badges */}
-          <div className="hero__floating-badge hero__floating-badge--top" aria-hidden="true">
-            <span className="hero__floating-badge-icon">✦</span>
-            <div>
-              <strong>10x Growth</strong>
-              <small>Targeted ROI</small>
-            </div>
-          </div>
-
-          <div className="hero__floating-badge hero__floating-badge--bottom" aria-hidden="true">
-            <span className="hero__floating-badge-icon">✦</span>
-            <div>
-              <strong>4K Cinematic</strong>
-              <small>High Production</small>
-            </div>
-          </div>
-
           <motion.div
             className="hero__visual"
             aria-hidden="true"
