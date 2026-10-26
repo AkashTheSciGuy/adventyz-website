@@ -151,13 +151,59 @@ button:not(:disabled) {
   letter-spacing: -0.03em;
 }
 
-.home-page .section-heading__title span,
-.about-page .section-heading__title span,
-.services-page .section-heading__title span,
-.work-page .section-heading__title span,
-.process-page .section-heading__title span,
-.contact-page .section-heading__title span {
-  color: var(--color-brand);
+/* Golden Shimmer Beam Effect */
+@keyframes text-shine {
+  0% {
+    background-position: 180% 0%;
+  }
+  50% {
+    background-position: -20% 0%;
+  }
+  100% {
+    background-position: -20% 0%;
+  }
+}
+
+.text-shimmer,
+.hero__title-accent--shimmer,
+.section-heading__title span,
+.home-intro__content h2 span,
+.about-hero__title span,
+.about-split__content h2 span,
+.about-beliefs__header h2 span,
+.about-why__content h2 span,
+.services-page__category,
+.contact-page__intro h1 span,
+.contact-form__success h2 span,
+.contact-page__next-header h2 span,
+.work-page__empty h2 span,
+.not-found h1 span {
+  display: inline-block;
+  background: linear-gradient(
+    115deg,
+    #e9951a 0%,
+    #f8b652 35%,
+    #fff4df 50%,
+    #f8b652 65%,
+    #e9951a 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shine 6.5s ease-in-out infinite;
+}
+
+/* Two orange CTA cards: zero animations, crisp white accent text */
+.final-cta h2 span,
+.final-cta__accent-text,
+.about-cta h2 span {
+  display: inline !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: var(--color-white) !important;
+  color: var(--color-white) !important;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.15) !important;
+  animation: none !important;
 }
 
 .home-page .section-heading > p,

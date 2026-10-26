@@ -43,7 +43,7 @@ function ApproachSection() {
     <Section className="about-approach">
       <SectionHeading
         eyebrow="Our Approach"
-        title="Start with the reason. Then build the creative."
+        title={<>Start with the reason. <span>Then build the creative.</span></>}
         description="A clear process keeps strategy, content and execution moving in the same direction."
       />
 

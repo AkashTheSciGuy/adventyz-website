@@ -56,7 +56,19 @@
 }
 
 .about-hero__title span {
-  color: var(--color-brand);
+  display: inline-block;
+  background: linear-gradient(
+    115deg,
+    #e9951a 0%,
+    #f8b652 35%,
+    #fff4df 50%,
+    #f8b652 65%,
+    #e9951a 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shine 6.5s ease-in-out infinite;
 }
 
 .about-hero__description {
@@ -136,7 +148,19 @@
 }
 
 .about-split__content h2 span {
-  color: var(--color-brand);
+  display: inline-block;
+  background: linear-gradient(
+    115deg,
+    #e9951a 0%,
+    #f8b652 35%,
+    #fff4df 50%,
+    #f8b652 65%,
+    #e9951a 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shine 6.5s ease-in-out infinite;
 }
 
 .about-split__content p {
@@ -255,7 +279,19 @@
 }
 
 .about-beliefs__header h2 span {
-  color: var(--color-brand);
+  display: inline-block;
+  background: linear-gradient(
+    115deg,
+    #e9951a 0%,
+    #f8b652 35%,
+    #fff4df 50%,
+    #f8b652 65%,
+    #e9951a 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shine 6.5s ease-in-out infinite;
 }
 
 .about-beliefs__list {
@@ -325,7 +361,19 @@
 }
 
 .about-why__content h2 span {
-  color: var(--color-brand);
+  display: inline-block;
+  background: linear-gradient(
+    115deg,
+    #e9951a 0%,
+    #f8b652 35%,
+    #fff4df 50%,
+    #f8b652 65%,
+    #e9951a 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shine 6.5s ease-in-out infinite;
 }
 
 .about-why__content > p:last-child {
@@ -421,7 +469,11 @@
 }
 
 .about-cta h2 span {
-  color: var(--color-brand);
+  color: var(--color-white);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+  background: none;
+  -webkit-text-fill-color: var(--color-white);
+  animation: none;
 }
 
 .about-cta .button {
